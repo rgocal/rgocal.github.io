@@ -13,7 +13,7 @@ a:hover,
 a:focus,
 a:active,
 a.active {
-  color: #909576;
+  color: #b7b7b7;
   outline: none;
 }
 h1,
@@ -49,23 +49,23 @@ hr.star-light {
   border-color: white;
 }
 hr.star-light:after {
-  background-color: #909576;
+  background-color: #b7b7b7;
   color: white;
 }
 hr.star-primary {
-  border-color: #353A25;
+  border-color: #6a6a6a;
 }
 hr.star-primary:after {
   background-color: white;
-  color: #353A25;
+  color: #6a6a6a;
 }
 .img-centered {
   margin: 0 auto;
 }
 header {
   text-align: center;
-  background: #909576;
-  color: white;
+  background: #b7b7b7;
+  color: black;
 }
 header .container {
   padding-top: 100px;
