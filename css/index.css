@@ -284,7 +284,7 @@ section.success {
   opacity: 1;
 }
 .floating-label-form-group-with-focus label {
-  color: #909576;
+  color: black;
 }
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
@@ -318,14 +318,14 @@ footer .footer-below {
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-  color: #909576;
+  color: #6b6b6b;
   background: white;
   border: solid 2px white;
 }
 .btn-primary {
   color: white;
-  background-color: #353A25;
-  border-color: #353A25;
+  background-color: #333333;
+  border-color: #333333;
   font-weight: 700;
 }
 .btn-primary:hover,
