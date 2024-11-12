@@ -1,8 +1,6 @@
 # portfolio-generator
 JS framework to dynamically generate a portfolio site from a JSON resume
 
-<a href="http://navdeepsekhon.github.io/portfolio-generator" target="_blank">DEMO</a> | <a href="http://www.navdeepsekhon.com" target="_blank">My portfolio</a>
-
 ## Table of Contents
  - [Features](#features)
  - [Sections](#sections)
@@ -120,28 +118,3 @@ Example:
         }
 
 ```
-
-### Work/Volunteer
-
-* If you provide a `website` the organization name will be a link.
-* If you provide an array of `highlights` it will create a collapsible bullet list
-
-### Education/Awards
-See demo portfolio for examples.
-
-### Remove "Designed By Navdeep Sekhon"
-
-If you want to remove the "Designed By Navdeep Sekhon" at the bottom of the page(it's ok, I don't mind), just set `hideDesignedBy` to true.
-```json
-"hideDesignedBy": true,
-```
-### Contributions
-
-Please feel free to report any bugs or send in pull request with code changes.
-
-I love it when my work helps someone. So if you're using this project or it inspired you to build something of your own, I'd love to know! My social media is listed on my portfolio :)
-
-
-#### Host your portfolio free using github pages :
-
-I host my portfolio using github pages. To use the framework to make your site, you just need to change resume.json and update the `RESUME_LOCATION` in `constants.js` and you're good to go.
