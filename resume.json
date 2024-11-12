@@ -17,10 +17,6 @@
     "location": "Pennsylvania",
     "profiles": [
       {
-        "network": "X",
-        "url": "https://x.com/Rgocal"
-      },
-      {
         "network": "github",
         "url": "https://github.com/rgocal"
       },
@@ -31,10 +27,6 @@
       {
         "network": "Telegram",
         "url": "@Draconno"
-      },
-      {
-        "network": "WhatsApp",
-        "url": "Ryan Gocal"
       }
     ]
   },
@@ -99,7 +91,7 @@
         {
           "title": "Material Popup Menu",
           "link": "https://github.com/rgocal/Material_PopUp_Menu",
-          "thumbnail": "https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg" ,
+          "thumbnail": https://png.pngtree.com/png-vector/20210604/ourmid/pngtree-gray-network-placeholder-png-image_3416659.jpg ,
           "description": "My first android library published. It was a reboot of the context popup menu found in the original ADW Launcher code from android gingerbread. This revision included an up to date material attractive look with updated dynamic menus."
         },
         {
