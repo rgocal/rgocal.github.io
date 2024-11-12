@@ -86,7 +86,7 @@
   ],
   "projectSections": [
     {
-      "title": "Libraries For Android",
+      "title": "Libraries",
       "projects": [
         {
           "title": "Material Popup Menu",
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "title": "Android Apps",
+      "title": "Apps",
       "projects": [
         {
           "title": "Launcher Ops",
