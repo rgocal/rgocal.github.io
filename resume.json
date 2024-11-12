@@ -6,12 +6,12 @@
     "education",
     "social"
   ],
-  "hideDesignedBy": false,
+  "hideDesignedBy": true,
   "personal": {
     "name": "Ryan Gocal",
     "title": "Freelance Android Developer",
     "email": "rgocal09@gmail.com",
-    "phone": 814-504-4403,
+    "phone": 1814-504-4403,
     "website": "https://rgocal.github.io/",
     "shortBio": "Greetings! I am a tech savy father of 2 boys and gamer! I am a shop manager during the day but at night, I'm a coffee drinking java code junky. I am a free lance android developer trying to look at things from a different angle and achieve things we havn't seen yet. I love tinkering with Android Home Launcher app interfaces.",
     "location": "Pennsylvania",
@@ -91,25 +91,25 @@
         {
           "title": "Material Popup Menu",
           "link": "https://github.com/rgocal/Material_PopUp_Menu",
-          "thumbnail": " ",
+          "thumbnail": null,
           "description": "My first android library published. It was a reboot of the context popup menu found in the original ADW Launcher code from android gingerbread. This revision included an up to date material attractive look with updated dynamic menus."
         },
         {
           "title": "Switchbar",
           "link": "https://github.com/rgocal/Switchbar",
-          "thumbnail": " ",
+          "thumbnail": null,
           "description": "A simple toolbar widget for android that behaves like a switch that dynamically behaves to the action of the switch."
         },
         {
           "title": "Fluent Popup Menu",
           "link": "https://github.com/rgocal/FluentPopupMenu",
-          "thumbnail": " ",
+          "thumbnail": null,
           "description": "A reboot of my first Material Popup Menu library with an updated look, feel and easy to use interface with some tricks up its sleave. Create a stylish popup view that inflates a menu, a tip or whatever you want. Alot of stylish material you based customization for all developers alike."
         },
         {
           "title": "Google Play Publisher Info Class",
           "link": "https://github.com/rgocal/Unofficial-Android-Playstore-API",
-          "thumbnail": " ",
+          "thumbnail": null,
           "description": "A java file class I wrote to take advantage of a homebrew api to gather Google Play app information from its publisher."
         }
       ]
