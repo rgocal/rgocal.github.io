@@ -1,19 +1,19 @@
 {
   "displayOrder": [
     "shortBio",
+    "social",
     "projects",
     "work",
-    "education",
-    "social"
+    "education"
   ],
   "hideDesignedBy": true,
   "personal": {
     "name": "Ryan Gocal",
     "title": "Freelance Android Developer",
     "email": "rgocal09@gmail.com",
-    "phone": 1814-504-4403,
-    "website": "https://rgocal.github.io/",
-    "shortBio": "Greetings! I am a tech savy father of 2 boys and gamer! I am a shop manager during the day but at night, I'm a coffee drinking java code junky. I am a free lance android developer trying to look at things from a different angle and achieve things we havn't seen yet. I love tinkering with Android Home Launcher app interfaces.",
+    "phone": "(1) 814-504-4403",
+    "website": "",
+    "shortBio": "Greetings! I am a tech savy gamer and father of 2. I am a full time production/inventory manager. During my free time, it's gaming with my significant other and coding cool projects. I am a free lance android developer trying to look at things from a different angle and achieve things we havn't seen yet. I love desiging Android Home Launcher apps. ",
     "location": "Pennsylvania",
     "profiles": [
       {
@@ -91,25 +91,25 @@
         {
           "title": "Material Popup Menu",
           "link": "https://github.com/rgocal/Material_PopUp_Menu",
-          "thumbnail": null,
+          "thumbnail": "",
           "description": "My first android library published. It was a reboot of the context popup menu found in the original ADW Launcher code from android gingerbread. This revision included an up to date material attractive look with updated dynamic menus."
         },
         {
           "title": "Switchbar",
           "link": "https://github.com/rgocal/Switchbar",
-          "thumbnail": null,
+          "thumbnail": "",
           "description": "A simple toolbar widget for android that behaves like a switch that dynamically behaves to the action of the switch."
         },
         {
           "title": "Fluent Popup Menu",
           "link": "https://github.com/rgocal/FluentPopupMenu",
-          "thumbnail": null,
+          "thumbnail": "",
           "description": "A reboot of my first Material Popup Menu library with an updated look, feel and easy to use interface with some tricks up its sleave. Create a stylish popup view that inflates a menu, a tip or whatever you want. Alot of stylish material you based customization for all developers alike."
         },
         {
           "title": "Google Play Publisher Info Class",
           "link": "https://github.com/rgocal/Unofficial-Android-Playstore-API",
-          "thumbnail": null,
+          "thumbnail": "",
           "description": "A java file class I wrote to take advantage of a homebrew api to gather Google Play app information from its publisher."
         }
       ]
@@ -121,7 +121,7 @@
           "title": "Launcher Ops",
           "thumbnail": "https://cdn6.aptoide.com/imgs/b/1/1/b117ad3ae450bdb18b4b683ac2b2f8e3_fgraphic.png",
           "link": "https://drive.google.com/file/d/11QnlPv71B1iMYklJGK7UjY_RENO2ftvu/view?usp=sharing",
-          "description": "An Ops like android app that allows users to manage and change their Launcher Apps on their device. Play detective and search installed launcher apps for any protective permissions, class items, services and ads.",
+          "description": "An android app that allows users to manage and change their Launcher Apps on their device. Play detective and search installed launcher apps for any protective permissions, class items, services and ads.",
           "gallery": [
             "https://play-lh.googleusercontent.com/emwFgpj2yG6SR-IG-MascbPRPiTipu_zJcDYe9xAcRGkiSXsV-Lricu84sOAD4f-syAA=w526-h296-rw"
           ]
@@ -138,7 +138,7 @@
         {
           "title": "Drosera Launcher",
           "thumbnail": "https://i.redd.it/project-drosera-v0-crc3bpmb33fc1.jpg?width=4096&format=pjpg&auto=webp&s=ea8f8b8f0f2c3940b3f39c443b815119ef5a98e8",
-          "link": null,
+          "link": "",
           "description": "An Android Launcher app designed for gamers and handhelds! Currently in development...",
           "gallery": [
             ""
@@ -147,7 +147,7 @@
         {
           "title": "GCA Launcher",
           "thumbnail": "https://cdn.soft112.com/symphlyx-launcher/00/00/0H/E6/00000HE6LC/pad_screenshot_2.png",
-          "link": null,
+          "link": "",
           "description": "A reboot is coming soon...",
           "gallery": [
             ""
@@ -156,7 +156,7 @@
         {
           "title": "Sapphire Launcher",
           "thumbnail": "https://image.winudf.com/v2/image/Y29tLk54SW5kdXN0cmllcy5TYXBwaGlyZV9zY3JlZW5fMV8xNTIxNTQ1MjY4XzA4OA/screen-1.jpg?fakeurl=1&type=.jpg",
-          "link": null,
+          "link": "",
           "description": "My first custom android launcher based on Launcher2 code by Slim Roms.",
           "gallery": [
             ""
@@ -165,7 +165,7 @@
         {
           "title": "Sapphyx Launcher",
           "thumbnail": "https://image.winudf.com/v2/image1/Y29tLmdzZC5sYXVuY2hlci5zYXBwaHl4X3NjcmVlbl8wXzE1NTAyNzIzNjVfMDE2/screen-0.jpg?fakeurl=1&type=.jpg",
-          "link": null,
+          "link": "",
           "description": "An Android Launcher that was based on Pixel Launcher code. GG Lawnchair Launcher...RIP",
           "gallery": [
             ""
@@ -174,7 +174,7 @@
         {
           "title": "Drywall",
           "thumbnail": "https://image.winudf.com/v2/image1/Y29tLmdzZC5kcnl3YWxsLm1jZF9zY3JlZW5fMF8xNTk5ODU2MzEzXzAwMQ/screen-0.jpg?fakeurl=1&type=.jpg",
-          "link": null,
+          "link": "",
           "description": "My first Wallpaper app for Android that pulled wallpapers from a json file from my github. RIP",
           "gallery": [
             ""
@@ -183,7 +183,7 @@
         {
           "title": "Launcher Quick Tile",
           "thumbnail": "https://play-lh.googleusercontent.com/Yhv6p0V_vNN3e41oaCxutJrO14XEiCy4wu6w6J7WyWmwI3__UTjpR_i7SZPu2JtYvPU=w540-h302-rw",
-          "link": null,
+          "link": "",
           "description": "A Quick Tile for Android that allows users to swap launchers faster than the android settings provides by default.",
           "gallery": [
             ""
