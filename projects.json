@@ -1,0 +1,26 @@
+{
+  "Application": [
+    {
+      "label": "My Cool App",
+      "description": "An app that does cool stuff.",
+      "screenshot": "app1.png",
+      "url": "https://github.com/yourusername/app1"
+    }
+  ],
+  "Libraries": [
+    {
+      "label": "HelperLib",
+      "description": "Java library to simplify tasks.",
+      "screenshot": "lib1.png",
+      "url": "https://github.com/yourusername/helperlib"
+    }
+  ],
+  "Experimental": [
+    {
+      "label": "Crazy Idea",
+      "description": "A wild concept to explore AI+Games.",
+      "screenshot": "exp1.png",
+      "url": "https://github.com/yourusername/crazyidea"
+    }
+  ]
+}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gocal Software Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+    header, footer {
+      background: #1e1e1e;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .profile img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+    section {
+      margin-top: 3rem;
+    }
+    .project-section {
+      margin-top: 1.5rem;
+    }
+    .project {
+      background: #1e1e1e;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .project img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+    }
+    a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .blog-post {
+      background: #232323;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 10px;
+    }
+    .blog-post img {
+      display: block;
+      margin: 0.5rem 0;
+      max-width: 200px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gocal Software Development</h1>
+  </header>
+
+  <div class="container">
+    <section class="profile">
+      <img src="profile.jpg" alt="Profile Picture">
+      <h2>Ryan Gocal</h2>
+      <p>Coffee drivin, father of 2 son, production manager and freelance android developer.</p>
+      <p>📧 rgocal09@gmail.com | 🌐 <a href="https://play.google.com/store/apps/dev?id=8934848548747347540" target="_blank">Google Play Developer Page</a></p>
+    </section>
+
+    <section>
+      <h2>Resume</h2>
+      <p><a href="https://profile.indeed.com/p/ryang-4xq7eij" target="_blank">View my history "Bring Cookies"</a></p>
+    </section>
+
+    <section>
+      <h2>Recent Blog Posts</h2>
+      <div id="blog-posts">Loading...</div>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div id="projects"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Built with ChatGPT</p>
+  </footer>
+
+  <script>
+    const blogContainer = document.getElementById('blog-posts');
+    fetch('https://public-api.wordpress.com/rest/v1.1/sites/gocalsdb.wordpress.com/posts/?number=5')
+      .then(res => res.json())
+      .then(data => {
+        blogContainer.innerHTML = data.posts.map(post => `
+          <div class="blog-post">
+            <h4><a href="${post.URL}" target="_blank">${post.title}</a></h4>
+            ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title} preview" style="max-width:200px;border-radius:8px;">` : ''}
+            <p>${post.excerpt.replace(/<[^>]+>/g, '').slice(0, 120)}...</p>
+          </div>
+        `).join('');
+      })
+      .catch(() => {
+        blogContainer.innerHTML = '<p>Unable to load posts.</p>';
+      });
+
+
+    const projectsContainer = document.getElementById('projects');
+    fetch('projects.json')
+    .then(res => res.json())
+    .then(projectsData => {
+        for (const type in projectsData) {
+        const section = document.createElement('div');
+        section.classList.add('project-section');
+        section.innerHTML = `<h3>${type}</h3>` +
+            projectsData[type].map(p => `
+            <div class="project">
+                <h4>${p.label}</h4>
+                <p>${p.description}</p>
+                <img src="${p.screenshot}" alt="${p.label} screenshot">
+                <p><a href="${p.url}" target="_blank">View Project</a></p>
+            </div>
+            `).join('');
+        projectsContainer.appendChild(section);
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        projectsContainer.innerHTML = '<p>Unable to load projects.</p>';
+    });
+
+  </script>
+</body>
+</html>
