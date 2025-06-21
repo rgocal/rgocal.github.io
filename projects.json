@@ -1,5 +1,5 @@
 {
-  "Application": [
+  "Published Applications": [
     {
       "label": "Launcher Ops",
       "description": "Manage and Benchmark your favorite launchers in Android. Detect anomalies, permission usages and clones that could potentially ruin your android homescreen experience. This app is built with ONE UI.",
@@ -57,10 +57,22 @@
       "url": "https://github.com/rgocal/Switchbar"
     }
   ],
-  "Experimental": [
+  "Experimental or Deprecated": [
+    {
+      "label": "Sapphire Launcher",
+      "description": "My first custom launcher based on AOSP by Slim Roms. It was launched in 2015 and later unpublished to be upgraded with a pixal launcher clone.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "Sapphyx Launcher",
+      "description": "Launched in 2017, Sapphyx Launcher was my first launched that was based on Google Pixel Launcher port to the public and offered an array of cool new features and customization. This project had taught me that it was becoming really difficult to based projects on another source and we should start look at build from the ground up.",
+      "screenshot": "null",
+      "url": "null"
+    },
     {
       "label": "GCA Launcher",
-      "description": "Gocal's Custom Android Launcher. Launched in 2018, retired in 2021 for deprecation reasons. Currently in the works to make a full return and revamped for the newest sdk. Launchers are alot of work to maintain so when you start other projects, they will fall behind.",
+      "description": "Gocal's Custom Android Launcher. Launched in late 2018, retired in 2021 for deprecation reasons. Currently in the works to make a full return and revamped for the newest sdk. Launchers are alot of work to maintain so when you start other projects, they will fall behind.",
       "screenshot": "null",
       "url": "null"
     },
