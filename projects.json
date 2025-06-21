@@ -1,26 +1,74 @@
 {
   "Application": [
     {
-      "label": "My Cool App",
-      "description": "An app that does cool stuff.",
-      "screenshot": "app1.png",
-      "url": "https://github.com/yourusername/app1"
+      "label": "Launcher Ops",
+      "description": "Manage and Benchmark your favorite launchers in Android. Detect anomalies, permission usages and clones that could potentially ruin your android homescreen experience. This app is built with ONE UI.",
+      "screenshot": "https://play-lh.googleusercontent.com/JkWYjUW31-Jlq0V_tPIamHt-s-Nqlf2j-CRwZ0pbEuLVsWkEQls4JWBGANARf7_3j5H1=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.flea.gsd.flea"
+    },
+    {
+      "label": "Launchers Quick Tile",
+      "description": "Swap launcher homescreens from your statusbar quicktile section. Supports up to Android 12 because of deprecation issues.",
+      "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.quicktile.launchers"
+    },
+    {
+      "label": "Launchers Quick Tile 2",
+      "description": "Swap launcher homescreens from your statusbar quicktile section. Supports Android 13 and above with improvements from the prequel app.",
+      "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.launcherquicktileadept"
+    },
+     {
+      "label": "Carpentar",
+      "description": "An Icon Pack Manager that allows you to benchmark the compatibility of launcher apps, extract icons and resources as well as craft your own icons! This app is built with ONE UI.",
+      "screenshot": "https://play-lh.googleusercontent.com/Ht9GsxkFnLUDg4WoJ-pSb7aotWOg_QsJvA7Ax_rprQswt1vheLFpZKk78oQI2rR91A=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.carpenter"
     }
   ],
   "Libraries": [
     {
-      "label": "HelperLib",
-      "description": "Java library to simplify tasks.",
-      "screenshot": "lib1.png",
-      "url": "https://github.com/yourusername/helperlib"
+      "label": "Unnoficial Google Play API for Android",
+      "description": "Java library for android that builds of a rest api by Rajkumar. Pulls publisher info for a selected app off of Google Play.",
+      "screenshot": "https://play-lh.googleusercontent.com/vXq11dYVQhYu1bu_HGW2VI-7WKIv0aI2A6aHCUOzA6VMkVihOm7J0AThcbCTH127TjKf=w2560-h1440-rw",
+      "url": "https://github.com/rgocal/Unofficial-Android-Playstore-API"
+    },
+    {
+      "label": "Expandable Preference Group",
+      "description": "A custom preference group for android that expands on click to show preferences held inside the group and can condense them for a cleaner UI.",
+      "screenshot": "null",
+      "url": "https://github.com/rgocal/ExpandablePreferenceGroup"
+    },
+    {
+      "label": "Fluent Popup Menu",
+      "description": "A custom widget for android that acts as a context menu for objects and views. The menu will appear above the object, with or without an arrow, and you can use the prebuilt menu or add in a custom view. Code is currently being optimized for release for the public.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "Expandable Preference Group",
+      "description": "A custom preference group for android that expands on click to show preferences held inside the group and can condense them for a cleaner UI.",
+      "screenshot": "null",
+      "url": "https://github.com/rgocal/ExpandablePreferenceGroup"
+    },
+    {
+      "label": "SwitchBar",
+      "description": "A custom widget inspired by ONE UI for AOSP. Hasn't been updated in awhile...",
+      "screenshot": "https://github.com/rgocal/Switchbar/raw/master/preview/switchbar_on.png?raw=true",
+      "url": "https://github.com/rgocal/Switchbar"
     }
   ],
   "Experimental": [
     {
-      "label": "Crazy Idea",
-      "description": "A wild concept to explore AI+Games.",
-      "screenshot": "exp1.png",
-      "url": "https://github.com/yourusername/crazyidea"
+      "label": "GCA Launcher",
+      "description": "Gocal's Custom Android Launcher. Launched in 2018, retired in 2021 for deprecation reasons. Currently in the works to make a full return and revamped for the newest sdk. Launchers are alot of work to maintain so when you start other projects, they will fall behind.",
+      "screenshot": "null",
+      "url": "null"
+    },
+     {
+      "label": "Drosera Launcher",
+      "description": "My own take on a custom android launcher designed for handhelds and personal desktop environments. This project has been active for the last 2 years and unfortunately with public previews, the feedsback has fallen short. We will continue to tackly this project until its done right.",
+      "screenshot": "null",
+      "url": "null"
     }
   ]
 }
