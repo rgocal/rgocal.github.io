@@ -18,6 +18,12 @@
       "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.launcherquicktileadept"
     },
+    {
+      "label": "Truesight (Preview)",
+      "description": "My attempt at building a mobile version of steam charts. This app pulls data from steams public apis to allow users to chart their own matrix of game populations. I've also added in a few things of my own that gamers will appreciate.",
+      "screenshot": " ",
+      "url": "https://play.google.com/apps/testing/com.gocalsd.truesight"
+    }, 
      {
       "label": "Carpentar",
       "description": "An Icon Pack Manager that allows you to benchmark the compatibility of launcher apps, extract icons and resources as well as craft your own icons! This app is built with ONE UI.",
