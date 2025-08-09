@@ -182,8 +182,8 @@
     <div>© <span id="year"></span> Ryan Gocal. Built with vanilla HTML/CSS/JS on GitHub Pages.</div>
   </footer>
 
- <script>
-  // Year + theme toggle (unchanged)
+<script>
+  // Year + theme toggle
   const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
   const themeBtn = document.getElementById('themeBtn');
   const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
@@ -198,7 +198,16 @@
   setTheme(prefersLight.matches);
   themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
 
- const badgeMap = {
+  // Elements
+  const elGrid   = document.getElementById('grid');   elGrid.classList.remove('grid'); // ensure wrapper isn't a grid
+  const elFilters= document.getElementById('filters');
+
+  // Utils
+  const truthy = v => v && v !== 'null' && String(v).trim() !== '';
+  const slug   = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+  // Badges to apply by label (you can move these into JSON later)
+  const badgeMap = {
     "Launcher Ops":            ["ONE UI"],
     "Carpentar":               ["ONE UI"],
     "Launchers Quick Tile 2":  ["Android 13+"],
@@ -206,23 +215,17 @@
     "SwitchBar":               ["Library"]
   };
 
-    // Normalizer + badges support (+ future-proof if you add "badges" in JSON)
-  const truthy = v => v && v !== 'null' && String(v).trim() !== '';
   function normalize(item, sectionName){
     const name = item.label || 'Untitled';
     const description = item.description || '';
     const image = truthy(item.screenshot) ? item.screenshot : '';
-    const url = truthy(item.url) ? item.url : '';
-    // Start with explicit badges if you ever add them to JSON
-    let badges = Array.isArray(item.badges) ? item.badges.slice(0) : [];
-    // Merge in map-based badges
+    const url   = truthy(item.url) ? item.url : '';
+    let badges  = Array.isArray(item.badges) ? item.badges.slice(0) : [];
     if (badgeMap[name]) badges = [...new Set([...badges, ...badgeMap[name]])];
-    // Section-driven badges
     if (/Experimental|Deprecated/i.test(sectionName)) badges = [...new Set([...badges, "Deprecated"])];
     return { name, description, image, url, badges };
   }
 
-  // Render badge chips
   function badgeRow(badges){
     if (!badges || !badges.length) return '';
     const key = (t)=> t.toLowerCase().replace(/\+/g,'plus').replace(/[^a-z0-9]+/g,'-');
@@ -232,7 +235,7 @@
   function ctaLabel(u){
     if (!u) return '';
     if (u.includes('play.google.com')) return 'View on Google Play';
-    if (u.includes('github.com')) return 'View on GitHub';
+    if (u.includes('github.com'))      return 'View on GitHub';
     return 'Learn more';
   }
 
@@ -243,7 +246,7 @@
       <h3>${p.name}</h3>
       ${badgeRow(p.badges)}
       ${p.description ? `<p>${p.description}</p>` : ''}
-      ${p.image ? `<img loading="lazy" alt="" src="${p.image}" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);margin-top:6px">` : ''}
+      ${p.image ? `<img loading="lazy" alt="" src="${p.image}">` : ''}
       <div class="links" style="margin-top:12px">
         ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
       </div>
@@ -251,79 +254,9 @@
     return li;
   }
 
-  // ---- Fetch + parse (unchanged except passing section name into normalize) ----
-  const elGrid = document.getElementById('grid');
-  elGrid.classList.remove('grid');
-
-  const elFilters = document.getElementById('filters');
-  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-  let sections = [], active = 'All';
-
-  function renderFilterChips(){ /* unchanged from previous version */ }
-
-  function render(){ /* unchanged from previous version */ }
-
-  fetch('projects.json', {cache:'no-store'})
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(data => {
-      const dedupe = new Set();
-      sections = Object.entries(data).map(([name, arr])=>{
-        const items = (Array.isArray(arr) ? arr : []).map(i=>normalize(i, name)).filter(p=>{
-          const id = `${p.name}|${p.url}`;
-          if (dedupe.has(id)) return false; dedupe.add(id); return true;
-        });
-        return { name, key: slug(name), items };
-      });
-      renderFilterChips(); render();
-    })
-    .catch(()=>{
-      elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>.</div>';
-    });
-
-   
-  // Elements
-  const elGrid = document.getElementById('grid');
-  elGrid.classList.remove('grid'); // ensure the wrapper isn’t a grid
-   
-  const elFilters = document.getElementById('filters');
-
-  // Utilities
-  const truthy = v => v && v !== 'null' && String(v).trim() !== '';
-  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-
-  function normalize(item){
-    return {
-      name: item.label || 'Untitled',
-      description: item.description || '',
-      image: truthy(item.screenshot) ? item.screenshot : '',
-      url: truthy(item.url) ? item.url : ''
-    };
-  }
-
-  function ctaLabel(u){
-    if (!u) return '';
-    if (u.includes('play.google.com')) return 'View on Google Play';
-    if (u.includes('github.com')) return 'View on GitHub';
-    return 'Learn more';
-  }
-
-  function card(p){
-    const li = document.createElement('article');
-    li.className = 'card'; li.setAttribute('role','listitem');
-    li.innerHTML = `
-      <h3>${p.name}</h3>
-      ${p.description ? `<p>${p.description}</p>` : ''}
-      ${p.image ? `<img alt="" src="${p.image}" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);margin-top:6px">` : ''}
-      <div class="links" style="margin-top:12px">
-        ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
-      </div>
-    `;
-    return li;
-  }
-
-  // Renderers
-  let sections = [];      // [{ name, key, items:[...] }]
-  let active = 'All';     // 'All' or section key
+  // State
+  let sections = []; // [{ name, key, items: [...] }]
+  let active   = 'All';
 
   function renderFilterChips(){
     elFilters.innerHTML = '';
@@ -340,27 +273,32 @@
   }
 
   function render(){
-    // pressed state
-    [...elFilters.children].forEach(ch => ch.setAttribute('aria-pressed', ch.textContent === (active==='All' ? 'All' : sections.find(s => s.key===active)?.name)));
+    // update chip pressed state
+    [...elFilters.children].forEach(ch => ch.setAttribute(
+      'aria-pressed',
+      (active==='All' && ch.textContent==='All') || ch.textContent === (sections.find(s => s.key===active)?.name || '')
+    ));
 
     elGrid.innerHTML = '';
 
     if (active === 'All'){
-      // Grouped view: show each section with a small heading
+      // Grouped view
       sections.forEach(s=>{
         if (!s.items.length) return;
         const h = document.createElement('h3');
         h.className = 'muted';
+        h.id = s.key; // anchor target
         h.style.margin = '10px 0 8px';
         h.textContent = s.name;
         elGrid.appendChild(h);
+
         const group = document.createElement('div');
         group.className = 'grid';
         s.items.forEach(p => group.appendChild(card(p)));
         elGrid.appendChild(group);
       });
     } else {
-      // Single-section view
+      // Single section
       const s = sections.find(x => x.key === active);
       const group = document.createElement('div');
       group.className = 'grid';
@@ -369,27 +307,29 @@
     }
   }
 
-  // Fetch + parse your schema
+  // Fetch + parse your schema once
   fetch('projects.json', {cache:'no-store'})
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(data => {
-      // data is an object with keys = section names, values = arrays
       const dedupe = new Set();
       sections = Object.entries(data).map(([name, arr])=>{
-        const items = (Array.isArray(arr) ? arr : []).map(normalize).filter(p=>{
-          const id = `${p.name}|${p.url}`;
-          if (dedupe.has(id)) return false;
-          dedupe.add(id); return true;
-        });
+        const items = (Array.isArray(arr) ? arr : [])
+          .map(i => normalize(i, name))
+          .filter(p => {
+            const id = `${p.name}|${p.url}`;
+            if (dedupe.has(id)) return false;
+            dedupe.add(id); return true;
+          });
         return { name, key: slug(name), items };
       });
       renderFilterChips();
       render();
     })
     .catch(()=>{
-      elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>. Make sure it’s in the repo root.</div>';
+      elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>.</div>';
     });
 </script>
+
 
 
 </body>
