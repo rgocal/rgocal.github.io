@@ -111,6 +111,16 @@
       margin-top:6px;
     }
 
+    /* Blog cards */
+#blog .card img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.08);
+}
+#blog .meta{ color:var(--muted); font-size:12px; margin-top:4px; }
+
     /* Section headers inside the projects area */
     #projects h3.muted{ margin:16px 0 10px; }
 
@@ -139,6 +149,7 @@
       <a class="brand" href="#top">GocalSD</a>
       <nav class="actions">
         <a class="btn" href="#projects">Projects</a>
+        <a class="btn" href="#blog">Blog</a>
         <button class="btn toggle" id="themeBtn" aria-label="Toggle dark mode">Dark/Light</button>
         <a class="btn" href="https://github.com/rgocal" target="_blank" rel="noopener">GitHub</a>
         <a class="btn" href="https://profile.indeed.com/p/ryang-4xq7eij" target="_blank" rel="noopener">Resume</a>
@@ -177,6 +188,13 @@
       <div class="filters" id="filters"></div>
       <div id="grid" role="list"></div>
     </section>
+
+  <section id="blog" aria-label="Blog">
+    <h2 class="section-title">Blog</h2>
+    <p class="muted">Latest posts from my WordPress.</p>
+    <div id="blog-posts" class="grid" role="list"></div>
+  </section>
+    
   </main>
 
   <footer class="container">
@@ -329,6 +347,66 @@
       .catch(()=>{
         elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>.</div>';
       });
+
+// --- WORDPRESS BLOG INTEGRATION ---
+const WP_SITE = 'gocalsdb.wordpress.com';
+const blogEl  = document.getElementById('blog-posts');
+
+function strip(html){
+  const tmp = document.createElement('div'); tmp.innerHTML = html || '';
+  // remove scripts/styles for safety
+  [...tmp.querySelectorAll('script,style')].forEach(n=>n.remove());
+  return (tmp.textContent || tmp.innerText || '').trim();
+}
+function fmtDate(iso){
+  try {
+    const d = new Date(iso);
+    return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
+  } catch { return ''; }
+}
+function postCard(p){
+  const li = document.createElement('article');
+  li.className = 'card'; li.setAttribute('role','listitem');
+  const media = p._embedded?.['wp:featuredmedia']?.[0]?.source_url
+             || p.jetpack_featured_media_url || '';
+  const excerpt = strip(p.excerpt?.rendered || p.content?.rendered || '').slice(0, 220);
+  li.innerHTML = `
+    ${media ? `<img loading="lazy" alt="" src="${media}">` : ''}
+    <h3>${strip(p.title?.rendered)}</h3>
+    <div class="meta">${fmtDate(p.date)}${p.categories?.length ? ' • ' : ''}</div>
+    ${excerpt ? `<p>${excerpt}…</p>` : ''}
+    <div class="links"><a class="btn" href="${p.link}" target="_blank" rel="noopener">Read post</a></div>
+  `;
+  return li;
+}
+
+// Try standard WP REST first; fallback to WordPress.com REST if needed
+async function loadBlog(){
+  if (!blogEl) return;
+  blogEl.innerHTML = '<div class="muted">Loading posts…</div>';
+  const std = `${WP_SITE.replace(/\/$/,'')}/wp-json/wp/v2/posts?_embed&per_page=6`;
+  const wpcom = `https://public-api.wordpress.com/wp/v2/sites/${encodeURIComponent(WP_SITE.replace(/^https?:\/\//,''))}/posts?_embed&per_page=6`;
+
+  async function fetchJSON(url){
+    const r = await fetch(url, { cache:'no-store' });
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
+  }
+
+  try {
+    let posts;
+    try { posts = await fetchJSON(std); }
+    catch { posts = await fetchJSON(wpcom); }
+    blogEl.innerHTML = '';
+    (posts || []).forEach(p => blogEl.appendChild(postCard(p)));
+    if (!posts?.length) blogEl.innerHTML = '<div class="muted">No posts found.</div>';
+  } catch (e){
+    blogEl.innerHTML = '<div class="muted">Couldn’t load blog posts.</div>';
+  }
+}
+loadBlog();
+
+    
   </script>
 </body>
 </html>
