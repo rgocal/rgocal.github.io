@@ -34,8 +34,8 @@
   ],
   "Libraries": [
     {
-      "label": "Unnoficial Google Play API for Android",
-      "description": "Java library for android that builds of a rest api by Rajkumar. Pulls publisher info for a selected app off of Google Play.",
+      "label": "Google Play Publisher API",
+      "description": "Java library for android that builds off of a rest api by Rajkumar. Pulls publisher info for a selected app off of Google Play.",
       "screenshot": "https://play-lh.googleusercontent.com/vXq11dYVQhYu1bu_HGW2VI-7WKIv0aI2A6aHCUOzA6VMkVihOm7J0AThcbCTH127TjKf=w2560-h1440-rw",
       "url": "https://github.com/rgocal/Unofficial-Android-Playstore-API"
     },
