@@ -95,6 +95,24 @@
     .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:#0c1933;color:#cfe0ff}
     .card .links{margin-top:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
+    /* Clamp long descriptions so cards are even height-ish */
+.card p{
+  display:-webkit-box;
+  -webkit-line-clamp:6;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* Tame screenshots: 16:9, cropped nicely */
+.card img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.08);
+  margin-top:6px;
+}
+
     /* Footer */
     footer{margin:60px 0 20px;color:var(--muted);text-align:center}
   </style>
