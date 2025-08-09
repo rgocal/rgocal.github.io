@@ -44,6 +44,20 @@
 
     /* Hero */
     .hero{
+
+      <picture>
+  <!-- WebP for browsers that support it -->
+  <source srcset="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/portfolio_header_optimized.webp" type="image/webp">
+  
+  <!-- PNG fallback -->
+  <img 
+    src="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/portfolio_header.png" 
+    alt="Portrait of Ryan Gocal" 
+    loading="lazy">
+</picture>
+
+
+      
       display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin-top:36px;margin-bottom:28px;
       border-radius:calc(var(--radius) + 8px);
       padding:32px; background:linear-gradient(145deg,#0b1428 0%, #0c1730 50%, #0d1a38 100%);
