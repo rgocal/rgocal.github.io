@@ -22,7 +22,8 @@
       "label": "Truesight (Preview)",
       "description": "My attempt at building a mobile version of steam charts. This app pulls data from steams public apis to allow users to chart their own matrix of game populations. I've also added in a few things of my own that gamers will appreciate.",
       "screenshot": " ",
-      "url": "https://play.google.com/apps/testing/com.gocalsd.truesight"
+      "url": "https://play.google.com/apps/testing/com.gocalsd.truesight",
+      "badges": ["Preview", "Steam Community API", "Steam", "Database", "Monet"]
     }, 
      {
       "label": "Carpentar",
