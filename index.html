@@ -118,6 +118,21 @@
   margin:16px 0 10px;
 }
 
+    /* Badge chips on cards */
+.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+.badge{
+  font-size:12px; padding:4px 8px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.10); background:#0c1933; color:#cfe0ff;
+  letter-spacing:.2px; white-space:nowrap
+}
+
+/* Quick color accents by badge text */
+.badge[data-k=preview]{background:#1f1335;border-color:#a884ff;color:#e0d4ff}
+.badge[data-k=one-ui]{background:#0d1f2e;border-color:#4fb1ff;color:#cfeaff}
+.badge[data-k=android-13+]{background:#112b1e;border-color:#40d19a;color:#c9ffe9}
+.badge[data-k=deprecated],
+.badge[data-k=experimental]{background:#2a1717;border-color:#ff6b6b;color:#ffdede}
+
     /* Footer */
     footer{margin:60px 0 20px;color:var(--muted);text-align:center}
   </style>
@@ -183,6 +198,89 @@
   setTheme(prefersLight.matches);
   themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
 
+ const badgeMap = {
+    "Launcher Ops":            ["ONE UI"],
+    "Carpentar":               ["ONE UI"],
+    "Launchers Quick Tile 2":  ["Android 13+"],
+    "Truesight (Preview)":     ["Preview"],
+    "SwitchBar":               ["Library"]
+  };
+
+    // Normalizer + badges support (+ future-proof if you add "badges" in JSON)
+  const truthy = v => v && v !== 'null' && String(v).trim() !== '';
+  function normalize(item, sectionName){
+    const name = item.label || 'Untitled';
+    const description = item.description || '';
+    const image = truthy(item.screenshot) ? item.screenshot : '';
+    const url = truthy(item.url) ? item.url : '';
+    // Start with explicit badges if you ever add them to JSON
+    let badges = Array.isArray(item.badges) ? item.badges.slice(0) : [];
+    // Merge in map-based badges
+    if (badgeMap[name]) badges = [...new Set([...badges, ...badgeMap[name]])];
+    // Section-driven badges
+    if (/Experimental|Deprecated/i.test(sectionName)) badges = [...new Set([...badges, "Deprecated"])];
+    return { name, description, image, url, badges };
+  }
+
+  // Render badge chips
+  function badgeRow(badges){
+    if (!badges || !badges.length) return '';
+    const key = (t)=> t.toLowerCase().replace(/\+/g,'plus').replace(/[^a-z0-9]+/g,'-');
+    return `<div class="badges">${badges.map(b=>`<span class="badge" data-k="${key(b)}">${b}</span>`).join('')}</div>`;
+  }
+
+  function ctaLabel(u){
+    if (!u) return '';
+    if (u.includes('play.google.com')) return 'View on Google Play';
+    if (u.includes('github.com')) return 'View on GitHub';
+    return 'Learn more';
+  }
+
+  function card(p){
+    const li = document.createElement('article');
+    li.className = 'card'; li.setAttribute('role','listitem');
+    li.innerHTML = `
+      <h3>${p.name}</h3>
+      ${badgeRow(p.badges)}
+      ${p.description ? `<p>${p.description}</p>` : ''}
+      ${p.image ? `<img loading="lazy" alt="" src="${p.image}" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);margin-top:6px">` : ''}
+      <div class="links" style="margin-top:12px">
+        ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
+      </div>
+    `;
+    return li;
+  }
+
+  // ---- Fetch + parse (unchanged except passing section name into normalize) ----
+  const elGrid = document.getElementById('grid');
+  elGrid.classList.remove('grid');
+
+  const elFilters = document.getElementById('filters');
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  let sections = [], active = 'All';
+
+  function renderFilterChips(){ /* unchanged from previous version */ }
+
+  function render(){ /* unchanged from previous version */ }
+
+  fetch('projects.json', {cache:'no-store'})
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      const dedupe = new Set();
+      sections = Object.entries(data).map(([name, arr])=>{
+        const items = (Array.isArray(arr) ? arr : []).map(i=>normalize(i, name)).filter(p=>{
+          const id = `${p.name}|${p.url}`;
+          if (dedupe.has(id)) return false; dedupe.add(id); return true;
+        });
+        return { name, key: slug(name), items };
+      });
+      renderFilterChips(); render();
+    })
+    .catch(()=>{
+      elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>.</div>';
+    });
+
+   
   // Elements
   const elGrid = document.getElementById('grid');
   elGrid.classList.remove('grid'); // ensure the wrapper isn’t a grid
