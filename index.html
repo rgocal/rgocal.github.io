@@ -145,6 +145,7 @@
   </footer>
 
  <script>
+  // Year + theme toggle (unchanged)
   const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
   const themeBtn = document.getElementById('themeBtn');
   const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
@@ -159,35 +160,28 @@
   setTheme(prefersLight.matches);
   themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
 
+  // Elements
   const elGrid = document.getElementById('grid');
   const elFilters = document.getElementById('filters');
-  let projects = [], active = 'All';
 
-  // Map various possible key names to a normalized model
-  function normalize(p){
-    const name = p.name ?? p.title ?? p.project ?? 'Untitled Project';
-    const description = p.description ?? p.desc ?? p.summary ?? '';
-    const url = p.url ?? p.link ?? p.demo ?? p.live ?? '';
-    const repo = p.repo ?? p.repository ?? p.github ?? '';
-    const tags = Array.isArray(p.tags) ? p.tags
-               : (typeof p.tags === 'string' ? p.tags.split(',').map(t=>t.trim()).filter(Boolean) : []);
-    const featured = p.featured ?? p.isFeatured ?? false;
-    const image = p.image ?? p.cover ?? p.thumbnail ?? '';
-    return { name, description, url, repo, tags, featured, image };
+  // Utilities
+  const truthy = v => v && v !== 'null' && String(v).trim() !== '';
+  const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+
+  function normalize(item){
+    return {
+      name: item.label || 'Untitled',
+      description: item.description || '',
+      image: truthy(item.screenshot) ? item.screenshot : '',
+      url: truthy(item.url) ? item.url : ''
+    };
   }
 
-  function renderFilters(tags){
-    elFilters.innerHTML = '';
-    const make = (label) => {
-      const b = document.createElement('button');
-      b.className = 'chip';
-      b.textContent = label;
-      b.setAttribute('aria-pressed', active===label);
-      b.onclick = ()=> { active = (active===label ? 'All' : label); render(); };
-      return b;
-    };
-    elFilters.appendChild(make('All'));
-    [...tags].sort().forEach(t => elFilters.appendChild(make(t)));
+  function ctaLabel(u){
+    if (!u) return '';
+    if (u.includes('play.google.com')) return 'View on Google Play';
+    if (u.includes('github.com')) return 'View on GitHub';
+    return 'Learn more';
   }
 
   function card(p){
@@ -196,37 +190,84 @@
     li.innerHTML = `
       <h3>${p.name}</h3>
       ${p.description ? `<p>${p.description}</p>` : ''}
-      ${p.image ? `<img alt="" src="${p.image}" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08)">` : ''}
-      ${p.tags.length ? `<div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`:''}
-      <div class="links">
-        ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">Live</a>`:''}
-        ${p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Code</a>`:''}
+      ${p.image ? `<img alt="" src="${p.image}" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);margin-top:6px">` : ''}
+      <div class="links" style="margin-top:12px">
+        ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
       </div>
     `;
     return li;
   }
 
-  function render(){
-    // update filter pressed state
-    [...elFilters.children].forEach(ch=> ch.setAttribute('aria-pressed', ch.textContent === active));
-    elGrid.innerHTML = '';
-    const list = projects.filter(p => active==='All' || p.tags.includes(active));
-    // optional: show featured first
-    list.sort((a,b)=> (b.featured?1:0) - (a.featured?1:0));
-    list.forEach(p => elGrid.appendChild(card(p)));
+  // Renderers
+  let sections = [];      // [{ name, key, items:[...] }]
+  let active = 'All';     // 'All' or section key
+
+  function renderFilterChips(){
+    elFilters.innerHTML = '';
+    const make = (label, key) => {
+      const b = document.createElement('button');
+      b.className = 'chip';
+      b.textContent = label;
+      b.setAttribute('aria-pressed', active===key);
+      b.onclick = () => { active = (active===key ? 'All' : key); render(); };
+      return b;
+    };
+    elFilters.appendChild(make('All','All'));
+    sections.forEach(s => elFilters.appendChild(make(s.name, s.key)));
   }
 
+  function render(){
+    // pressed state
+    [...elFilters.children].forEach(ch => ch.setAttribute('aria-pressed', ch.textContent === (active==='All' ? 'All' : sections.find(s => s.key===active)?.name)));
+
+    elGrid.innerHTML = '';
+
+    if (active === 'All'){
+      // Grouped view: show each section with a small heading
+      sections.forEach(s=>{
+        if (!s.items.length) return;
+        const h = document.createElement('h3');
+        h.className = 'muted';
+        h.style.margin = '10px 0 8px';
+        h.textContent = s.name;
+        elGrid.appendChild(h);
+        const group = document.createElement('div');
+        group.className = 'grid';
+        s.items.forEach(p => group.appendChild(card(p)));
+        elGrid.appendChild(group);
+      });
+    } else {
+      // Single-section view
+      const s = sections.find(x => x.key === active);
+      const group = document.createElement('div');
+      group.className = 'grid';
+      (s?.items || []).forEach(p => group.appendChild(card(p)));
+      elGrid.appendChild(group);
+    }
+  }
+
+  // Fetch + parse your schema
   fetch('projects.json', {cache:'no-store'})
-    .then(r=>r.ok ? r.json() : [])
-    .then(data=>{
-      const arr = Array.isArray(data) ? data : (Array.isArray(data.projects) ? data.projects : []);
-      projects = arr.map(normalize);
-      const tagSet = new Set();
-      projects.forEach(p => p.tags.forEach(t => tagSet.add(t)));
-      renderFilters(tagSet); render();
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      // data is an object with keys = section names, values = arrays
+      const dedupe = new Set();
+      sections = Object.entries(data).map(([name, arr])=>{
+        const items = (Array.isArray(arr) ? arr : []).map(normalize).filter(p=>{
+          const id = `${p.name}|${p.url}`;
+          if (dedupe.has(id)) return false;
+          dedupe.add(id); return true;
+        });
+        return { name, key: slug(name), items };
+      });
+      renderFilterChips();
+      render();
     })
-    .catch(()=> { elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>. Make sure it’s in the repo root.</div>'; });
+    .catch(()=>{
+      elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>. Make sure it’s in the repo root.</div>';
+    });
 </script>
+
 
 </body>
 </html>
