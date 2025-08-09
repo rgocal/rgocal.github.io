@@ -136,7 +136,7 @@
       <p class="muted">A selection of things I’ve shipped and tinkered with.</p>
 
       <div class="filters" id="filters"></div>
-      <div class="grid" id="grid" role="list"></div>
+      <div id="grid" role="list"></div>
     </section>
   </main>
 
@@ -162,6 +162,8 @@
 
   // Elements
   const elGrid = document.getElementById('grid');
+  elGrid.classList.remove('grid'); // ensure the wrapper isn’t a grid
+   
   const elFilters = document.getElementById('filters');
 
   // Utilities
