@@ -144,73 +144,89 @@
     <div>© <span id="year"></span> Ryan Gocal. Built with vanilla HTML/CSS/JS on GitHub Pages.</div>
   </footer>
 
-  <script>
-    // Sticky: year + theme toggle
-    const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
-    const themeBtn = document.getElementById('themeBtn');
-    const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
-    const setTheme = (light) => {
-      document.documentElement.style.setProperty('--bg', light ? '#f6f8ff' : '#0b1220');
-      document.documentElement.style.setProperty('--bg-soft', light ? '#fff' : '#0f1a30');
-      document.documentElement.style.setProperty('--text', light ? '#0b1120' : '#ecf2ff');
-      document.documentElement.style.setProperty('--muted', light ? '#4c556a' : '#a7b3cc');
-      document.documentElement.style.setProperty('--card', light ? '#ffffff' : '#101a2e');
-      document.documentElement.style.setProperty('--chip', light ? '#eef2ff' : '#17233d');
+ <script>
+  const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
+  const themeBtn = document.getElementById('themeBtn');
+  const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+  const setTheme = (light) => {
+    document.documentElement.style.setProperty('--bg', light ? '#f6f8ff' : '#0b1220');
+    document.documentElement.style.setProperty('--bg-soft', light ? '#fff' : '#0f1a30');
+    document.documentElement.style.setProperty('--text', light ? '#0b1120' : '#ecf2ff');
+    document.documentElement.style.setProperty('--muted', light ? '#4c556a' : '#a7b3cc');
+    document.documentElement.style.setProperty('--card', light ? '#ffffff' : '#101a2e');
+    document.documentElement.style.setProperty('--chip', light ? '#eef2ff' : '#17233d');
+  };
+  setTheme(prefersLight.matches);
+  themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
+
+  const elGrid = document.getElementById('grid');
+  const elFilters = document.getElementById('filters');
+  let projects = [], active = 'All';
+
+  // Map various possible key names to a normalized model
+  function normalize(p){
+    const name = p.name ?? p.title ?? p.project ?? 'Untitled Project';
+    const description = p.description ?? p.desc ?? p.summary ?? '';
+    const url = p.url ?? p.link ?? p.demo ?? p.live ?? '';
+    const repo = p.repo ?? p.repository ?? p.github ?? '';
+    const tags = Array.isArray(p.tags) ? p.tags
+               : (typeof p.tags === 'string' ? p.tags.split(',').map(t=>t.trim()).filter(Boolean) : []);
+    const featured = p.featured ?? p.isFeatured ?? false;
+    const image = p.image ?? p.cover ?? p.thumbnail ?? '';
+    return { name, description, url, repo, tags, featured, image };
+  }
+
+  function renderFilters(tags){
+    elFilters.innerHTML = '';
+    const make = (label) => {
+      const b = document.createElement('button');
+      b.className = 'chip';
+      b.textContent = label;
+      b.setAttribute('aria-pressed', active===label);
+      b.onclick = ()=> { active = (active===label ? 'All' : label); render(); };
+      return b;
     };
-    setTheme(prefersLight.matches);
-    themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
+    elFilters.appendChild(make('All'));
+    [...tags].sort().forEach(t => elFilters.appendChild(make(t)));
+  }
 
-    // Projects loader (defensive against missing fields)
-    const elGrid = document.getElementById('grid');
-    const elFilters = document.getElementById('filters');
-    let projects = [], active = 'All';
+  function card(p){
+    const li = document.createElement('article');
+    li.className = 'card'; li.setAttribute('role','listitem');
+    li.innerHTML = `
+      <h3>${p.name}</h3>
+      ${p.description ? `<p>${p.description}</p>` : ''}
+      ${p.image ? `<img alt="" src="${p.image}" style="width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08)">` : ''}
+      ${p.tags.length ? `<div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`:''}
+      <div class="links">
+        ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">Live</a>`:''}
+        ${p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Code</a>`:''}
+      </div>
+    `;
+    return li;
+  }
 
-    function renderFilters(tags){
-      elFilters.innerHTML = '';
-      const all = document.createElement('button');
-      all.className = 'chip'; all.textContent = 'All'; all.setAttribute('aria-pressed', active==='All');
-      all.onclick = ()=>{ active='All'; render(); };
-      elFilters.appendChild(all);
-      [...tags].sort().forEach(tag=>{
-        const b = document.createElement('button');
-        b.className='chip'; b.textContent=tag; b.setAttribute('aria-pressed', active===tag);
-        b.onclick=()=>{ active = (active===tag)?'All':tag; render(); };
-        elFilters.appendChild(b);
-      });
-    }
+  function render(){
+    // update filter pressed state
+    [...elFilters.children].forEach(ch=> ch.setAttribute('aria-pressed', ch.textContent === active));
+    elGrid.innerHTML = '';
+    const list = projects.filter(p => active==='All' || p.tags.includes(active));
+    // optional: show featured first
+    list.sort((a,b)=> (b.featured?1:0) - (a.featured?1:0));
+    list.forEach(p => elGrid.appendChild(card(p)));
+  }
 
-    function card(p){
-      const li = document.createElement('article');
-      li.className = 'card'; li.setAttribute('role','listitem');
-      li.innerHTML = `
-        <h3>${p.name ?? 'Untitled Project'}</h3>
-        ${p.description ? `<p>${p.description}</p>` : ''}
-        ${Array.isArray(p.tags) && p.tags.length ? `<div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`:''}
-        <div class="links">
-          ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">Live</a>`:''}
-          ${p.repo ? `<a class="btn" href="${p.repo}" target="_blank" rel="noopener">Code</a>`:''}
-        </div>
-      `;
-      return li;
-    }
+  fetch('projects.json', {cache:'no-store'})
+    .then(r=>r.ok ? r.json() : [])
+    .then(data=>{
+      const arr = Array.isArray(data) ? data : (Array.isArray(data.projects) ? data.projects : []);
+      projects = arr.map(normalize);
+      const tagSet = new Set();
+      projects.forEach(p => p.tags.forEach(t => tagSet.add(t)));
+      renderFilters(tagSet); render();
+    })
+    .catch(()=> { elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>. Make sure it’s in the repo root.</div>'; });
+</script>
 
-    function render(){
-      // update filter pressed state
-      [...elFilters.children].forEach(ch=> ch.setAttribute('aria-pressed', ch.textContent === active));
-      elGrid.innerHTML = '';
-      const list = projects.filter(p => active==='All' || (p.tags||[]).includes(active));
-      list.forEach(p => elGrid.appendChild(card(p)));
-    }
-
-    fetch('projects.json', {cache:'no-store'})
-      .then(r=>r.ok ? r.json() : [])
-      .then(data=>{
-        projects = Array.isArray(data) ? data : (data.projects || []);
-        const tagSet = new Set();
-        projects.forEach(p => (p.tags||[]).forEach(t => tagSet.add(t)));
-        renderFilters(tagSet); render();
-      })
-      .catch(()=> { elGrid.innerHTML = '<div class="muted">Add a <code>projects.json</code> to populate this section.</div>'; });
-  </script>
 </body>
 </html>
