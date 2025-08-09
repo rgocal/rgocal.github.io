@@ -9,7 +9,7 @@
   <meta property="og:title" content="Ryan Gocal — GocalSD" />
   <meta property="og:description" content="Android developer — GocalSD. Projects, experiments, and code." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="portfolio_header.png" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/portfolio_header_optimized.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <style>
     :root{
@@ -44,20 +44,6 @@
 
     /* Hero */
     .hero{
-
-      <picture>
-  <!-- WebP for browsers that support it -->
-  <source srcset="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/portfolio_header_optimized.webp" type="image/webp">
-  
-  <!-- PNG fallback -->
-  <img 
-    src="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/portfolio_header.png" 
-    alt="Portrait of Ryan Gocal" 
-    loading="lazy">
-</picture>
-
-
-      
       display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin-top:36px;margin-bottom:28px;
       border-radius:calc(var(--radius) + 8px);
       padding:32px; background:linear-gradient(145deg,#0b1428 0%, #0c1730 50%, #0d1a38 100%);
@@ -75,9 +61,7 @@
       width:100%;height:100%;object-fit:cover;border-radius:18px;display:block;
       border:1px solid rgba(255,255,255,.1); transform:translateZ(0);
     }
-    /* animated accent ring */
-    .ring{
-      position:absolute;inset:-14px; border-radius:28px; pointer-events:none;
+    .ring{ position:absolute; inset:-14px; border-radius:28px; pointer-events:none;
       background: conic-gradient(from 0deg, transparent 0 75%, rgba(47,122,247,.35));
       filter:blur(18px); opacity:.55; animation:spin 10s linear infinite
     }
@@ -110,42 +94,39 @@
     .card .links{margin-top:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
     /* Clamp long descriptions so cards are even height-ish */
-.card p{
-  display:-webkit-box;
-  -webkit-line-clamp:6;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
+    .card p{
+      display:-webkit-box;
+      -webkit-line-clamp:6;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
 
-/* Tame screenshots: 16:9, cropped nicely */
-.card img{
-  width:100%;
-  aspect-ratio:16/9;
-  object-fit:cover;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.08);
-  margin-top:6px;
-}
+    /* Tame screenshots: 16:9, cropped nicely */
+    .card img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      margin-top:6px;
+    }
 
     /* Section headers inside the projects area */
-#projects h3.muted{
-  margin:16px 0 10px;
-}
+    #projects h3.muted{ margin:16px 0 10px; }
 
     /* Badge chips on cards */
-.badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
-.badge{
-  font-size:12px; padding:4px 8px; border-radius:999px;
-  border:1px solid rgba(255,255,255,.10); background:#0c1933; color:#cfe0ff;
-  letter-spacing:.2px; white-space:nowrap
-}
-
-/* Quick color accents by badge text */
-.badge[data-k=preview]{background:#1f1335;border-color:#a884ff;color:#e0d4ff}
-.badge[data-k=one-ui]{background:#0d1f2e;border-color:#4fb1ff;color:#cfeaff}
-.badge[data-k=android-13+]{background:#112b1e;border-color:#40d19a;color:#c9ffe9}
-.badge[data-k=deprecated],
-.badge[data-k=experimental]{background:#2a1717;border-color:#ff6b6b;color:#ffdede}
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+    .badge{
+      font-size:12px; padding:4px 8px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10); background:#0c1933; color:#cfe0ff;
+      letter-spacing:.2px; white-space:nowrap
+    }
+    /* Quick color accents by badge text */
+    .badge[data-k=preview]{background:#1f1335;border-color:#a884ff;color:#e0d4ff}
+    .badge[data-k=one-ui]{background:#0d1f2e;border-color:#4fb1ff;color:#cfeaff}
+    .badge[data-k=android-13+]{background:#112b1e;border-color:#40d19a;color:#c9ffe9}
+    .badge[data-k=deprecated],
+    .badge[data-k=experimental]{background:#2a1717;border-color:#ff6b6b;color:#ffdede}
 
     /* Footer */
     footer{margin:60px 0 20px;color:var(--muted);text-align:center}
@@ -177,8 +158,10 @@
       </div>
       <div class="hero-media" aria-hidden="true">
         <div class="ring"></div>
-        <!-- Use your existing profile.jpg; padding so it won’t feel cropped -->
-        <img src="portfolio_header.png" alt="Portrait of Ryan Gocal">
+        <picture>
+          <source srcset="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/portfolio_header_optimized.webp" type="image/webp">
+          <img src="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/portfolio_header_optimized.png" alt="Portrait of Ryan Gocal" loading="lazy" width="1200" height="1200">
+        </picture>
       </div>
     </section>
 
@@ -196,155 +179,152 @@
     <div>© <span id="year"></span> Ryan Gocal. Built with vanilla HTML/CSS/JS on GitHub Pages.</div>
   </footer>
 
-<script>
-  // Year + theme toggle
-  const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
-  const themeBtn = document.getElementById('themeBtn');
-  const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
-  const setTheme = (light) => {
-    document.documentElement.style.setProperty('--bg', light ? '#f6f8ff' : '#0b1220');
-    document.documentElement.style.setProperty('--bg-soft', light ? '#fff' : '#0f1a30');
-    document.documentElement.style.setProperty('--text', light ? '#0b1120' : '#ecf2ff');
-    document.documentElement.style.setProperty('--muted', light ? '#4c556a' : '#a7b3cc');
-    document.documentElement.style.setProperty('--card', light ? '#ffffff' : '#101a2e');
-    document.documentElement.style.setProperty('--chip', light ? '#eef2ff' : '#17233d');
-  };
-  setTheme(prefersLight.matches);
-  themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
-
-  // Elements
-  const elGrid   = document.getElementById('grid');   elGrid.classList.remove('grid'); // ensure wrapper isn't a grid
-  const elFilters= document.getElementById('filters');
-
-  // Utils
-  const truthy = v => v && v !== 'null' && String(v).trim() !== '';
-  const slug   = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-
-  // Badges to apply by label (you can move these into JSON later)
-  const badgeMap = {
-    "Launcher Ops":            ["ONE UI"],
-    "Carpentar":               ["ONE UI"],
-    "Launchers Quick Tile 2":  ["Android 13+"],
-    "Truesight (Preview)":     ["Preview"],
-    "SwitchBar":               ["Library"]
-  };
-
-  function normalize(item, sectionName){
-    const name = item.label || 'Untitled';
-    const description = item.description || '';
-    const image = truthy(item.screenshot) ? item.screenshot : '';
-    const url   = truthy(item.url) ? item.url : '';
-    let badges  = Array.isArray(item.badges) ? item.badges.slice(0) : [];
-    if (badgeMap[name]) badges = [...new Set([...badges, ...badgeMap[name]])];
-    if (/Experimental|Deprecated/i.test(sectionName)) badges = [...new Set([...badges, "Deprecated"])];
-    return { name, description, image, url, badges };
-  }
-
-  function badgeRow(badges){
-    if (!badges || !badges.length) return '';
-    const key = (t)=> t.toLowerCase().replace(/\+/g,'plus').replace(/[^a-z0-9]+/g,'-');
-    return `<div class="badges">${badges.map(b=>`<span class="badge" data-k="${key(b)}">${b}</span>`).join('')}</div>`;
-  }
-
-  function ctaLabel(u){
-    if (!u) return '';
-    if (u.includes('play.google.com')) return 'View on Google Play';
-    if (u.includes('github.com'))      return 'View on GitHub';
-    return 'Learn more';
-  }
-
-  function card(p){
-    const li = document.createElement('article');
-    li.className = 'card'; li.setAttribute('role','listitem');
-    li.innerHTML = `
-      <h3>${p.name}</h3>
-      ${badgeRow(p.badges)}
-      ${p.description ? `<p>${p.description}</p>` : ''}
-      ${p.image ? `<img loading="lazy" alt="" src="${p.image}">` : ''}
-      <div class="links" style="margin-top:12px">
-        ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
-      </div>
-    `;
-    return li;
-  }
-
-  // State
-  let sections = []; // [{ name, key, items: [...] }]
-  let active   = 'All';
-
-  function renderFilterChips(){
-    elFilters.innerHTML = '';
-    const make = (label, key) => {
-      const b = document.createElement('button');
-      b.className = 'chip';
-      b.textContent = label;
-      b.setAttribute('aria-pressed', active===key);
-      b.onclick = () => { active = (active===key ? 'All' : key); render(); };
-      return b;
+  <script>
+    // Year + theme toggle
+    const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
+    const themeBtn = document.getElementById('themeBtn');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
+    const setTheme = (light) => {
+      document.documentElement.style.setProperty('--bg', light ? '#f6f8ff' : '#0b1220');
+      document.documentElement.style.setProperty('--bg-soft', light ? '#fff' : '#0f1a30');
+      document.documentElement.style.setProperty('--text', light ? '#0b1120' : '#ecf2ff');
+      document.documentElement.style.setProperty('--muted', light ? '#4c556a' : '#a7b3cc');
+      document.documentElement.style.setProperty('--card', light ? '#ffffff' : '#101a2e');
+      document.documentElement.style.setProperty('--chip', light ? '#eef2ff' : '#17233d');
     };
-    elFilters.appendChild(make('All','All'));
-    sections.forEach(s => elFilters.appendChild(make(s.name, s.key)));
-  }
+    setTheme(prefersLight.matches);
+    themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
 
-  function render(){
-    // update chip pressed state
-    [...elFilters.children].forEach(ch => ch.setAttribute(
-      'aria-pressed',
-      (active==='All' && ch.textContent==='All') || ch.textContent === (sections.find(s => s.key===active)?.name || '')
-    ));
+    // Elements
+    const elGrid   = document.getElementById('grid');   elGrid.classList.remove('grid'); // ensure wrapper isn't a grid
+    const elFilters= document.getElementById('filters');
 
-    elGrid.innerHTML = '';
+    // Utils
+    const truthy = v => v && v !== 'null' && String(v).trim() !== '';
+    const slug   = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
-    if (active === 'All'){
-      // Grouped view
-      sections.forEach(s=>{
-        if (!s.items.length) return;
-        const h = document.createElement('h3');
-        h.className = 'muted';
-        h.id = s.key; // anchor target
-        h.style.margin = '10px 0 8px';
-        h.textContent = s.name;
-        elGrid.appendChild(h);
+    // Badges to apply by label (you can move these into JSON later)
+    const badgeMap = {
+      "Launcher Ops":            ["ONE UI"],
+      "Carpentar":               ["ONE UI"],
+      "Launchers Quick Tile 2":  ["Android 13+"],
+      "Truesight (Preview)":     ["Preview"],
+      "SwitchBar":               ["Library"]
+    };
 
+    function normalize(item, sectionName){
+      const name = item.label || 'Untitled';
+      const description = item.description || '';
+      const image = truthy(item.screenshot) ? item.screenshot : '';
+      const url   = truthy(item.url) ? item.url : '';
+      let badges  = Array.isArray(item.badges) ? item.badges.slice(0) : [];
+      if (badgeMap[name]) badges = [...new Set([...badges, ...badgeMap[name]])];
+      if (/Experimental|Deprecated/i.test(sectionName)) badges = [...new Set([...badges, "Deprecated"])];
+      return { name, description, image, url, badges };
+    }
+
+    function badgeRow(badges){
+      if (!badges || !badges.length) return '';
+      const key = (t)=> t.toLowerCase().replace(/\+/g,'plus').replace(/[^a-z0-9]+/g,'-');
+      return `<div class="badges">${badges.map(b=>`<span class="badge" data-k="${key(b)}">${b}</span>`).join('')}</div>`;
+    }
+
+    function ctaLabel(u){
+      if (!u) return '';
+      if (u.includes('play.google.com')) return 'View on Google Play';
+      if (u.includes('github.com'))      return 'View on GitHub';
+      return 'Learn more';
+    }
+
+    function card(p){
+      const li = document.createElement('article');
+      li.className = 'card'; li.setAttribute('role','listitem');
+      li.innerHTML = `
+        <h3>${p.name}</h3>
+        ${badgeRow(p.badges)}
+        ${p.description ? `<p>${p.description}</p>` : ''}
+        ${p.image ? `<img loading="lazy" alt="" src="${p.image}">` : ''}
+        <div class="links" style="margin-top:12px">
+          ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
+        </div>
+      `;
+      return li;
+    }
+
+    // State
+    let sections = []; // [{ name, key, items: [...] }]
+    let active   = 'All';
+
+    function renderFilterChips(){
+      elFilters.innerHTML = '';
+      const make = (label, key) => {
+        const b = document.createElement('button');
+        b.className = 'chip';
+        b.textContent = label;
+        b.setAttribute('aria-pressed', active===key);
+        b.onclick = () => { active = (active===key ? 'All' : key); render(); };
+        return b;
+      };
+      elFilters.appendChild(make('All','All'));
+      sections.forEach(s => elFilters.appendChild(make(s.name, s.key)));
+    }
+
+    function render(){
+      // update chip pressed state
+      [...elFilters.children].forEach(ch => ch.setAttribute(
+        'aria-pressed',
+        (active==='All' && ch.textContent==='All') || ch.textContent === (sections.find(s => s.key===active)?.name || '')
+      ));
+
+      elGrid.innerHTML = '';
+
+      if (active === 'All'){
+        // Grouped view
+        sections.forEach(s=>{
+          if (!s.items.length) return;
+          const h = document.createElement('h3');
+          h.className = 'muted';
+          h.id = s.key; // anchor target
+          h.style.margin = '10px 0 8px';
+          h.textContent = s.name;
+          elGrid.appendChild(h);
+
+          const group = document.createElement('div');
+          group.className = 'grid';
+          s.items.forEach(p => group.appendChild(card(p)));
+          elGrid.appendChild(group);
+        });
+      } else {
+        // Single section
+        const s = sections.find(x => x.key === active);
         const group = document.createElement('div');
         group.className = 'grid';
-        s.items.forEach(p => group.appendChild(card(p)));
+        (s?.items || []).forEach(p => group.appendChild(card(p)));
         elGrid.appendChild(group);
-      });
-    } else {
-      // Single section
-      const s = sections.find(x => x.key === active);
-      const group = document.createElement('div');
-      group.className = 'grid';
-      (s?.items || []).forEach(p => group.appendChild(card(p)));
-      elGrid.appendChild(group);
+      }
     }
-  }
 
-  // Fetch + parse your schema once
-  fetch('projects.json', {cache:'no-store'})
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(data => {
-      const dedupe = new Set();
-      sections = Object.entries(data).map(([name, arr])=>{
-        const items = (Array.isArray(arr) ? arr : [])
-          .map(i => normalize(i, name))
-          .filter(p => {
-            const id = `${p.name}|${p.url}`;
-            if (dedupe.has(id)) return false;
-            dedupe.add(id); return true;
-          });
-        return { name, key: slug(name), items };
+    // Fetch + parse your schema once
+    fetch('projects.json', {cache:'no-store'})
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        const dedupe = new Set();
+        sections = Object.entries(data).map(([name, arr])=>{
+          const items = (Array.isArray(arr) ? arr : [])
+            .map(i => normalize(i, name))
+            .filter(p => {
+              const id = `${p.name}|${p.url}`;
+              if (dedupe.has(id)) return false;
+              dedupe.add(id); return true;
+            });
+          return { name, key: slug(name), items };
+        });
+        renderFilterChips();
+        render();
+      })
+      .catch(()=>{
+        elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>.</div>';
       });
-      renderFilterChips();
-      render();
-    })
-    .catch(()=>{
-      elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>.</div>';
-    });
-</script>
-
-
-
+  </script>
 </body>
 </html>
