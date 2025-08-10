@@ -40,12 +40,6 @@
       "url": "https://github.com/rgocal/Unofficial-Android-Playstore-API"
     },
     {
-      "label": "Expandable Preference Group",
-      "description": "A custom preference group for android that expands on click to show preferences held inside the group and can condense them for a cleaner UI.",
-      "screenshot": "null",
-      "url": "https://github.com/rgocal/ExpandablePreferenceGroup"
-    },
-    {
       "label": "Fluent Popup Menu",
       "description": "A custom widget for android that acts as a context menu for objects and views. The menu will appear above the object, with or without an arrow, and you can use the prebuilt menu or add in a custom view. Code is currently being optimized for release for the public.",
       "screenshot": "null",
