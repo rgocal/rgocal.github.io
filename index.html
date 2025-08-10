@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <title>Ryan Gocal — GocalSD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Android developer — GocalSD. Projects, experiments, and code." />
+  <meta name="description" content="Android Products by GocalSD. Published Products, Experiments, and libraries." />
   <!-- Social cards -->
   <meta property="og:title" content="Ryan Gocal — GocalSD" />
   <meta property="og:description" content="Android developer — GocalSD. Projects, experiments, and code." />
@@ -163,12 +163,12 @@
     <!-- HERO -->
     <section class="hero" aria-label="Intro">
       <div>
-        <div class="kicker">Android • Java • Firebase</div>
+        <div class="kicker">Android • Java • Libraries • Database</div>
         <h1>Ryan Gocal <span style="opacity:.65">—</span> <span style="color:#9cc2ff">GocalSD</span></h1>
-        <p class="subtitle">I build fast, data‑driven Android experiences: real‑time player stats, clean Material UIs, and automation that actually ships.</p>
+        <p class="subtitle">Just a freelance android developer bringing concepts into reality. I didn't fail to execute a project, I just learned a better way for next time. I have a huge interest in Android Launcher design and user interface concepts. I want to publish a top tier android launcher some day. I also love to game so youll see some of the two hobbies mix together.</p>
         <div class="hero-actions">
           <a class="btn" href="#projects">See projects</a>
-          <a class="btn" href="mailto:gocalsd.dev@gmail.com">Contact</a>
+          <a class="btn" href="mailto:rgocal09@gmail.com">Contact</a>
         </div>
       </div>
       <div class="hero-media" aria-hidden="true">
@@ -183,7 +183,7 @@
     <!-- PROJECTS -->
     <section id="projects" aria-label="Projects">
       <h2 class="section-title">Projects</h2>
-      <p class="muted">A selection of things I’ve shipped and tinkered with.</p>
+      <p class="muted">A selection of products I’ve shipped on Google Play and tinkered with the idea of.</p>
 
       <div class="filters" id="filters"></div>
       <div id="grid" role="list"></div>
@@ -198,7 +198,7 @@
   </main>
 
   <footer class="container">
-    <div>© <span id="year"></span> Ryan Gocal. Built with vanilla HTML/CSS/JS on GitHub Pages.</div>
+    <div>© <span id="year"></span> GocalSD. Built with vanilla HTML/CSS/JS guided by GPT5.</div>
   </footer>
 
   <script>
@@ -227,11 +227,15 @@
 
     // Badges to apply by label (you can move these into JSON later)
     const badgeMap = {
-      "Launcher Ops":            ["ONE UI"],
-      "Carpentar":               ["ONE UI"],
-      "Launchers Quick Tile 2":  ["Android 13+"],
-      "Truesight (Preview)":     ["Preview"],
-      "SwitchBar":               ["Library"]
+      "Launcher Ops":                ["ONE UI"],
+      "Carpentar":                   ["ONE UI"],
+      "Launchers Quick Tile 2":      ["Android 13+"],
+      "Launchers Quick Tile":        ["Android 12-"],
+      "Truesight (Preview)":         ["Android 10+"],
+      "Google Play Publisher API":   ["Library"],
+      "Expandable Preference Group": ["Library"],
+      "Fluent Popup Menu"            ["Library"],
+      "SwitchBar":                   ["Library"]
     };
 
     function normalize(item, sectionName){
