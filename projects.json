@@ -19,10 +19,10 @@
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.launcherquicktileadept"
     },
     {
-      "label": "Truesight (Preview)",
-      "description": "My attempt at building an alternative to Steam Charts managed on mobile. This app pulls data from steam community public apis to allow users to chart their own matrix of game populations. I've also added in a few things of my own that gamers will appreciate.",
-      "screenshot": " ",
-      "url": "https://play.google.com/apps/testing/com.gocalsd.truesight",
+      "label": "Truesight",
+      "description": "An app for my pc gamers. Truesight is a companion app for steam that downloads and charts player counts for published games, stats, news and game details. You can also create a digital rigs to compare game compatibility from the steam storefront details.",
+      "screenshot": "https://images.app.goo.gl/WmkVG1K8fg7HpJ2V9",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.truesight",
       "badges": ["Preview", "Steam Community API", "Steam", "Database", "Monet"]
     }, 
      {
