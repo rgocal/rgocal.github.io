@@ -1,35 +1,41 @@
 {
   "Published Applications": [
     {
-      "label": "Launcher Ops",
+      "label": "Launcher Ops 2",
+      "downloads": [{"label":"Launcher Ops 2","url":"https://play.google.com/store/apps/details?id=com.flea.gsd.flea"}, {"label":"Launcher Ops 1","url":"https://www.dropbox.com/scl/fi/hlr1tv21d8n8k33aw04fi/launcher_ops_og.apk?rlkey=16u2lktha25pqob8zxvyyelzb&st=4njqndyk&dl=0"}],
       "description": "Manage and Benchmark your favorite launchers in Android. Detect anomalies, permission usages and clones that could potentially ruin your android homescreen experience. This app is built with ONE UI.",
-      "screenshot": "https://play-lh.googleusercontent.com/JkWYjUW31-Jlq0V_tPIamHt-s-Nqlf2j-CRwZ0pbEuLVsWkEQls4JWBGANARf7_3j5H1=w2560-h1440-rw",
-      "url": "https://play.google.com/store/apps/details?id=com.flea.gsd.flea"
+      "screenshot": ["https://play-lh.googleusercontent.com/NLHlUgZbl1mnQXiH3OvjbLc1si29NC9EdGDWBG-itgIh2zaKk9Pw-asMxBADHueh-l8IyTqCvSGjGsA-k81RUw=w2560-h1440-rw"],
+      "url": "https://play.google.com/store/apps/details?id=com.flea.gsd.flea",
+      "badges": ["Launcher Manager", "Material Expressive", "License Required", "Data Analysis", "Benchmarking", "Result Sharing"]
     },
     {
       "label": "Launchers Quick Tile",
-      "description": "Swap launcher homescreens from your statusbar quicktile section. Supports up to Android 12 because of deprecation issues.",
+      "description": "Swap launcher homescreens from your statusbar quicktile section. Supports up to and includes Android 12.",
       "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
-      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.quicktile.launchers"
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.quicktile.launchers",
+      "badges": ["Quick Tile", "Free", "Obsolete"]
     },
     {
       "label": "Launchers Quick Tile 2",
-      "description": "Swap launcher homescreens from your statusbar quicktile section. Supports Android 13 and above with improvements from the prequel app.",
+      "description": "Swap launcher homescreens from your statusbar quicktile section. Android 13 and above required.",
       "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
-      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.launcherquicktileadept"
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.launcherquicktileadept",
+      "badges": ["Quick Tile", "Paid"]
     },
     {
       "label": "Truesight",
       "description": "Inspired by Steam Charts, Truesight is a steam companion app built for Android that provides gamers with trending information from steam such as live steam service status, online count, game peak player counts, data matrixs, trending game information,news and top sellers. You can also create virtual rigs for compatibility comparison data and chart your own player counts matrixs. This app also supports backup and restore functionality. ",
       "screenshot": "https://play-lh.googleusercontent.com/V6tNcsZTxVb_NNbtvqjRSgSV1Eh8-hxG0bawuZ9CYQkcM-TBSZRpvA8DBBYRxzuanCZldZnQUUGIzGbKlgAtcQ=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.truesight",
-      "badges": ["Preview", "Steam Community API", "Steam", "Database", "Monet"]
+      "badges": ["Steam Community API", "Steam", "Database", "Monet"]
     }, 
      {
       "label": "Carpentar",
       "description": "An Icon Pack Manager that allows you to benchmark the compatibility of launcher apps, extract icons and resources as well as craft your own icons! This app is built with ONE UI.",
       "screenshot": "https://play-lh.googleusercontent.com/Ht9GsxkFnLUDg4WoJ-pSb7aotWOg_QsJvA7Ax_rprQswt1vheLFpZKk78oQI2rR91A=w2560-h1440-rw",
-      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.carpenter"
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.carpenter",
+      "badges": ["One UI", "Icon Packs"]
+
     }
   ],
   "Libraries": [
