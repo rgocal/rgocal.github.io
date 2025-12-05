@@ -1,0 +1,7 @@
+{
+  "documents": [
+    { "key": "resume", "label": "Resume", "url": "https://www.dropbox.com/scl/fi/7fmx67gp97527jrtgjzo4/Ryan_Gocal_Professional_Resume.docx.pdf?rlkey=yg7skhjp545o0jzniju1wzels&st=e7r54icb&raw=1" },
+    { "key": "production", "label": "Production Cover Letter", "url": "https://www.dropbox.com/scl/fi/o8o8k31tvt4swi9o0lyvk/Cover_Letter_Production.docx.pdf?rlkey=ilp3925rtcmsoeh24z9szfref&st=txec96nf&raw=1" },
+    { "key": "technical", "label": "Technical Cover Letter", "url": "https://www.dropbox.com/scl/fi/e21n7xphk2s2170bsvdex/Cover_Letter_Android_Developer.docx.pdf?rlkey=gzdjslewkptyy67bnsk9d4zcn&st=wobh8syc&raw=1" }
+  ]
+}
