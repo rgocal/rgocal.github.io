@@ -17,9 +17,16 @@
       --bg-soft:#0f1a30;
       --text:#ecf2ff;
       --muted:#a7b3cc;
-      --brand:#2f7af7; /* blue model */
+      --brand:#2f7af7;
       --card:#101a2e;
       --chip:#17233d;
+      --card-text:#cfe0ff;
+      --subtitle:#cbd6ff;
+      --border: rgba(255,255,255,.08);
+      --header-fade: rgba(11,18,32,.92);
+      --action-border: var(--border);
+      --action-btn-bg: transparent;
+      --action-btn-hover-bg: rgba(47,122,247,0.06);
       --ring: rgba(47,122,247,.35);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 16px;
@@ -29,40 +36,40 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:24px}
     header.site{
-      position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--bg) 0%,rgba(11,18,32,.92) 80%,rgba(11,18,32,0) 100%);
+      position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--bg) 0%,var(--header-fade) 80%,rgba(0,0,0,0) 100%);
       backdrop-filter:saturate(140%) blur(8px)
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
     .nav a.brand{font-weight:700;letter-spacing:.5px}
     .nav .actions{display:flex;gap:10px;align-items:center}
     .btn{
-      border:1px solid rgba(255,255,255,.08);padding:8px 12px;border-radius:999px;background:transparent;color:var(--text);
-      transition:transform .15s ease, border-color .2s ease, box-shadow .2s ease
+      border:1px solid var(--action-border);padding:8px 12px;border-radius:999px;background:var(--action-btn-bg);color:var(--text);
+      transition:transform .15s ease, border-color .2s ease, box-shadow .2s ease, background-color .12s ease
     }
-    .btn:hover{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
+    .btn:hover{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring);background:var(--action-btn-hover-bg)}
     .toggle{cursor:pointer}
 
     /* Hero */
     .hero{
       display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin-top:36px;margin-bottom:28px;
       border-radius:calc(var(--radius) + 8px);
-      padding:32px; background:linear-gradient(145deg,#0b1428 0%, #0c1730 50%, #0d1a38 100%);
-      outline:1px solid rgba(255,255,255,0.06); box-shadow: var(--shadow)
+      padding:32px; background:linear-gradient(145deg,var(--bg-soft) 0%, var(--card) 50%, var(--bg) 100%);
+      outline:1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow)
     }
     .kicker{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
     h1{font-size:40px;line-height:1.15;margin:0 0 10px}
-    .subtitle{color:#cbd6ff;margin:0 0 18px}
+    .subtitle{color:var(--subtitle);margin:0 0 18px}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
     .hero-media{
-      position:relative;aspect-ratio:1/1.05;border-radius:24px;padding:20px;background:radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.25) 0%, rgba(47,122,247,0) 60%), linear-gradient(180deg,#0a1730,#0d203f);
-      outline:1px solid rgba(255,255,255,.06); box-shadow: var(--shadow)
+      position:relative;aspect-ratio:1/1.05;border-radius:24px;padding:20px;background:radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.25) 0%, rgba(47,122,247,0) 60%), linear-gradient(180deg,var(--bg-soft),var(--card));
+      outline:1px solid var(--border); box-shadow: var(--shadow)
     }
     .hero-media img{
       width:100%;height:100%;object-fit:cover;border-radius:18px;display:block;
       border:1px solid rgba(255,255,255,.1); transform:translateZ(0);
     }
     .ring{ position:absolute; inset:-14px; border-radius:28px; pointer-events:none;
-      background: conic-gradient(from 0deg, transparent 0 75%, rgba(47,122,247,.35));
+      background: conic-gradient(from 0deg, transparent 0 75%, var(--ring));
       filter:blur(18px); opacity:.55; animation:spin 10s linear infinite
     }
     @keyframes spin{to{transform:rotate(360deg)}}
@@ -75,7 +82,7 @@
     /* Projects */
     .filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 20px}
     .chip{
-      background:var(--chip);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:6px 10px;font-size:14px;cursor:pointer;
+      background:var(--chip);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:14px;cursor:pointer;
       transition:transform .1s ease, border-color .2s ease, box-shadow .2s ease
     }
     .chip[aria-pressed="true"]{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
@@ -83,20 +90,46 @@
     @media (max-width:960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:640px){.grid{grid-template-columns:1fr}}
     .card{
-      background:var(--card);border-radius:20px;padding:16px;border:1px solid rgba(255,255,255,.08);
+      background:var(--card);border-radius:20px;padding:16px;border:1px solid var(--border);
       display:flex;flex-direction:column;gap:10px;transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease
     }
     .card:hover{transform:translateY(-2px); border-color:var(--ring); box-shadow:0 12px 30px rgba(10,30,70,.35)}
     .card h3{margin:0;font-size:18px}
-    .card p{margin:0;color:#cfe0ff}
+    .card p{margin:0;color:var(--card-text)}
     .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-    .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.08);background:#0c1933;color:#cfe0ff}
+    .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);background:var(--chip);color:var(--card-text)}
     .card .links{margin-top:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+    /* Downloads dropdown (uses native details for accessibility) */
+    details.downloads{position:relative}
+    details.downloads summary{list-style:none;cursor:pointer}
+    details.downloads summary::-webkit-details-marker{display:none}
+    details.downloads .menu{display:none;position:absolute;right:0;top:calc(100% + 8px);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-width:170px;z-index:40}
+    details.downloads[open] .menu{display:flex}
+    details.downloads .menu a{display:block;padding:6px 8px;border-radius:8px;color:var(--card-text);text-decoration:none;border:1px solid transparent}
+    details.downloads .menu a:hover{background:var(--bg-soft);border-color:var(--ring)}
+
+    /* Resume dropdown in header */
+    details.resume{position:relative}
+    details.resume summary{list-style:none;cursor:pointer}
+    details.resume summary::-webkit-details-marker{display:none}
+    details.resume .menu{display:none;position:absolute;right:0;top:calc(100% + 8px);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-width:220px;z-index:60}
+    details.resume[open] .menu{display:flex}
+    details.resume .menu a{display:block;padding:8px 10px;border-radius:8px;color:var(--card-text);text-decoration:none;border:1px solid transparent}
+    details.resume .menu a:hover{background:var(--bg-soft);border-color:var(--ring)}
+
+    /* PDF modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:100}
+    .modal.open{display:flex}
+    .modal-content{width:90%;max-width:1000px;height:85%;background:var(--card);border-radius:12px;overflow:hidden;position:relative;border:1px solid var(--border);box-shadow:var(--shadow)}
+    .modal-close{position:absolute;top:8px;right:8px;background:transparent;border:0;color:var(--card-text);font-size:22px;padding:6px;cursor:pointer}
+    #pdfViewer{width:100%;height:100%;border:0}
 
     /* Clamp long descriptions so cards are even height-ish */
     .card p{
       display:-webkit-box;
       -webkit-line-clamp:6;
+      line-clamp:6;
       -webkit-box-orient:vertical;
       overflow:hidden;
     }
@@ -107,7 +140,7 @@
       aspect-ratio:16/9;
       object-fit:cover;
       border-radius:12px;
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid var(--border);
       margin-top:6px;
     }
 
@@ -117,7 +150,7 @@
   aspect-ratio:16/9;
   object-fit:cover;
   border-radius:12px;
-  border:1px solid rgba(255,255,255,.08);
+  border:1px solid var(--border);
 }
 #blog .meta{ color:var(--muted); font-size:12px; margin-top:4px; }
 
@@ -129,13 +162,13 @@
     
     .badge{
       font-size:12px; padding:4px 8px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.10); background:#0c1933; color:#cfe0ff;
+      border:1px solid rgba(255,255,255,.10); background:var(--chip); color:var(--card-text);
       letter-spacing:.2px; white-space:nowrap
     }
     /* Quick color accents by badge text */
     .badge[data-k=preview]{background:#1f1335;border-color:#a884ff;color:#e0d4ff}
     .badge[data-k=one-ui]{background:#0d1f2e;border-color:#4fb1ff;color:#cfeaff}
-    .badge[data-k=android-13+]{background:#112b1e;border-color:#40d19a;color:#c9ffe9}
+    .badge[data-k="android-13+"]{background:#112b1e;border-color:#40d19a;color:#c9ffe9}
     .badge[data-k=deprecated],
     .badge[data-k=experimental]{background:#2a1717;border-color:#ff6b6b;color:#ffdede}
 
@@ -151,7 +184,10 @@
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#blog">Blog</a>
         <button class="btn toggle" id="themeBtn" aria-label="Toggle dark mode">Dark/Light</button>
-        <a class="btn" href="https://profile.indeed.com/p/ryang-4xq7eij" target="_blank" rel="noopener">Resume</a>
+        <details class="resume" id="resumeControl">
+          <summary class="btn" aria-haspopup="true" aria-expanded="false">Resume</summary>
+          <div class="menu resume-menu" role="menu" aria-label="Resume documents"></div>
+        </details>
       </nav>
     </div>
   </header>
@@ -160,17 +196,19 @@
     <!-- HERO -->
     <section class="hero" aria-label="Intro">
       <div>
-        <div class="kicker">Android • Java • Libraries • Database</div>
+        <div class="kicker">Android • Java • Libraries • Data analysis • Android Launcher Development</div>
         <h1>Ryan Gocal <span style="opacity:.65">—</span> <span style="color:#9cc2ff">GocalSD</span></h1>
-        <p class="subtitle">Hello there, my name is Ryan and I've been teaching myself android development since smartphones started to evolve in 2011. Everything I know has been self taught and recently I've taken to AI to help reduce some repetitive task and proof read some of my work. This also allows me to triple my output in my busy country lifestyle. I have 2 sons and a wonderful woman in my life and spend my life in a quiet piece of property in the country. I have a job in production managment and inventory managment. I also love to game and I have a knack of being a data analysis. I also have several projects published on Google Play as well as some smaller projects available on my github. Everything you should need to follow me and my work can be found here!</p>
+        <p class="subtitle">Passionate Android Developer and Tech Enthusiast based in Erie, PA</p>
+        
         <div class="hero-actions">
-          <a class="btn" href="mailto:rgocal09@gmail.com">Contact</a>
-          <a class="btn" href="https://github.com/rgocal" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://x.com/GocalSd" target="_blank" rel="noopener">X</a>
-        <a class="btn" href="https://www.linkedin.com/in/ryan-gocal-28682119a/" target="_blank" rel="noopener">LinkedIn</a>
- <a class="btn" href="https://www.tiktok.com/@dracos_aura" target="_blank" rel="noopener">Tiktok</a>
-
+          <a class="btn" href="mailto:rgocal09@gmail.com">Email</a>
+          <a class="btn" href="https://github.com/rgocal" target="_blank" rel="noopener">My GitHub</a>
+          <a class="btn" href="https://play.google.com/store/apps/dev?id=8934848548747347540" target="_blank" rel="noopener">Google Play Developer Page</a>
+          <a class="btn" href="https://www.linkedin.com/in/ryan-gocal-28682119a/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://www.facebook.com/GocalSD" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn" href="https://www.tiktok.com/@dracos_aura" target="_blank" rel="noopener">TikTok</a>
         </div>
+
       </div>
       <div class="hero-media" aria-hidden="true">
         <div class="ring"></div>
@@ -184,7 +222,7 @@
     <!-- PROJECTS -->
     <section id="projects" aria-label="Projects">
       <h2 class="section-title">Projects</h2>
-      <p class="muted">A selection of products I’ve shipped on Google Play and tinkered with the idea of.</p>
+      <p class="muted">A selection of products I’ve Published and/or Unpublished on Google Play. You may find archived versions of certain applications here!</p>
 
       <div class="filters" id="filters"></div>
       <div id="grid" role="list"></div>
@@ -193,22 +231,30 @@
         <!-- BLOG -->
   <section id="blog" aria-label="Blog">
     <h2 class="section-title">Blog</h2>
-    <p class="muted">Latest posts from my blog @WordPress. Make sure to give the subscribe option some love.</p>
+    <p class="muted">A feed of my latest posts from my blog at WordPress. Make sure to give the subscribe option some love.</p>
     <div id="blog-posts" class="grid" role="list"></div>
   </section>
 
         <!-- VLOG -->
   <section id="youtube">
-<h2 class="section-title">Vlog</h2>
-<p class="muted">A glance at my Android Development channel over @Youtube. Make sure to press the like and subscrive button!</p>
+<h2 class="section-title">Video Documentation and/or Demos</h2>
+<p class="muted">A glance at my Android Development channel on YouTube. Make sure to press the like and subscribe button!</p>
 <div id="youtube-videos" class="grid" role="list"></div>
 </section>
     
   </main>
 
   <footer class="container">
-    <div>© <span id="year"></span> GocalSD. Built with vanilla HTML/CSS/JS guided by GPT5.</div>
+    <div>© <span id="year"></span> GocalSD. Built with HTML/CSS/JS guided by GPT5.</div>
   </footer>
+
+  <!-- PDF modal (hidden by default) -->
+  <div id="pdfModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Document preview">
+      <button id="pdfModalClose" class="modal-close" aria-label="Close">✕</button>
+      <iframe id="pdfViewer" title="Document preview"></iframe>
+    </div>
+  </div>
 
   <script>
     // Year + theme toggle
@@ -217,11 +263,22 @@
     const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
     const setTheme = (light) => {
       document.documentElement.style.setProperty('--bg', light ? '#f6f8ff' : '#0b1220');
-      document.documentElement.style.setProperty('--bg-soft', light ? '#fff' : '#0f1a30');
+      document.documentElement.style.setProperty('--bg-soft', light ? '#ffffff' : '#0f1a30');
       document.documentElement.style.setProperty('--text', light ? '#0b1120' : '#ecf2ff');
       document.documentElement.style.setProperty('--muted', light ? '#4c556a' : '#a7b3cc');
       document.documentElement.style.setProperty('--card', light ? '#ffffff' : '#101a2e');
       document.documentElement.style.setProperty('--chip', light ? '#eef2ff' : '#17233d');
+      // supporting vars for lighter theme
+      document.documentElement.style.setProperty('--card-text', light ? '#12202b' : '#cfe0ff');
+      document.documentElement.style.setProperty('--subtitle', light ? '#2f4a6f' : '#cbd6ff');
+      document.documentElement.style.setProperty('--border', light ? 'rgba(11,17,28,0.06)' : 'rgba(255,255,255,.08)');
+      document.documentElement.style.setProperty('--ring', light ? 'rgba(47,122,247,.14)' : 'rgba(47,122,247,.35)');
+      document.documentElement.style.setProperty('--shadow', light ? '0 6px 18px rgba(15,22,40,.06)' : '0 10px 30px rgba(0,0,0,.35)');
+      // header / actionbar tuning for light
+      document.documentElement.style.setProperty('--header-fade', light ? 'rgba(255,255,255,.92)' : 'rgba(11,18,32,.92)');
+      document.documentElement.style.setProperty('--action-border', light ? 'rgba(11,17,28,0.12)' : 'var(--border)');
+      document.documentElement.style.setProperty('--action-btn-bg', light ? 'transparent' : 'transparent');
+      document.documentElement.style.setProperty('--action-btn-hover-bg', light ? 'rgba(47,122,247,0.06)' : 'rgba(47,122,247,0.06)');
     };
     setTheme(prefersLight.matches);
     themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
@@ -253,9 +310,22 @@
       const image = truthy(item.screenshot) ? item.screenshot : '';
       const url   = truthy(item.url) ? item.url : '';
       let badges  = Array.isArray(item.badges) ? item.badges.slice(0) : [];
+      // normalize download links: support several possible keys and formats
+      let downloads = [];
+      const raw = item.downloads || item.links || item.urls || item.files || item.download;
+      if (raw) {
+        if (Array.isArray(raw)){
+          downloads = raw.map(d => {
+            if (typeof d === 'string') return { label: 'Download', url: d };
+            return { label: d.label || d.name || d.title || d.file || 'Download', url: d.url || d.href || d.link || d.file || '' };
+          }).filter(x=> truthy(x.url));
+        } else if (typeof raw === 'string' && truthy(raw)) {
+          downloads = [{ label: 'Download', url: raw }];
+        }
+      }
       if (badgeMap[name]) badges = [...new Set([...badges, ...badgeMap[name]])];
       if (/Experimental|Deprecated/i.test(sectionName)) badges = [...new Set([...badges, "Deprecated"])];
-      return { name, description, image, url, badges };
+      return { name, description, image, url, badges, downloads };
     }
 
     function badgeRow(badges){
@@ -274,6 +344,18 @@
     function card(p){
       const li = document.createElement('article');
       li.className = 'card'; li.setAttribute('role','listitem');
+      // build downloads UI
+      let downloadsHtml = '';
+      if (p.downloads && p.downloads.length){
+        if (p.downloads.length === 1){
+          const d = p.downloads[0];
+          downloadsHtml = `<a class="btn" href="${d.url}" target="_blank" rel="noopener">Downloads</a>`;
+        } else {
+          const items = p.downloads.map(d=>`<a class="btn" href="${d.url}" target="_blank" rel="noopener">${d.label}</a>`).join('');
+          downloadsHtml = `<details class="downloads"><summary class="btn">Downloads</summary><div class="menu">${items}</div></details>`;
+        }
+      }
+
       li.innerHTML = `
         <h3>${p.name}</h3>
         ${badgeRow(p.badges)}
@@ -281,6 +363,7 @@
         ${p.image ? `<img loading="lazy" alt="" src="${p.image}">` : ''}
         <div class="links" style="margin-top:12px">
           ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
+          ${downloadsHtml}
         </div>
       `;
       return li;
@@ -448,6 +531,57 @@ ytContainer.innerHTML = data.items.slice(0, 6).map(video => `
 ytContainer.innerHTML = '<p class="muted">Couldn’t load videos.</p>';
 });
     
+// --- RESUME / PDFs ---
+const resumeMenuEl = document.querySelector('.resume-menu');
+const resumeControl = document.getElementById('resumeControl');
+const pdfModal = document.getElementById('pdfModal');
+const pdfViewer = document.getElementById('pdfViewer');
+const pdfModalClose = document.getElementById('pdfModalClose');
+
+function openPdf(url){
+  if (!url) return;
+  pdfViewer.src = url;
+  pdfModal.classList.add('open');
+  pdfModal.setAttribute('aria-hidden','false');
+}
+
+function closePdf(){
+  pdfModal.classList.remove('open');
+  pdfModal.setAttribute('aria-hidden','true');
+  // clear src to stop active downloads/requests
+  pdfViewer.src = '';
+}
+
+pdfModalClose?.addEventListener('click', closePdf);
+pdfModal?.addEventListener('click', (e)=>{ if (e.target === pdfModal) closePdf(); });
+document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closePdf(); });
+
+function loadResumeJSON(){
+  if (!resumeMenuEl) return;
+  fetch('resume.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      const docs = Array.isArray(data.documents) ? data.documents : [];
+      if (!docs.length) {
+        resumeMenuEl.innerHTML = '<div class="muted" style="padding:8px">No documents found.</div>';
+        return;
+      }
+      resumeMenuEl.innerHTML = docs.map(d => `<a role="menuitem" href="#" data-url="${d.url}">${d.label}</a>`).join('');
+      resumeMenuEl.querySelectorAll('a[data-url]').forEach(a => {
+        a.addEventListener('click', (ev) => {
+          ev.preventDefault();
+          const url = a.getAttribute('data-url');
+          // close details if open
+          if (resumeControl && resumeControl.open) resumeControl.open = false;
+          openPdf(url);
+        });
+      });
+    })
+    .catch(()=>{
+      resumeMenuEl.innerHTML = '<div class="muted" style="padding:8px">Couldn’t load <code>resume.json</code>.</div>';
+    });
+}
+loadResumeJSON();
   </script>
 </body>
 </html>
