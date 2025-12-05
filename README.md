@@ -1,1 +1,1 @@
-ChatGPT generated portfolio page
+Created with Visual Studio and AI generative assistance
