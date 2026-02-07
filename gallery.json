@@ -2,14 +2,29 @@
     "title": "Highlights",
     "slides": [
         {
-            "image": "https://example.com/image1.webp",
-            "caption": "Launcher Ops — benchmarks + anomaly detection",
-            "link": "https://play.google.com/store/apps/details?id=com.flea.gsd.flea"
+            "image": "https://image.winudf.com/v2/image1/Y29tLmdzZC5kcnl3YWxsLm1jZF9zY3JlZW5fMF8xNTk5ODU2MzEzXzAwMQ/screen-0.jpg?fakeurl=1&type=.jpg",
+            "caption": "Drywall Wallpaper Manager",
+            "link": ""
         },
         {
-            "image": "https://example.com/image2.webp",
-            "caption": "TrueSight — Steam charts in your pocket",
-            "link": "https://play.google.com/apps/testing/com.gocalsd.truesight"
+            "image": "https://m-cdn.phonearena.com/images/phones/21078-350/LG-Ally.webp",
+            "caption": "LG Ally Nostollgia",
+            "link": ""
+        },
+        {
+            "image": "https://oyster.ignimgs.com/wordpress/stg.ign.com/2011/10/motorolarazr_1318956799-e1318971238722.jpg?width=1280&height=720&fit=bounds&format=jpg&auto=webp",
+            "caption": "Droid Razr Nostollgia",
+            "link": ""
+        },
+        {
+            "image": "https://play-lh.googleusercontent.com/hNDMWRZVcc4qCpOC5L0vgp3EpyCnSuxmJa9i2PVMxi_BN2bLLsHoE0HQUkB2J_bEY5OLNLfDHZCBUploxcuNxQ=w526-h296-rw",
+            "caption": "Truesight - Only On Google Play",
+            "link": ""
+        },
+        {
+            "image": "https://cdn.aptoide.com/imgs/e/c/5/ec5c72ac5766cd2c200e7f61af242b62_fgraphic.png",
+            "caption": "Launcher Ops 2",
+            "link": ""
         }
     ]
 }
