@@ -1,0 +1,15 @@
+{
+    "title": "Highlights",
+    "slides": [
+        {
+            "image": "https://example.com/image1.webp",
+            "caption": "Launcher Ops — benchmarks + anomaly detection",
+            "link": "https://play.google.com/store/apps/details?id=com.flea.gsd.flea"
+        },
+        {
+            "image": "https://example.com/image2.webp",
+            "caption": "TrueSight — Steam charts in your pocket",
+            "link": "https://play.google.com/apps/testing/com.gocalsd.truesight"
+        }
+    ]
+}
