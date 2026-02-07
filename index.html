@@ -125,6 +125,147 @@
     .modal-close{position:absolute;top:8px;right:8px;background:transparent;border:0;color:var(--card-text);font-size:22px;padding:6px;cursor:pointer}
     #pdfViewer{width:100%;height:100%;border:0}
 
+    /* Gallery / Carousel */
+.carousel{
+  border-radius:calc(var(--radius) + 10px);
+  overflow:hidden;
+  outline:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,#0b1428,#0c1730);
+  box-shadow: var(--shadow);
+}
+
+.carousel-top{
+  display:flex;align-items:end;justify-content:space-between;gap:12px;
+  margin:0 0 12px;
+}
+.carousel-top .section-title{margin:0}
+.carousel-top .muted{margin:0}
+
+.carousel-viewport{
+  position:relative;
+  width:100%;
+  aspect-ratio: 16/9;
+  background: radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.18) 0%, rgba(47,122,247,0) 60%);
+}
+
+.carousel-track{
+  height:100%;
+  display:flex;
+  transition: transform 500ms ease;
+  will-change: transform;
+}
+
+.slide{
+  min-width:100%;
+  height:100%;
+  position:relative;
+  user-select:none;
+}
+
+.slide a{display:block;height:100%}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+/* If image is portrait, bias crop upward so heads/titles stay visible */
+.slide.is-portrait img{
+  object-position: 50% 25%;
+}
+
+/* If image is super wide, slight downward bias can feel better */
+.slide.is-landscape img{
+  object-position: 50% 50%;
+}
+
+/* Bottom caption glass banner */
+.caption{
+  position:absolute;
+  left:14px; right:14px; bottom:14px;
+  padding:12px 14px;
+  border-radius:14px;
+  color:var(--text);
+  background: rgba(10, 16, 28, .52);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.caption .cap-text{
+  font-weight:650;
+  letter-spacing:.2px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.caption .cap-hint{
+  color:rgba(255,255,255,.72);
+  font-size:12px;
+  flex:0 0 auto;
+}
+
+/* Controls */
+.carousel-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;height:44px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(12, 25, 51, .55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color:var(--text);
+  display:grid;place-items:center;
+  cursor:pointer;
+  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.carousel-btn:hover{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
+.carousel-btn:active{transform:translateY(-50%) scale(.98)}
+.carousel-btn.prev{left:14px}
+.carousel-btn.next{right:14px}
+
+.dots{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:14px;
+  display:flex;
+  gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  background: rgba(12, 25, 51, .45);
+  border:1px solid rgba(255,255,255,.10);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.dot{
+  width:10px;height:10px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);
+  opacity:.7;
+  cursor:pointer;
+}
+.dot[aria-current="true"]{
+  opacity:1;
+  background: rgba(255,255,255,.85);
+  border-color: rgba(255,255,255,.85);
+}
+
+/* Articles dropdown spacing when descriptions exist */
+.articles-menu a{
+  display:block;
+  padding:10px 10px;
+  border-radius:10px;
+}
+
+
     /* Clamp long descriptions so cards are even height-ish */
     .card p{
       display:-webkit-box;
@@ -181,18 +322,23 @@
     <div class="container nav">
       <a class="brand" href="#top">GocalSD</a>
       <nav class="actions">
+                <button class="btn toggle" id="themeBtn" aria-label="Toggle dark mode">Theme</button>
         <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#blog">Blog</a>
-        <button class="btn toggle" id="themeBtn" aria-label="Toggle dark mode">Dark/Light</button>
         <details class="resume" id="resumeControl">
           <summary class="btn" aria-haspopup="true" aria-expanded="false">Resume</summary>
           <div class="menu resume-menu" role="menu" aria-label="Resume documents"></div>
+        </details>
+        <details class="resume" id="articlesControl">
+          <summary class="btn" aria-haspopup="true" aria-expanded="false">Articles</summary>
+            <div class="menu articles-menu" role="menu" aria-label="Articles and mentions"></div>
         </details>
       </nav>
     </div>
   </header>
 
   <main id="top" class="container">
+
     <!-- HERO -->
     <section class="hero" aria-label="Intro">
       <div>
@@ -203,9 +349,9 @@
         <div class="hero-actions">
           <a class="btn" href="mailto:rgocal09@gmail.com">Contact</a>
           <a class="btn" href="https://github.com/rgocal" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://play.google.com/store/apps/dev?id=8934848548747347540" target="_blank" rel="noopener">Google Play Developer</a>
+          <a class="btn" href="https://play.google.com/store/apps/dev?id=8934848548747347540" target="_blank" rel="noopener">Google Play</a>
           <a class="btn" href="https://www.linkedin.com/in/ryan-gocal-28682119a/" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://www.facebook.com/share/17cp3SznEx/" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn" href="https://www.facebook.com/GocalSD" target="_blank" rel="noopener">GocalSD Facebook</a>
           <a class="btn" href="https://www.tiktok.com/@dracos_aura" target="_blank" rel="noopener">TikTok</a>
         </div>
 
@@ -219,10 +365,30 @@
       </div>
     </section>
 
+        <!-- GALLERY -->
+    <section id="gallery" aria-label="Highlights">
+  <div class="carousel-top">
+    <h2 class="section-title" id="gallery-title">Highlights</h2>
+    <p class="muted" id="gallery-subtitle">A gallery of my most notable work.</p>
+  </div>
+
+  <div class="carousel" data-carousel>
+    <div class="carousel-viewport" id="carousel-viewport">
+      <div class="carousel-track" id="carousel-track"></div>
+
+      <button class="carousel-btn prev" type="button" id="carousel-prev" aria-label="Previous slide">‹</button>
+      <button class="carousel-btn next" type="button" id="carousel-next" aria-label="Next slide">›</button>
+
+      <div class="dots" id="carousel-dots" aria-label="Slide navigation"></div>
+    </div>
+  </div>
+</section>
+
+
     <!-- PROJECTS -->
     <section id="projects" aria-label="Projects">
       <h2 class="section-title">Projects</h2>
-      <p class="muted">A selection of products I’ve Published and/or Unpublished on Google Play. You may find archived versions of certain applications here!</p>
+      <p class="muted">A selection of projects I've worked on over the years. This is a curated list of both my published and unpublished projects. Here, you may also find archived version of certain projects that have been published but have deprecated versions available to install manually. They will be registered to Google Play.</p>
 
       <div class="filters" id="filters"></div>
       <div id="grid" role="list"></div>
@@ -231,14 +397,14 @@
         <!-- BLOG -->
   <section id="blog" aria-label="Blog">
     <h2 class="section-title">Blog</h2>
-    <p class="muted">A feed of my latest posts from my blog at WordPress. Make sure to give the subscribe option some love.</p>
+    <p class="muted">Follow me at WordPress for more!</p>
     <div id="blog-posts" class="grid" role="list"></div>
   </section>
 
         <!-- VLOG -->
   <section id="youtube">
-<h2 class="section-title">Video Documentation and/or Demos</h2>
-<p class="muted">A glance at my Android Development channel on YouTube. Make sure to press the like and subscribe button!</p>
+<h2 class="section-title">Youtube Channel</h2>
+<p class="muted">Subscribe to my channel if you wish for me to create more content. Right now, I use Youtube as a place to demo some projects and publish vidocs if the fingers are feeling to lazy for a blog. I tend to keep my followers up to date of my current projects.</p>
 <div id="youtube-videos" class="grid" role="list"></div>
 </section>
     
@@ -360,7 +526,7 @@
         <h3>${p.name}</h3>
         ${badgeRow(p.badges)}
         ${p.description ? `<p>${p.description}</p>` : ''}
-        ${p.image ? `<img loading="lazy" alt="" src="${p.image}">` : ''}
+        ${p.image ? `<img loading="lazy" alt="${p.name} screenshot" src="${p.image}">` : ''}
         <div class="links" style="margin-top:12px">
           ${p.url ? `<a class="btn" href="${p.url}" target="_blank" rel="noopener">${ctaLabel(p.url)}</a>` : ''}
           ${downloadsHtml}
@@ -503,7 +669,7 @@ async function loadBlog(){
 loadBlog();
 
 
-    const ytContainer = document.getElementById('youtube-videos');
+const ytContainer = document.getElementById('youtube-videos');
 const PLAYLIST_ID = 'PLzwJQ-19lU6629_86Vx4LibFXMXM9GNoz';
 const RSS_URL = `https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`;
 const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
@@ -581,7 +747,197 @@ function loadResumeJSON(){
       resumeMenuEl.innerHTML = '<div class="muted" style="padding:8px">Couldn’t load <code>resume.json</code>.</div>';
     });
 }
+
 loadResumeJSON();
+
+// --- ARTICLES / MENTIONS ---
+const articlesMenuEl = document.querySelector('.articles-menu');
+const articlesControl = document.getElementById('articlesControl');
+
+function loadArticlesJSON(){
+  if (!articlesMenuEl) return;
+
+  fetch('articles.json', { cache: 'no-store' })
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(data => {
+      const items = Array.isArray(data.items) ? data.items : [];
+
+      if (!items.length) {
+        articlesMenuEl.innerHTML = '<div class="muted" style="padding:8px">No articles yet.</div>';
+        return;
+      }
+
+      // Render items with optional description
+      articlesMenuEl.innerHTML = items.map(item => {
+        const title = (item.title || 'Untitled').replace(/</g,'&lt;');
+        const url = item.url || '';
+        const desc = item.description ? String(item.description).replace(/</g,'&lt;') : '';
+
+        return `
+          <a role="menuitem" href="${url}" target="_blank" rel="noopener">
+            <div style="font-weight:650">${title}</div>
+            ${desc ? `<div class="muted" style="font-size:12px;line-height:1.3;margin-top:2px">${desc}</div>` : ''}
+          </a>
+        `;
+      }).join('');
+
+      // Close dropdown when clicking a link
+      articlesMenuEl.querySelectorAll('a[href]').forEach(a => {
+        a.addEventListener('click', () => {
+          if (articlesControl && articlesControl.open) articlesControl.open = false;
+        });
+      });
+    })
+    .catch(() => {
+      articlesMenuEl.innerHTML = '<div class="muted" style="padding:8px">Couldn’t load <code>articles.json</code>.</div>';
+    });
+}
+
+loadArticlesJSON();
+
+// --- Carousel (JSON-driven) ---
+const track = document.getElementById('carousel-track');
+const dotsEl = document.getElementById('carousel-dots');
+const prevBtn = document.getElementById('carousel-prev');
+const nextBtn = document.getElementById('carousel-next');
+const viewport = document.getElementById('carousel-viewport');
+const titleEl = document.getElementById('gallery-title');
+
+let slides = [];
+let index = 0;
+let timer = null;
+const INTERVAL_MS = 5000;
+
+function clamp(i){
+  if (!slides.length) return 0;
+  return (i + slides.length) % slides.length;
+}
+
+function setIndex(i, user=false){
+  index = clamp(i);
+  track.style.transform = `translateX(${-index * 100}%)`;
+  [...dotsEl.children].forEach((d, n) => d.setAttribute('aria-current', n === index ? 'true' : 'false'));
+
+  if (user) restartTimer();
+}
+
+function restartTimer(){
+  stopTimer();
+  timer = setInterval(() => setIndex(index + 1), INTERVAL_MS);
+}
+
+function stopTimer(){
+  if (timer) clearInterval(timer);
+  timer = null;
+}
+
+function renderCarousel(){
+  track.innerHTML = '';
+  dotsEl.innerHTML = '';
+
+  slides.forEach((s, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+
+    // --- STEP 2: create an <img> node so we can detect dimensions onload ---
+    const img = document.createElement('img');
+    img.src = s.image;
+    img.alt = s.caption || 'Gallery image';
+    img.loading = 'lazy';
+
+    img.onload = () => {
+      const portrait = img.naturalHeight > img.naturalWidth;
+      slide.classList.toggle('is-portrait', portrait);
+      slide.classList.toggle('is-landscape', !portrait);
+    };
+    img.onerror = () => {
+      slide.classList.add('is-landscape'); // safe default
+    };
+
+    // Caption overlay
+    const caption = document.createElement('div');
+    caption.className = 'caption';
+
+    const capText = document.createElement('div');
+    capText.className = 'cap-text';
+    capText.textContent = s.caption || '';
+
+    caption.appendChild(capText);
+
+    if (s.link) {
+      const hint = document.createElement('div');
+      hint.className = 'cap-hint';
+      hint.textContent = 'Tap to open';
+      caption.appendChild(hint);
+
+      const a = document.createElement('a');
+      a.href = s.link;
+      a.target = '_blank';
+      a.rel = 'noopener';
+
+      a.appendChild(img);
+      a.appendChild(caption);
+      slide.appendChild(a);
+    } else {
+      slide.appendChild(img);
+      slide.appendChild(caption);
+    }
+
+    track.appendChild(slide);
+
+    // Dot
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'dot';
+    dot.setAttribute('aria-label', `Go to slide ${i+1}`);
+    dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+    dot.onclick = () => setIndex(i, true);
+    dotsEl.appendChild(dot);
+  });
+
+  setIndex(0);
+  restartTimer();
+}
+
+// Buttons
+prevBtn.addEventListener('click', () => setIndex(index - 1, true));
+nextBtn.addEventListener('click', () => setIndex(index + 1, true));
+
+// Pause on hover (desktop)
+viewport.addEventListener('mouseenter', stopTimer);
+viewport.addEventListener('mouseleave', restartTimer);
+
+// Simple swipe support (mobile)
+let startX = null;
+viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; stopTimer(); }, {passive:true});
+viewport.addEventListener('touchend', (e) => {
+  if (startX == null) return restartTimer();
+  const endX = e.changedTouches[0].clientX;
+  const dx = endX - startX;
+  if (Math.abs(dx) > 40) setIndex(index + (dx < 0 ? 1 : -1), true);
+  startX = null;
+  restartTimer();
+}, {passive:true});
+
+// Load from JSON
+fetch('gallery.json', {cache:'no-store'})
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(data => {
+    slides = Array.isArray(data.slides) ? data.slides : [];
+    if (data.title) titleEl.textContent = data.title;
+    if (!slides.length) {
+      track.innerHTML = '<div class="muted" style="padding:16px">No gallery slides found.</div>';
+      stopTimer();
+      return;
+    }
+    renderCarousel();
+  })
+  .catch(() => {
+    track.innerHTML = '<div class="muted" style="padding:16px">Couldn’t load <code>gallery.json</code>.</div>';
+    stopTimer();
+  });
+
+
   </script>
 </body>
 </html>
