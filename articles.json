@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "title": "Launcher Ops featured on Example Site",
+      "url": "https://example.com/article",
+      "description": "A quick write-up covering Launcher Ops and why it’s useful."
+    },
+    {
+      "title": "Demo video mention (YouTube)",
+      "url": "https://www.youtube.com/watch?v=XXXX",
+      "description": "Timestamped segment showing my launcher work."
+    }
+  ]
+}
