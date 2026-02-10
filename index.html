@@ -111,6 +111,18 @@
     @media (max-width:960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:640px){.grid{grid-template-columns:1fr}}
 
+    /* Badge chips on cards */
+    .badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
+
+    .badge{
+      font-size:12px; padding:4px 8px; border-radius:999px;
+      border:1px solid var(--border);
+      background:var(--chip);
+      color:var(--card-text);
+      letter-spacing:.2px; white-space:nowrap;
+    }
+
+        /* Item cards */
     .card{
       background:var(--card);
       border-radius:20px;
@@ -567,31 +579,39 @@
     const truthy = v => v && v !== 'null' && String(v).trim() !== '';
     const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
-    function normalize(item){
-      const name = item.label || 'Untitled';
-      const description = item.description || '';
-      const image = truthy(item.screenshot) ? item.screenshot : '';
-      const url = truthy(item.url) ? item.url : '';
+function normalize(item){
+  const name = item.label || 'Untitled';
+  const description = item.description || '';
+  const image = truthy(item.screenshot) ? item.screenshot : '';
+  const url = truthy(item.url) ? item.url : '';
 
-      // downloads support (optional)
-      let downloads = [];
-      const raw = item.downloads || item.links || item.urls || item.files || item.download;
-      if (raw) {
-        if (Array.isArray(raw)){
-          downloads = raw.map(d => {
-            if (typeof d === 'string') return { label: 'Download', url: d };
-            return {
-              label: d.label || d.name || d.title || d.file || 'Download',
-              url: d.url || d.href || d.link || d.file || ''
-            };
-          }).filter(x => truthy(x.url));
-        } else if (typeof raw === 'string' && truthy(raw)) {
-          downloads = [{ label: 'Download', url: raw }];
-        }
-      }
+  const badges = Array.isArray(item.badges) ? item.badges.slice(0) : [];
 
-      return { name, description, image, url, downloads };
+  // downloads support (optional)
+  let downloads = [];
+  const raw = item.downloads || item.links || item.urls || item.files || item.download;
+  if (raw) {
+    if (Array.isArray(raw)){
+      downloads = raw.map(d => {
+        if (typeof d === 'string') return { label: 'Download', url: d };
+        return {
+          label: d.label || d.name || d.title || d.file || 'Download',
+          url: d.url || d.href || d.link || d.file || ''
+        };
+      }).filter(x => truthy(x.url));
+    } else if (typeof raw === 'string' && truthy(raw)) {
+      downloads = [{ label: 'Download', url: raw }];
     }
+  }
+
+  return { name, description, image, url, badges, downloads };
+}
+
+function badgeRow(badges){
+  if (!badges || !badges.length) return '';
+  const key = (t)=> String(t).toLowerCase().replace(/\+/g,'plus').replace(/[^a-z0-9]+/g,'-');
+  return `<div class="badges">${badges.map(b=>`<span class="badge" data-k="${key(b)}">${b}</span>`).join('')}</div>`;
+}
 
     function ctaLabel(u){
       if (!u) return '';
@@ -617,6 +637,7 @@
 
       li.innerHTML = `
         <h3>${p.name}</h3>
+        ${badgeRow(p.badges)}
         ${p.description ? `<p>${p.description}</p>` : ''}
         ${p.image ? `<img loading="lazy" alt="${p.name} screenshot" src="${p.image}">` : ''}
         <div class="links" style="margin-top:12px">
