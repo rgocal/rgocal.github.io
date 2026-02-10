@@ -1,5 +1,5 @@
 {
-  "Published Applications": [
+  "Published Apps": [
     {
       "label": "Launcher Ops 2",
       "downloads": [{"label":"Launcher Ops 2","url":"https://play.google.com/store/apps/details?id=com.flea.gsd.flea"}, {"label":"Launcher Ops 1","url":"https://www.dropbox.com/scl/fi/hlr1tv21d8n8k33aw04fi/launcher_ops_og.apk?rlkey=16u2lktha25pqob8zxvyyelzb&st=4njqndyk&dl=0"}],
@@ -24,14 +24,14 @@
     },
     {
       "label": "Truesight",
-      "description": "Inspired by Steam Charts, Truesight is a steam companion app built for Android that provides gamers with trending information from steam such as live steam service status, online count, game peak player counts, data matrixs, trending game information,news and top sellers. You can also create virtual rigs for compatibility comparison data and chart your own player counts matrixs. This app also supports backup and restore functionality. ",
+      "description": "Inspired by Steam Charts, Truesight is a steam companion app built for Android that provides gamers with trending information from steam such as live steam service status, online count, game peak player counts, data matrixs, trending game information,news and top sellers. You can also create virtual rigs for compatibility comparison data and chart your own player counts matrixs. My first app using a background workflow and database.",
       "screenshot": "https://play-lh.googleusercontent.com/V6tNcsZTxVb_NNbtvqjRSgSV1Eh8-hxG0bawuZ9CYQkcM-TBSZRpvA8DBBYRxzuanCZldZnQUUGIzGbKlgAtcQ=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.truesight",
       "badges": ["Steam Community API", "Steam", "Database", "Monet"]
     }, 
      {
       "label": "Carpentar",
-      "description": "An Icon Pack Manager that allows you to benchmark the compatibility of launcher apps, extract icons and resources as well as craft your own icons! This app is built with ONE UI.",
+      "description": "An Icon Pack Manager that allows you to benchmark the compatibility of launcher apps, extract icons and resources as well as craft your own icons!",
       "screenshot": "https://play-lh.googleusercontent.com/Ht9GsxkFnLUDg4WoJ-pSb7aotWOg_QsJvA7Ax_rprQswt1vheLFpZKk78oQI2rR91A=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.carpenter",
       "badges": ["One UI", "Icon Packs"]
@@ -64,7 +64,25 @@
       "url": "https://github.com/rgocal/Switchbar"
     }
   ],
-  "Experimental or Deprecated": [
+  "Upcoming or Unpublished": [
+    {
+      "label": "Bionx Dashboard",
+      "description": "My first app that controled tweaks and settings to my custom rom, Bionx.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "HTC Flip",
+      "description": "My first HTC Sense exclusive app that managed launcher apps for the HTC Series devices. Later, it was taken down for attempting of impersonating HTC...According to Google Police.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "Fellow",
+      "description": "An attempt to create an html frienldy facebook lite app. It was taken down when facebook lite launched.",
+      "screenshot": "null",
+      "url": "null"
+    },
     {
       "label": "Sapphire Launcher",
       "description": "My first custom launcher based on AOSP by Slim Roms. It was launched in 2015 and later unpublished to be upgraded with a pixal launcher clone.",
@@ -73,19 +91,31 @@
     },
     {
       "label": "Sapphyx Launcher",
-      "description": "Launched in 2017, Sapphyx Launcher was my first launched that was based on Google Pixel Launcher port to the public and offered an array of cool new features and customization. This project had taught me that it was becoming really difficult to based projects on another source and we should start look at build from the ground up.",
+      "description": "Launched in 2017, Sapphyx Launcher was my first launcher that was based on Google Pixel Launcher port to the public and offered an array of cool new features and customization.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "Drywall - Wallpaper Mananger",
+      "description": "My attempt at a replicating the google wallpapers app from my perspective. Decided that Google did it better.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "Mystery Shopping List App",
+      "description": "Taking on a project for the girlfriend. Coming mid 2026",
       "screenshot": "null",
       "url": "null"
     },
     {
       "label": "GCA Launcher",
-      "description": "Gocal's Custom Android Launcher. Launched in late 2018, retired in 2021 for deprecation reasons. Currently in the works to make a full return and revamped for the newest sdk. possible 2026 return.",
+      "description": "Gocal's Custom Android Launcher. Launched in late 2018, retired in 2021 for deprecation reasons. Scheduled to make a full return towards the end of 2026-2027.",
       "screenshot": "null",
       "url": "null"
     },
      {
       "label": "Drosera Launcher",
-      "description": "My own take on a custom android launcher designed for handhelds and personal desktop environments. This project has been active for the last 2 years and unfortunately with public previews, the feedsback has fallen short. We will continue to tackly this project until its done right.",
+      "description": "My own take on a gaming android launcher designed for handhelds and android tv boxes. Coming mid-late 2026",
       "screenshot": "null",
       "url": "null"
     }
