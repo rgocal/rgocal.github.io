@@ -5,12 +5,14 @@
   <title>Ryan Gocal — GocalSD</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Android Products by GocalSD. Published Products, Experiments, and libraries." />
+
   <!-- Social cards -->
   <meta property="og:title" content="Ryan Gocal — GocalSD" />
   <meta property="og:description" content="Android developer — GocalSD. Projects, experiments, and code." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <style>
     :root{
       --bg:#0b1220;
@@ -35,15 +37,20 @@
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,'Helvetica Neue',Arial}
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:24px}
+
     header.site{
-      position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--bg) 0%,var(--header-fade) 80%,rgba(0,0,0,0) 100%);
+      position:sticky;top:0;z-index:50;
+      background:linear-gradient(180deg,var(--bg) 0%,var(--header-fade) 80%,rgba(0,0,0,0) 100%);
       backdrop-filter:saturate(140%) blur(8px)
     }
     .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0}
     .nav a.brand{font-weight:700;letter-spacing:.5px}
-    .nav .actions{display:flex;gap:10px;align-items:center}
+    .nav .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
     .btn{
-      border:1px solid var(--action-border);padding:8px 12px;border-radius:999px;background:var(--action-btn-bg);color:var(--text);
+      border:1px solid var(--action-border);
+      padding:8px 12px;border-radius:999px;
+      background:var(--action-btn-bg);color:var(--text);
       transition:transform .15s ease, border-color .2s ease, box-shadow .2s ease, background-color .12s ease
     }
     .btn:hover{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring);background:var(--action-btn-hover-bg)}
@@ -51,24 +58,32 @@
 
     /* Hero */
     .hero{
-      display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin-top:36px;margin-bottom:28px;
+      display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;
+      margin-top:36px;margin-bottom:28px;
       border-radius:calc(var(--radius) + 8px);
-      padding:32px; background:linear-gradient(145deg,var(--bg-soft) 0%, var(--card) 50%, var(--bg) 100%);
-      outline:1px solid rgba(0,0,0,0.06); box-shadow: var(--shadow)
+      padding:32px;
+      background:linear-gradient(145deg,var(--bg-soft) 0%, var(--card) 50%, var(--bg) 100%);
+      outline:1px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow)
     }
     .kicker{color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
     h1{font-size:40px;line-height:1.15;margin:0 0 10px}
     .subtitle{color:var(--subtitle);margin:0 0 18px}
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+
     .hero-media{
-      position:relative;aspect-ratio:1/1.05;border-radius:24px;padding:20px;background:radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.25) 0%, rgba(47,122,247,0) 60%), linear-gradient(180deg,var(--bg-soft),var(--card));
-      outline:1px solid var(--border); box-shadow: var(--shadow)
+      position:relative;aspect-ratio:1/1.05;border-radius:24px;padding:20px;
+      background:radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.25) 0%, rgba(47,122,247,0) 60%),
+                 linear-gradient(180deg,var(--bg-soft),var(--card));
+      outline:1px solid var(--border);
+      box-shadow: var(--shadow)
     }
     .hero-media img{
       width:100%;height:100%;object-fit:cover;border-radius:18px;display:block;
       border:1px solid rgba(255,255,255,.1); transform:translateZ(0);
     }
-    .ring{ position:absolute; inset:-14px; border-radius:28px; pointer-events:none;
+    .ring{
+      position:absolute; inset:-14px; border-radius:28px; pointer-events:none;
       background: conic-gradient(from 0deg, transparent 0 75%, var(--ring));
       filter:blur(18px); opacity:.55; animation:spin 10s linear infinite
     }
@@ -82,43 +97,99 @@
     /* Projects */
     .filters{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 20px}
     .chip{
-      background:var(--chip);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:14px;cursor:pointer;
+      background:var(--chip);
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:14px;
+      cursor:pointer;
       transition:transform .1s ease, border-color .2s ease, box-shadow .2s ease
     }
-
     .chip[aria-pressed="true"]{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
+
     .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
     @media (max-width:960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:640px){.grid{grid-template-columns:1fr}}
-    .card{
-      background:var(--card);border-radius:20px;padding:16px;border:1px solid var(--border);
-      display:flex;flex-direction:column;gap:10px;transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease
-    }
 
+    .card{
+      background:var(--card);
+      border-radius:20px;
+      padding:16px;
+      border:1px solid var(--border);
+      display:flex;flex-direction:column;gap:10px;
+      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease
+    }
     .card:hover{transform:translateY(-2px); border-color:var(--ring); box-shadow:0 12px 30px rgba(10,30,70,.35)}
     .card h3{margin:0;font-size:18px}
     .card p{margin:0;color:var(--card-text)}
-    .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-    .tag{font-size:12px;padding:4px 8px;border-radius:999px;border:1px solid var(--border);background:var(--chip);color:var(--card-text)}
     .card .links{margin-top:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+    /* Clamp long descriptions so cards are even height-ish */
+    .card p{
+      display:-webkit-box;
+      -webkit-line-clamp:6;
+      line-clamp:6;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
+
+    /* Tame screenshots: 16:9, cropped nicely */
+    .card img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      border-radius:12px;
+      border:1px solid var(--border);
+      margin-top:6px;
+    }
 
     /* Downloads dropdown (uses native details for accessibility) */
     details.downloads{position:relative}
     details.downloads summary{list-style:none;cursor:pointer}
     details.downloads summary::-webkit-details-marker{display:none}
-    details.downloads .menu{display:none;position:absolute;right:0;top:calc(100% + 8px);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-width:170px;z-index:40}
+    details.downloads .menu{
+      display:none;
+      position:absolute;right:0;top:calc(100% + 8px);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:8px;
+      box-shadow:var(--shadow);
+      flex-direction:column;gap:6px;min-width:170px;z-index:40
+    }
     details.downloads[open] .menu{display:flex}
-    details.downloads .menu a{display:block;padding:6px 8px;border-radius:8px;color:var(--card-text);text-decoration:none;border:1px solid transparent}
+    details.downloads .menu a{
+      display:block;padding:6px 8px;border-radius:8px;
+      color:var(--card-text);text-decoration:none;border:1px solid transparent
+    }
     details.downloads .menu a:hover{background:var(--bg-soft);border-color:var(--ring)}
 
-    /* Resume dropdown in header */
-    details.resume{position:relative}
-    details.resume summary{list-style:none;cursor:pointer}
-    details.resume summary::-webkit-details-marker{display:none}
-    details.resume .menu{display:none;position:absolute;right:0;top:calc(100% + 8px);background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px;min-width:220px;z-index:60}
-    details.resume[open] .menu{display:flex}
-    details.resume .menu a{display:block;padding:8px 10px;border-radius:8px;color:var(--card-text);text-decoration:none;border:1px solid transparent}
-    details.resume .menu a:hover{background:var(--bg-soft);border-color:var(--ring)}
+    /* Resume/Articles dropdown in header */
+    details.menuDrop{position:relative}
+    details.menuDrop summary{list-style:none;cursor:pointer}
+    details.menuDrop summary::-webkit-details-marker{display:none}
+    details.menuDrop .menu{
+      display:none;
+      position:absolute;right:0;top:calc(100% + 8px);
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:8px;
+      box-shadow:var(--shadow);
+      display:flex;flex-direction:column;gap:6px;
+      min-width:260px;
+      z-index:60
+    }
+    details.menuDrop[open] .menu{display:flex}
+    details.menuDrop .menu a{
+      display:block;
+      padding:8px 10px;
+      border-radius:10px;
+      color:var(--card-text);
+      text-decoration:none;
+      border:1px solid transparent
+    }
+    details.menuDrop .menu a:hover{background:var(--bg-soft);border-color:var(--ring)}
 
     /* PDF modal */
     .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:100}
@@ -127,315 +198,234 @@
     .modal-close{position:absolute;top:8px;right:8px;background:transparent;border:0;color:var(--card-text);font-size:22px;padding:6px;cursor:pointer}
     #pdfViewer{width:100%;height:100%;border:0}
 
+    /* Blog cards */
+    #blog .meta{ color:var(--muted); font-size:12px; margin-top:4px; }
+
     /* Gallery / Carousel */
-.carousel{
-  border-radius:calc(var(--radius) + 10px);
-  overflow:hidden;
-  outline:1px solid rgba(255,255,255,.08);
-  background:linear-gradient(180deg,#0b1428,#0c1730);
-  box-shadow: var(--shadow);
-}
-
-.carousel-top{
-  display:flex;align-items:end;justify-content:space-between;gap:12px;
-  margin:0 0 12px;
-}
-.carousel-top .section-title{margin:0}
-.carousel-top .muted{margin:0}
-
-.carousel-viewport{
-  position:relative;
-  width:100%;
-  aspect-ratio: 16/9;
-  background: radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.18) 0%, rgba(47,122,247,0) 60%);
-}
-
-.carousel-track{
-  height:100%;
-  display:flex;
-  transition: transform 500ms ease;
-  will-change: transform;
-}
-
-/* Default: cover crop */
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-}
-
-/* Low-res handling: don't stretch; keep sharp */
-.slide.is-lowres img{
-  object-fit:contain;
-  background:
-    radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.16) 0%, rgba(47,122,247,0) 60%),
-    linear-gradient(180deg,#0b1428,#0c1730);
-  padding:18px;                 /* gives breathing room */
-  border-radius:18px;
-}
-
-/* Optional little badge */
-.lowres-badge{
-  position:absolute;
-  top:14px; right:14px;
-  font-size:12px;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(12, 25, 51, .55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: rgba(255,255,255,.85);
-}
-
-.slide a{display:block;height:100%}
-
-.slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-}
-
-/* If image is portrait, bias crop upward so heads/titles stay visible */
-.slide.is-portrait img{
-  object-position: 50% 25%;
-}
-
-/* If image is super wide, slight downward bias can feel better */
-.slide.is-landscape img{
-  object-position: 50% 50%;
-}
-
-/* Bottom caption glass banner */
-.caption{
-  position:absolute;
-  left:14px; right:14px; bottom:14px;
-  padding:12px 14px;
-  border-radius:14px;
-  color:var(--text);
-  background: rgba(10, 16, 28, .52);
-  border:1px solid rgba(255,255,255,.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,.25);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-}
-.caption .cap-text{
-  font-weight:650;
-  letter-spacing:.2px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-.caption .cap-hint{
-  color:rgba(255,255,255,.72);
-  font-size:12px;
-  flex:0 0 auto;
-}
-
-/* Controls */
-.carousel-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:44px;height:44px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.10);
-  background: rgba(12, 25, 51, .55);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color:var(--text);
-  display:grid;place-items:center;
-  cursor:pointer;
-  transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
-}
-.carousel-btn:hover{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
-.carousel-btn:active{transform:translateY(-50%) scale(.98)}
-.carousel-btn.prev{left:14px}
-.carousel-btn.next{right:14px}
-
-.dots{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  bottom:14px;
-  display:flex;
-  gap:8px;
-  padding:8px 10px;
-  border-radius:999px;
-  background: rgba(12, 25, 51, .45);
-  border:1px solid rgba(255,255,255,.10);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.dot{
-  width:10px;height:10px;border-radius:999px;
-  border:1px solid rgba(255,255,255,.35);
-  opacity:.7;
-  cursor:pointer;
-}
-.dot[aria-current="true"]{
-  opacity:1;
-  background: rgba(255,255,255,.85);
-  border-color: rgba(255,255,255,.85);
-}
-
-/* Articles dropdown spacing when descriptions exist */
-/* Articles menu: max height ~ 5 items then scroll */
-.articles-menu{
-  max-height: 340px;           /* tweak if your row height changes */
-  overflow:auto;
-  padding:6px;
-}
-.articles-item{
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  padding:10px 10px;
-  border-radius:10px;
-  border:1px solid transparent;
-}
-.articles-item:hover{
-  background:var(--bg-soft);
-  border-color:var(--ring);
-}
-.articles-text{flex:1; min-width:0;} /* min-width:0 enables ellipsis */
-.articles-title{
-  font-weight:650;
-  line-height:1.25;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-.articles-summary{
-  margin-top:3px;
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.25;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-/* Expanded state: allow wrapping */
-.articles-item.expanded .articles-title,
-.articles-item.expanded .articles-summary{
-  white-space:normal;
-  overflow:visible;
-  text-overflow:clip;
-}
-
-/* Expand button */
-.articles-expand{
-  flex:0 0 auto;
-  width:34px;height:34px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  background:transparent;
-  color:var(--text);
-  display:grid;
-  place-items:center;
-  cursor:pointer;
-  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
-}
-.articles-expand:hover{
-  border-color:var(--ring);
-  box-shadow:0 0 0 6px var(--ring);
-}
-.articles-expand:active{transform:scale(.98)}
-
-/* Clamp long descriptions so cards are even height-ish */
-.card p{
-  display:-webkit-box;
-  -webkit-line-clamp:6;
-  line-clamp:6;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
-
-/* Tame screenshots: 16:9, cropped nicely */
-.card img{
-  width:100%;
-  aspect-ratio:16/9;
-  object-fit:cover;
-  border-radius:12px;
-  border:1px solid var(--border);
-  margin-top:6px;
-}
-
-/* Blog cards */
-#blog .card img{
-  width:100%;
-  aspect-ratio:16/9;
-  object-fit:cover;
-  border-radius:12px;
-  border:1px solid var(--border);
-}
-#blog .meta{ color:var(--muted); font-size:12px; margin-top:4px; }
-
-    /* Section headers inside the projects area */
-    #projects h3.muted{ margin:16px 0 10px; }
-
-    /* Badge chips on cards */
-    .badges{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 8px}
-    
-    .badge{
-      font-size:12px; padding:4px 8px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.10); background:var(--chip); color:var(--card-text);
-      letter-spacing:.2px; white-space:nowrap
+    .carousel{
+      border-radius:calc(var(--radius) + 10px);
+      overflow:hidden;
+      outline:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg,#0b1428,#0c1730);
+      box-shadow: var(--shadow);
     }
-    /* Quick color accents by badge text */
-    .badge[data-k=preview]{background:#1f1335;border-color:#a884ff;color:#e0d4ff}
-    .badge[data-k=one-ui]{background:#0d1f2e;border-color:#4fb1ff;color:#cfeaff}
-    .badge[data-k="android-13+"]{background:#112b1e;border-color:#40d19a;color:#c9ffe9}
-    .badge[data-k=deprecated],
-    .badge[data-k=experimental]{background:#2a1717;border-color:#ff6b6b;color:#ffdede}
+    .carousel-top{
+      display:flex;align-items:end;justify-content:space-between;gap:12px;
+      margin:0 0 12px;
+    }
+    .carousel-top .section-title{margin:0}
+    .carousel-top .muted{margin:0}
 
-    /* Footer */
+    .carousel-viewport{
+      position:relative;
+      width:100%;
+      aspect-ratio: 16/9;
+      background: radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.18) 0%, rgba(47,122,247,0) 60%);
+    }
+    .carousel-track{
+      height:100%;
+      display:flex;
+      transition: transform 500ms ease;
+      will-change: transform;
+    }
+    .slide{
+      min-width:100%;
+      height:100%;
+      position:relative;
+      user-select:none;
+    }
+    .slide a{display:block;height:100%}
+
+    /* Default: cover crop */
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      display:block;
+    }
+
+    /* Low-res handling: don't stretch; keep sharp */
+    .slide.is-lowres img{
+      object-fit:contain;
+      background:
+        radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.16) 0%, rgba(47,122,247,0) 60%),
+        linear-gradient(180deg,#0b1428,#0c1730);
+      padding:18px;
+      border-radius:18px;
+    }
+
+    /* Optional little badge */
+    .lowres-badge{
+      position:absolute;
+      top:14px; right:14px;
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(12, 25, 51, .55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: rgba(255,255,255,.85);
+      pointer-events:none;
+    }
+
+    /* Portrait / landscape crop bias */
+    .slide.is-portrait img{ object-position: 50% 25%; }
+    .slide.is-landscape img{ object-position: 50% 50%; }
+
+    /* Bottom caption glass banner */
+    .caption{
+      position:absolute;
+      left:14px; right:14px; bottom:14px;
+      padding:12px 14px;
+      border-radius:14px;
+      color:var(--text);
+      background: rgba(10, 16, 28, .52);
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      pointer-events:none; /* so slide clicks still work */
+    }
+    .caption .cap-text{
+      font-weight:650;
+      letter-spacing:.2px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .caption .cap-hint{
+      color:rgba(255,255,255,.72);
+      font-size:12px;
+      flex:0 0 auto;
+    }
+
+    /* Controls */
+    .carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;height:44px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(12, 25, 51, .55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color:var(--text);
+      display:grid;place-items:center;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+      z-index:5;
+    }
+    .carousel-btn:hover{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
+    .carousel-btn:active{transform:translateY(-50%) scale(.98)}
+    .carousel-btn.prev{left:14px}
+    .carousel-btn.next{right:14px}
+
+    .dots{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:14px;
+      display:flex;
+      gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      background: rgba(12, 25, 51, .45);
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index:5;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.35);
+      opacity:.7;
+      cursor:pointer;
+      background:transparent;
+    }
+    .dot[aria-current="true"]{
+      opacity:1;
+      background: rgba(255,255,255,.85);
+      border-color: rgba(255,255,255,.85);
+    }
+
+    /* Articles menu: max height ~ 5 items then scroll */
+    .articles-menu{ max-height: 340px; overflow:auto; padding:6px; }
+    .articles-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
+      border-radius:10px;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+    .articles-item:hover{ background:var(--bg-soft); border-color:var(--ring); }
+    .articles-text{ flex:1; min-width:0; }
+    .articles-title{
+      font-weight:650; line-height:1.25;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .articles-summary{
+      margin-top:3px; color:var(--muted);
+      font-size:12px; line-height:1.25;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .articles-item.expanded .articles-title,
+    .articles-item.expanded .articles-summary{
+      white-space:normal; overflow:visible; text-overflow:clip;
+    }
+    .articles-expand{
+      flex:0 0 auto;
+      width:34px;height:34px;border-radius:999px;
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--text);
+      display:grid;place-items:center;
+      cursor:pointer;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+    }
+    .articles-expand:hover{ border-color:var(--ring); box-shadow:0 0 0 6px var(--ring); }
+    .articles-expand:active{ transform:scale(.98); }
+
     footer{margin:60px 0 20px;color:var(--muted);text-align:center}
   </style>
 </head>
+
 <body>
   <header class="site">
     <div class="container nav">
       <a class="brand" href="#top">GocalSD</a>
-      <nav class="actions">
-                
-        <button class="btn toggle" id="themeBtn" aria-label="Toggle dark mode">Theme</button>
-        
-        <a class="btn" href="#projects">Projects</a>
 
+      <nav class="actions">
+        <button class="btn toggle" id="themeBtn" aria-label="Toggle theme">Theme</button>
+        <a class="btn" href="#projects">Projects</a>
         <a class="btn" href="#blog">Blog</a>
 
-        <details class="resume" id="resumeControl">
+        <details class="menuDrop" id="resumeControl">
           <summary class="btn" aria-haspopup="true" aria-expanded="false">Resume</summary>
           <div class="menu resume-menu" role="menu" aria-label="Resume documents"></div>
         </details>
 
-        <details class="resume" id="articlesControl">
+        <details class="menuDrop" id="articlesControl">
           <summary class="btn" aria-haspopup="true" aria-expanded="false">Articles</summary>
           <div class="menu articles-menu" role="menu" aria-label="Articles and mentions"></div>
         </details>
-
       </nav>
     </div>
   </header>
 
   <main id="top" class="container">
-
     <!-- HERO -->
     <section class="hero" aria-label="Intro">
       <div>
         <div class="kicker">Android • Java • Libraries • Data analysis • Android Launcher Development</div>
         <h1>Ryan Gocal <span style="opacity:.65">—</span> <span style="color:#9cc2ff">GocalSD</span></h1>
         <p class="subtitle">Passionate Android Developer and Tech Enthusiast based in Erie, PA</p>
-        
+
         <div class="hero-actions">
           <a class="btn" href="mailto:rgocal09@gmail.com">Contact</a>
           <a class="btn" href="https://github.com/rgocal" target="_blank" rel="noopener">GitHub</a>
@@ -444,67 +434,71 @@
           <a class="btn" href="https://www.facebook.com/GocalSD" target="_blank" rel="noopener">GocalSD Facebook</a>
           <a class="btn" href="https://www.tiktok.com/@dracos_aura" target="_blank" rel="noopener">TikTok</a>
         </div>
-
       </div>
+
       <div class="hero-media" aria-hidden="true">
         <div class="ring"></div>
         <picture>
           <source srcset="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/avatar_optimized_small.webp" type="image/webp">
-          <img src="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/avatar.png" alt="Portrait of Ryan Gocal" loading="lazy" width="1200" height="1200">
+          <img src="https://raw.githubusercontent.com/rgocal/rgocal.github.io/main/avatar.png"
+               alt="Portrait of Ryan Gocal" loading="lazy" width="1200" height="1200">
         </picture>
       </div>
     </section>
 
-        <!-- GALLERY -->
-<section id="gallery" aria-label="Highlights">
-  <div class="carousel-top">
-    <h2 class="section-title" id="gallery-title">Highlights</h2>
-    <p class="muted" id="gallery-subtitle">A gallery of my most notable work.</p>
-  </div>
+    <!-- GALLERY -->
+    <section id="gallery" aria-label="Highlights">
+      <div class="carousel-top">
+        <h2 class="section-title" id="gallery-title">Highlights</h2>
+        <p class="muted" id="gallery-subtitle">A gallery of my most notable work.</p>
+      </div>
 
-  <div class="carousel" data-carousel>
-    <div class="carousel-viewport" id="carousel-viewport">
-      <div class="carousel-track" id="carousel-track"></div>
+      <div class="carousel" data-carousel>
+        <div class="carousel-viewport" id="carousel-viewport">
+          <div class="carousel-track" id="carousel-track"></div>
 
-      <button class="carousel-btn prev" type="button" id="carousel-prev" aria-label="Previous slide">‹</button>
-      <button class="carousel-btn next" type="button" id="carousel-next" aria-label="Next slide">›</button>
+          <button class="carousel-btn prev" type="button" id="carousel-prev" aria-label="Previous slide">‹</button>
+          <button class="carousel-btn next" type="button" id="carousel-next" aria-label="Next slide">›</button>
 
-      <div class="dots" id="carousel-dots" aria-label="Slide navigation"></div>
-    </div>
-  </div>
-</section>
-
+          <div class="dots" id="carousel-dots" aria-label="Slide navigation"></div>
+        </div>
+      </div>
+    </section>
 
     <!-- PROJECTS -->
     <section id="projects" aria-label="Projects">
       <h2 class="section-title">Projects</h2>
-      <p class="muted">A selection of projects I've worked on over the years. This is a curated list of both my published and unpublished projects. Here, you may also find archived version of certain projects that have been published but have deprecated versions available to install manually. They will be registered to Google Play.</p>
+      <p class="muted">
+        A curated list of both my published and unpublished projects.
+        You may also find archived versions of certain projects that have deprecated builds available.
+      </p>
 
       <div class="filters" id="filters"></div>
       <div id="grid" role="list"></div>
     </section>
 
-        <!-- BLOG -->
-  <section id="blog" aria-label="Blog">
-    <h2 class="section-title">Blog</h2>
-    <p class="muted">Follow me at WordPress for more!</p>
-    <div id="blog-posts" class="grid" role="list"></div>
-  </section>
+    <!-- BLOG -->
+    <section id="blog" aria-label="Blog">
+      <h2 class="section-title">Blog</h2>
+      <p class="muted">Follow me at WordPress for more!</p>
+      <div id="blog-posts" class="grid" role="list"></div>
+    </section>
 
-        <!-- VLOG -->
-  <section id="youtube">
-<h2 class="section-title">Youtube Channel</h2>
-<p class="muted">Subscribe to my channel if you wish for me to create more content. Right now, I use Youtube as a place to demo some projects and publish vidocs if the fingers are feeling to lazy for a blog. I tend to keep my followers up to date of my current projects.</p>
-<div id="youtube-videos" class="grid" role="list"></div>
-</section>
-    
+    <!-- YOUTUBE -->
+    <section id="youtube" aria-label="YouTube">
+      <h2 class="section-title">Youtube Channel</h2>
+      <p class="muted">
+        Subscribe if you want more content. I use YouTube to demo projects and share quick updates.
+      </p>
+      <div id="youtube-videos" class="grid" role="list"></div>
+    </section>
   </main>
 
   <footer class="container">
-    <div>© <span id="year"></span> GocalSD. Built with HTML/CSS/JS guided by GPT5.</div>
+    <div>© <span id="year"></span> GocalSD. Built with HTML/CSS/JS.</div>
   </footer>
 
-  <!-- PDF modal (hidden by default) -->
+  <!-- PDF modal -->
   <div id="pdfModal" class="modal" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-label="Document preview">
       <button id="pdfModalClose" class="modal-close" aria-label="Close">✕</button>
@@ -513,8 +507,12 @@
   </div>
 
   <script>
+    // ---------------------------
     // Year + theme toggle
-    const year = document.getElementById('year'); year.textContent = new Date().getFullYear();
+    // ---------------------------
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
     const themeBtn = document.getElementById('themeBtn');
     const prefersLight = window.matchMedia('(prefers-color-scheme: light)');
     const setTheme = (light) => {
@@ -524,84 +522,101 @@
       document.documentElement.style.setProperty('--muted', light ? '#4c556a' : '#a7b3cc');
       document.documentElement.style.setProperty('--card', light ? '#ffffff' : '#101a2e');
       document.documentElement.style.setProperty('--chip', light ? '#eef2ff' : '#17233d');
-      // supporting vars for lighter theme
       document.documentElement.style.setProperty('--card-text', light ? '#12202b' : '#cfe0ff');
       document.documentElement.style.setProperty('--subtitle', light ? '#2f4a6f' : '#cbd6ff');
       document.documentElement.style.setProperty('--border', light ? 'rgba(11,17,28,0.06)' : 'rgba(255,255,255,.08)');
       document.documentElement.style.setProperty('--ring', light ? 'rgba(47,122,247,.14)' : 'rgba(47,122,247,.35)');
       document.documentElement.style.setProperty('--shadow', light ? '0 6px 18px rgba(15,22,40,.06)' : '0 10px 30px rgba(0,0,0,.35)');
-      // header / actionbar tuning for light
       document.documentElement.style.setProperty('--header-fade', light ? 'rgba(255,255,255,.92)' : 'rgba(11,18,32,.92)');
       document.documentElement.style.setProperty('--action-border', light ? 'rgba(11,17,28,0.12)' : 'var(--border)');
-      document.documentElement.style.setProperty('--action-btn-bg', light ? 'transparent' : 'transparent');
-      document.documentElement.style.setProperty('--action-btn-hover-bg', light ? 'rgba(47,122,247,0.06)' : 'rgba(47,122,247,0.06)');
+      document.documentElement.style.setProperty('--action-btn-bg', 'transparent');
+      document.documentElement.style.setProperty('--action-btn-hover-bg', 'rgba(47,122,247,0.06)');
     };
+
+    // init theme
     setTheme(prefersLight.matches);
-    themeBtn.addEventListener('click', ()=> setTheme(getComputedStyle(document.documentElement).getPropertyValue('--bg') === '#0b1220' ));
 
-    // Elements
-    const elGrid   = document.getElementById('grid');   elGrid.classList.remove('grid'); // ensure wrapper isn't a grid
-    const elFilters= document.getElementById('filters');
+    // simple toggle
+    let isLight = prefersLight.matches;
+    themeBtn.addEventListener('click', () => {
+      isLight = !isLight;
+      setTheme(isLight);
+    });
 
-    // Utils
+    // ---------------------------
+    // Header menus (Resume + Articles) close each other
+    // ---------------------------
+    const resumeControl   = document.getElementById('resumeControl');
+    const articlesControl = document.getElementById('articlesControl');
+
+    function closeOtherMenus(opened){
+      [resumeControl, articlesControl].forEach(d => {
+        if (d && d !== opened) d.open = false;
+      });
+    }
+    resumeControl?.addEventListener('toggle', () => { if (resumeControl.open) closeOtherMenus(resumeControl); });
+    articlesControl?.addEventListener('toggle', () => { if (articlesControl.open) closeOtherMenus(articlesControl); });
+
+    // ---------------------------
+    // Projects
+    // ---------------------------
+    const elGrid = document.getElementById('grid');
+    const elFilters = document.getElementById('filters');
+    elGrid.classList.remove('grid'); // wrapper isn't a grid; groups are
+
     const truthy = v => v && v !== 'null' && String(v).trim() !== '';
-    const slug   = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 
-    function normalize(item, sectionName){
+    function normalize(item){
       const name = item.label || 'Untitled';
       const description = item.description || '';
       const image = truthy(item.screenshot) ? item.screenshot : '';
-      const url   = truthy(item.url) ? item.url : '';
-      let badges  = Array.isArray(item.badges) ? item.badges.slice(0) : [];
-      // normalize download links: support several possible keys and formats
+      const url = truthy(item.url) ? item.url : '';
+
+      // downloads support (optional)
       let downloads = [];
       const raw = item.downloads || item.links || item.urls || item.files || item.download;
       if (raw) {
         if (Array.isArray(raw)){
           downloads = raw.map(d => {
             if (typeof d === 'string') return { label: 'Download', url: d };
-            return { label: d.label || d.name || d.title || d.file || 'Download', url: d.url || d.href || d.link || d.file || '' };
-          }).filter(x=> truthy(x.url));
+            return {
+              label: d.label || d.name || d.title || d.file || 'Download',
+              url: d.url || d.href || d.link || d.file || ''
+            };
+          }).filter(x => truthy(x.url));
         } else if (typeof raw === 'string' && truthy(raw)) {
           downloads = [{ label: 'Download', url: raw }];
         }
       }
-      if (badgeMap[name]) badges = [...new Set([...badges, ...badgeMap[name]])];
-      if (/Experimental|Deprecated/i.test(sectionName)) badges = [...new Set([...badges, "Deprecated"])];
-      return { name, description, image, url, badges, downloads };
-    }
 
-    function badgeRow(badges){
-      if (!badges || !badges.length) return '';
-      const key = (t)=> t.toLowerCase().replace(/\+/g,'plus').replace(/[^a-z0-9]+/g,'-');
-      return `<div class="badges">${badges.map(b=>`<span class="badge" data-k="${key(b)}">${b}</span>`).join('')}</div>`;
+      return { name, description, image, url, downloads };
     }
 
     function ctaLabel(u){
       if (!u) return '';
       if (u.includes('play.google.com')) return 'View on Google Play';
-      if (u.includes('github.com'))      return 'View on GitHub';
+      if (u.includes('github.com')) return 'View on GitHub';
       return 'Learn more';
     }
 
     function card(p){
       const li = document.createElement('article');
-      li.className = 'card'; li.setAttribute('role','listitem');
-      // build downloads UI
+      li.className = 'card';
+      li.setAttribute('role','listitem');
+
       let downloadsHtml = '';
       if (p.downloads && p.downloads.length){
         if (p.downloads.length === 1){
-          const d = p.downloads[0];
-          downloadsHtml = `<a class="btn" href="${d.url}" target="_blank" rel="noopener">Downloads</a>`;
+          downloadsHtml = `<a class="btn" href="${p.downloads[0].url}" target="_blank" rel="noopener">Downloads</a>`;
         } else {
-          const items = p.downloads.map(d=>`<a class="btn" href="${d.url}" target="_blank" rel="noopener">${d.label}</a>`).join('');
+          const items = p.downloads.map(d => `<a class="btn" href="${d.url}" target="_blank" rel="noopener">${d.label}</a>`).join('');
           downloadsHtml = `<details class="downloads"><summary class="btn">Downloads</summary><div class="menu">${items}</div></details>`;
         }
       }
 
       li.innerHTML = `
         <h3>${p.name}</h3>
-        ${badgeRow(p.badges)}
         ${p.description ? `<p>${p.description}</p>` : ''}
         ${p.image ? `<img loading="lazy" alt="${p.name} screenshot" src="${p.image}">` : ''}
         <div class="links" style="margin-top:12px">
@@ -612,9 +627,8 @@
       return li;
     }
 
-    // State
     let sections = []; // [{ name, key, items: [...] }]
-    let active   = 'All';
+    let active = 'All';
 
     function renderFilterChips(){
       elFilters.innerHTML = '';
@@ -622,7 +636,7 @@
         const b = document.createElement('button');
         b.className = 'chip';
         b.textContent = label;
-        b.setAttribute('aria-pressed', active===key);
+        b.setAttribute('aria-pressed', active===key ? 'true' : 'false');
         b.onclick = () => { active = (active===key ? 'All' : key); render(); };
         return b;
       };
@@ -632,20 +646,20 @@
 
     function render(){
       // update chip pressed state
-      [...elFilters.children].forEach(ch => ch.setAttribute(
-        'aria-pressed',
-        (active==='All' && ch.textContent==='All') || ch.textContent === (sections.find(s => s.key===active)?.name || '')
-      ));
+      [...elFilters.children].forEach(ch => {
+        const want = (active === 'All') ? 'All' : (sections.find(s => s.key === active)?.name || '');
+        ch.setAttribute('aria-pressed', ch.textContent === want ? 'true' : 'false');
+      });
 
       elGrid.innerHTML = '';
 
       if (active === 'All'){
-        // Grouped view
-        sections.forEach(s=>{
+        sections.forEach(s => {
           if (!s.items.length) return;
+
           const h = document.createElement('h3');
           h.className = 'muted';
-          h.id = s.key; // anchor target
+          h.id = s.key;
           h.style.margin = '10px 0 8px';
           h.textContent = s.name;
           elGrid.appendChild(h);
@@ -656,7 +670,6 @@
           elGrid.appendChild(group);
         });
       } else {
-        // Single section
         const s = sections.find(x => x.key === active);
         const group = document.createElement('div');
         group.className = 'grid';
@@ -665,458 +678,433 @@
       }
     }
 
-    // Fetch + parse your schema once
     fetch('projects.json', {cache:'no-store'})
       .then(r => r.ok ? r.json() : Promise.reject())
       .then(data => {
         const dedupe = new Set();
-        sections = Object.entries(data).map(([name, arr])=>{
+        sections = Object.entries(data).map(([name, arr]) => {
           const items = (Array.isArray(arr) ? arr : [])
-            .map(i => normalize(i, name))
+            .map(normalize)
             .filter(p => {
               const id = `${p.name}|${p.url}`;
               if (dedupe.has(id)) return false;
-              dedupe.add(id); return true;
+              dedupe.add(id);
+              return true;
             });
           return { name, key: slug(name), items };
         });
         renderFilterChips();
         render();
       })
-      .catch(()=>{
+      .catch(() => {
         elGrid.innerHTML = '<div class="muted">Couldn’t load <code>projects.json</code>.</div>';
       });
 
-// --- WORDPRESS BLOG INTEGRATION ---
-const WP_SITE = 'gocalsdb.wordpress.com';
-const blogEl  = document.getElementById('blog-posts');
+    // ---------------------------
+    // WordPress Blog integration
+    // ---------------------------
+    const WP_SITE = 'gocalsdb.wordpress.com';
+    const blogEl = document.getElementById('blog-posts');
 
-function strip(html){
-  const tmp = document.createElement('div'); tmp.innerHTML = html || '';
-  // remove scripts/styles for safety
-  [...tmp.querySelectorAll('script,style')].forEach(n=>n.remove());
-  return (tmp.textContent || tmp.innerText || '').trim();
-}
-function fmtDate(iso){
-  try {
-    const d = new Date(iso);
-    return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
-  } catch { return ''; }
-}
-function postCard(p){
-  const li = document.createElement('article');
-  li.className = 'card'; li.setAttribute('role','listitem');
-  const media = p._embedded?.['wp:featuredmedia']?.[0]?.source_url
-             || p.jetpack_featured_media_url || '';
-  const excerpt = strip(p.excerpt?.rendered || p.content?.rendered || '').slice(0, 220);
-  li.innerHTML = `
-    ${media ? `<img loading="lazy" alt="" src="${media}">` : ''}
-    <h3>${strip(p.title?.rendered)}</h3>
-    <div class="meta">${fmtDate(p.date)}${p.categories?.length ? ' • ' : ''}</div>
-    ${excerpt ? `<p>${excerpt}…</p>` : ''}
-    <div class="links"><a class="btn" href="${p.link}" target="_blank" rel="noopener">Read post</a></div>
-  `;
-  return li;
-}
+    function strip(html){
+      const tmp = document.createElement('div'); tmp.innerHTML = html || '';
+      [...tmp.querySelectorAll('script,style')].forEach(n => n.remove());
+      return (tmp.textContent || tmp.innerText || '').trim();
+    }
+    function fmtDate(iso){
+      try {
+        const d = new Date(iso);
+        return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
+      } catch { return ''; }
+    }
+    function postCard(p){
+      const li = document.createElement('article');
+      li.className = 'card';
+      li.setAttribute('role','listitem');
 
-// Try standard WP REST first; fallback to WordPress.com REST if needed
-async function loadBlog(){
-  if (!blogEl) return;
-  blogEl.innerHTML = '<div class="muted">Loading posts…</div>';
-  const std = `${WP_SITE.replace(/\/$/,'')}/wp-json/wp/v2/posts?_embed&per_page=6`;
-  const wpcom = `https://public-api.wordpress.com/wp/v2/sites/${encodeURIComponent(WP_SITE.replace(/^https?:\/\//,''))}/posts?_embed&per_page=6`;
+      const media = p._embedded?.['wp:featuredmedia']?.[0]?.source_url || p.jetpack_featured_media_url || '';
+      const excerpt = strip(p.excerpt?.rendered || p.content?.rendered || '').slice(0, 220);
 
-  async function fetchJSON(url){
-    const r = await fetch(url, { cache:'no-store' });
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
-  }
-
-  try {
-    let posts;
-    try { posts = await fetchJSON(std); }
-    catch { posts = await fetchJSON(wpcom); }
-    blogEl.innerHTML = '';
-    (posts || []).forEach(p => blogEl.appendChild(postCard(p)));
-    if (!posts?.length) blogEl.innerHTML = '<div class="muted">No posts found.</div>';
-  } catch (e){
-    blogEl.innerHTML = '<div class="muted">Couldn’t load blog posts.</div>';
-  }
-}
-loadBlog();
-
-
-const ytContainer = document.getElementById('youtube-videos');
-const PLAYLIST_ID = 'PLzwJQ-19lU6629_86Vx4LibFXMXM9GNoz';
-const RSS_URL = `https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`;
-const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
-
-
-fetch(API_URL)
-.then(r => r.json())
-.then(data => {
-if (!data.items || !data.items.length) {
-ytContainer.innerHTML = '<p class="muted">No videos found.</p>';
-return;
-}
-ytContainer.innerHTML = data.items.slice(0, 6).map(video => `
-<article class="card">
-<img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
-<h3>${video.title}</h3>
-<p class="muted">${new Date(video.pubDate).toLocaleDateString()}</p>
-<div class="links">
-<a class="btn" href="${video.link}" target="_blank">Watch</a>
-</div>
-</article>
-`).join('');
-})
-.catch(() => {
-ytContainer.innerHTML = '<p class="muted">Couldn’t load videos.</p>';
-});
-    
-// --- RESUME / PDFs ---
-const resumeMenuEl = document.querySelector('.resume-menu');
-const pdfModal = document.getElementById('pdfModal');
-const pdfViewer = document.getElementById('pdfViewer');
-const pdfModalClose = document.getElementById('pdfModalClose');
-
-function openPdf(url){
-  if (!url) return;
-  pdfViewer.src = url;
-  pdfModal.classList.add('open');
-  pdfModal.setAttribute('aria-hidden','false');
-}
-
-function closePdf(){
-  pdfModal.classList.remove('open');
-  pdfModal.setAttribute('aria-hidden','true');
-  // clear src to stop active downloads/requests
-  pdfViewer.src = '';
-}
-
-pdfModalClose?.addEventListener('click', closePdf);
-pdfModal?.addEventListener('click', (e)=>{ if (e.target === pdfModal) closePdf(); });
-document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closePdf(); });
-
-function loadResumeJSON(){
-  if (!resumeMenuEl) return;
-  fetch('resume.json', { cache: 'no-store' })
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(data => {
-      const docs = Array.isArray(data.documents) ? data.documents : [];
-      if (!docs.length) {
-        resumeMenuEl.innerHTML = '<div class="muted" style="padding:8px">No documents found.</div>';
-        return;
-      }
-      resumeMenuEl.innerHTML = docs.map(d => `<a role="menuitem" href="#" data-url="${d.url}">${d.label}</a>`).join('');
-      resumeMenuEl.querySelectorAll('a[data-url]').forEach(a => {
-        a.addEventListener('click', (ev) => {
-          ev.preventDefault();
-          const url = a.getAttribute('data-url');
-          // close details if open
-          if (resumeControl && resumeControl.open) resumeControl.open = false;
-          openPdf(url);
-        });
-      });
-    })
-    .catch(()=>{
-      resumeMenuEl.innerHTML = '<div class="muted" style="padding:8px">Couldn’t load <code>resume.json</code>.</div>';
-    });
-}
-
-loadResumeJSON();
-
-// close any other <details> when one opens (resume <-> articles)
-const resumeControl = document.getElementById('resumeControl'); // you already have this id
-function closeOtherMenus(opened){
-  [resumeControl, articlesControl].forEach(d => {
-    if (d && d !== opened) d.open = false;
-  });
-}
-
-// --- ARTICLES / MENTIONS ---
-// --- ARTICLES / MENTIONS (expand/collapse + single-line clamp) ---
-const articlesMenuEl = document.querySelector('.articles-menu');
-const articlesControl = document.getElementById('articlesControl');
-
-articlesControl?.addEventListener('toggle', () => { if (articlesControl.open) closeOtherMenus(articlesControl); });
-resumeControl?.addEventListener('toggle', () => { if (resumeControl.open) closeOtherMenus(resumeControl); });
-
-let expandedRow = null;
-
-function collapseExpanded(){
-  if (expandedRow) expandedRow.classList.remove('expanded');
-  expandedRow = null;
-}
-
-function safeText(s){ return String(s || '').replace(/</g,'&lt;'); }
-
-function loadArticlesJSON(){
-  if (!articlesMenuEl) return;
-
-  fetch('articles.json', { cache: 'no-store' })
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(data => {
-      const items = Array.isArray(data.items) ? data.items : [];
-      collapseExpanded();
-
-      if (!items.length) {
-        articlesMenuEl.innerHTML = '<div class="muted" style="padding:8px">No articles yet.</div>';
-        return;
-      }
-
-      articlesMenuEl.innerHTML = items.map((item, idx) => {
-        const title = safeText(item.title || 'Untitled');
-        const url = safeText(item.url || '');
-        const summary = safeText(item.summary || item.description || '');
-
-        return `
-          <div class="articles-item" role="menuitem" tabindex="0" data-url="${url}" data-idx="${idx}">
-            <div class="articles-text">
-              <div class="articles-title">${title}</div>
-              ${summary ? `<div class="articles-summary">${summary}</div>` : ''}
-            </div>
-            <button class="articles-expand" type="button" aria-label="Expand details" aria-expanded="false">⌄</button>
-          </div>
-        `;
-      }).join('');
-
-      // Wire events
-      articlesMenuEl.querySelectorAll('.articles-item').forEach(row => {
-        const expandBtn = row.querySelector('.articles-expand');
-        const url = row.getAttribute('data-url');
-
-        // Expand button toggles ONLY expand (no navigation)
-        expandBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-
-          const isExpanding = !row.classList.contains('expanded');
-
-          // collapse previous expanded row
-          if (expandedRow && expandedRow !== row) expandedRow.classList.remove('expanded');
-
-          row.classList.toggle('expanded', isExpanding);
-          expandedRow = isExpanding ? row : null;
-
-          expandBtn.setAttribute('aria-expanded', isExpanding ? 'true' : 'false');
-          expandBtn.textContent = isExpanding ? '⌃' : '⌄';
-        });
-
-        // Clicking the row opens link AND collapses any expanded row first
-        row.addEventListener('click', () => {
-          // If another row is expanded, collapse it
-          if (expandedRow && expandedRow !== row) collapseExpanded();
-
-          // If this row is expanded, collapse it before opening (per your request)
-          if (row.classList.contains('expanded')) {
-            row.classList.remove('expanded');
-            expandedRow = null;
-            expandBtn.setAttribute('aria-expanded', 'false');
-            expandBtn.textContent = '⌄';
-          }
-
-          if (url) window.open(url, '_blank', 'noopener');
-          if (articlesControl?.open) articlesControl.open = false;
-        });
-
-        // Keyboard support (Enter to open)
-        row.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') row.click();
-          if (e.key === 'Escape') {
-            collapseExpanded();
-            if (articlesControl?.open) articlesControl.open = false;
-          }
-        });
-      });
-    })
-    .catch(() => {
-      articlesMenuEl.innerHTML = '<div class="muted" style="padding:8px">Couldn’t load <code>articles.json</code>.</div>';
-    });
-}
-
-loadArticlesJSON();
-
-// Close articles if you click outside
-document.addEventListener('click', (e) => {
-  if (!articlesControl?.open) return;
-  const within = articlesControl.contains(e.target);
-  if (!within) {
-    collapseExpanded();
-    articlesControl.open = false;
-  }
-});
-
-// --- Carousel (JSON-driven) ---
-const track = document.getElementById('carousel-track');
-const dotsEl = document.getElementById('carousel-dots');
-const prevBtn = document.getElementById('carousel-prev');
-const nextBtn = document.getElementById('carousel-next');
-const viewport = document.getElementById('carousel-viewport');
-const titleEl = document.getElementById('gallery-title');
-
-let slides = [];
-let index = 0;
-let timer = null;
-const INTERVAL_MS = 5000;
-
-function clamp(i){
-  if (!slides.length) return 0;
-  return (i + slides.length) % slides.length;
-}
-
-function setIndex(i, user=false){
-  index = clamp(i);
-  track.style.transform = `translateX(${-index * 100}%)`;
-  [...dotsEl.children].forEach((d, n) => d.setAttribute('aria-current', n === index ? 'true' : 'false'));
-
-  if (user) restartTimer();
-}
-
-function restartTimer(){
-  stopTimer();
-  timer = setInterval(() => setIndex(index + 1), INTERVAL_MS);
-}
-
-function stopTimer(){
-  if (timer) clearInterval(timer);
-  timer = null;
-}
-
-function renderCarousel(){
-  track.innerHTML = '';
-  dotsEl.innerHTML = '';
-
-  slides.forEach((s, i) => {
-    const slide = document.createElement('div');
-    slide.className = 'slide';
-
-    // --- STEP 2: create an <img> node so we can detect dimensions onload ---
-    const img = document.createElement('img');
-    img.src = s.image;
-    img.alt = s.caption || 'Gallery image';
-    img.loading = 'lazy';
-
-    img.onload = () => {
-  // 1) portrait vs landscape crop bias
-  const portrait = img.naturalHeight > img.naturalWidth;
-  slide.classList.toggle('is-portrait', portrait);
-  slide.classList.toggle('is-landscape', !portrait);
-
-  // 2) detect low-res vs viewport display size
-  const rect = viewport.getBoundingClientRect();
-  const dpr = window.devicePixelRatio || 1;
-
-  // actual pixels the image needs to look crisp
-  const needW = Math.round(rect.width * dpr);
-  const needH = Math.round(rect.height * dpr);
-
-  const srcW = img.naturalWidth;
-  const srcH = img.naturalHeight;
-
-  // If source is significantly smaller than display, avoid stretching
-  const tooSmall = (srcW < needW * 0.85) || (srcH < needH * 0.85);
-
-  slide.classList.toggle('is-lowres', tooSmall);
-
-  // Optional badge so you can tell why a slide changed behavior
-  if (tooSmall && !slide.querySelector('.lowres-badge')) {
-    const b = document.createElement('div');
-    b.className = 'lowres-badge';
-    b.textContent = 'Low-res';
-    slide.appendChild(b);
-  } else if (!tooSmall) {
-    slide.querySelector('.lowres-badge')?.remove();
-  }
-};
-
-    img.onerror = () => {
-      slide.classList.add('is-landscape'); // safe default
-    };
-
-    // Caption overlay
-    const caption = document.createElement('div');
-    caption.className = 'caption';
-
-    const capText = document.createElement('div');
-    capText.className = 'cap-text';
-    capText.textContent = s.caption || '';
-
-    caption.appendChild(capText);
-
-    if (s.link) {
-      const hint = document.createElement('div');
-      hint.className = 'cap-hint';
-      hint.textContent = 'Tap to open';
-      caption.appendChild(hint);
-
-      const a = document.createElement('a');
-      a.href = s.link;
-      a.target = '_blank';
-      a.rel = 'noopener';
-
-      a.appendChild(img);
-      a.appendChild(caption);
-      slide.appendChild(a);
-    } else {
-      slide.appendChild(img);
-      slide.appendChild(caption);
+      li.innerHTML = `
+        ${media ? `<img loading="lazy" alt="" src="${media}">` : ''}
+        <h3>${strip(p.title?.rendered)}</h3>
+        <div class="meta">${fmtDate(p.date)}</div>
+        ${excerpt ? `<p>${excerpt}…</p>` : ''}
+        <div class="links"><a class="btn" href="${p.link}" target="_blank" rel="noopener">Read post</a></div>
+      `;
+      return li;
     }
 
-    track.appendChild(slide);
+    async function loadBlog(){
+      if (!blogEl) return;
+      blogEl.innerHTML = '<div class="muted">Loading posts…</div>';
 
-    // Dot
-    const dot = document.createElement('button');
-    dot.type = 'button';
-    dot.className = 'dot';
-    dot.setAttribute('aria-label', `Go to slide ${i+1}`);
-    dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
-    dot.onclick = () => setIndex(i, true);
-    dotsEl.appendChild(dot);
-  });
+      const std = `${WP_SITE.replace(/\/$/,'')}/wp-json/wp/v2/posts?_embed&per_page=6`;
+      const wpcom = `https://public-api.wordpress.com/wp/v2/sites/${encodeURIComponent(WP_SITE.replace(/^https?:\/\//,''))}/posts?_embed&per_page=6`;
 
-  setIndex(0);
-  restartTimer();
-}
+      async function fetchJSON(url){
+        const r = await fetch(url, { cache:'no-store' });
+        if (!r.ok) throw new Error('HTTP '+r.status);
+        return r.json();
+      }
 
-// Buttons
-prevBtn.addEventListener('click', () => setIndex(index - 1, true));
-nextBtn.addEventListener('click', () => setIndex(index + 1, true));
+      try {
+        let posts;
+        try { posts = await fetchJSON(std); }
+        catch { posts = await fetchJSON(wpcom); }
 
-// Pause on hover (desktop)
-viewport.addEventListener('mouseenter', stopTimer);
-viewport.addEventListener('mouseleave', restartTimer);
+        blogEl.innerHTML = '';
+        (posts || []).forEach(p => blogEl.appendChild(postCard(p)));
+        if (!posts?.length) blogEl.innerHTML = '<div class="muted">No posts found.</div>';
+      } catch {
+        blogEl.innerHTML = '<div class="muted">Couldn’t load blog posts.</div>';
+      }
+    }
+    loadBlog();
 
-// Simple swipe support (mobile)
-let startX = null;
-viewport.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; stopTimer(); }, {passive:true});
-viewport.addEventListener('touchend', (e) => {
-  if (startX == null) return restartTimer();
-  const endX = e.changedTouches[0].clientX;
-  const dx = endX - startX;
-  if (Math.abs(dx) > 40) setIndex(index + (dx < 0 ? 1 : -1), true);
-  startX = null;
-  restartTimer();
-}, {passive:true});
+    // ---------------------------
+    // YouTube playlist (no API key; rss2json)
+    // ---------------------------
+    const ytContainer = document.getElementById('youtube-videos');
+    const PLAYLIST_ID = 'PLzwJQ-19lU6629_86Vx4LibFXMXM9GNoz';
+    const RSS_URL = `https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`;
+    const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
 
-// Load from JSON
-fetch('gallery.json', {cache:'no-store'})
-  .then(r => r.ok ? r.json() : Promise.reject())
-  .then(data => {
-    slides = Array.isArray(data.slides) ? data.slides : [];
-    if (data.title) titleEl.textContent = data.title;
-    if (!slides.length) {
-      track.innerHTML = '<div class="muted" style="padding:16px">No gallery slides found.</div>';
+    fetch(API_URL)
+      .then(r => r.json())
+      .then(data => {
+        if (!data.items || !data.items.length) {
+          ytContainer.innerHTML = '<p class="muted">No videos found.</p>';
+          return;
+        }
+        ytContainer.innerHTML = data.items.slice(0, 6).map(video => `
+          <article class="card">
+            <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
+            <h3>${video.title}</h3>
+            <p class="muted">${new Date(video.pubDate).toLocaleDateString()}</p>
+            <div class="links"><a class="btn" href="${video.link}" target="_blank" rel="noopener">Watch</a></div>
+          </article>
+        `).join('');
+      })
+      .catch(() => {
+        ytContainer.innerHTML = '<p class="muted">Couldn’t load videos.</p>';
+      });
+
+    // ---------------------------
+    // Resume JSON + PDF modal
+    // ---------------------------
+    const resumeMenuEl = document.querySelector('.resume-menu');
+    const pdfModal = document.getElementById('pdfModal');
+    const pdfViewer = document.getElementById('pdfViewer');
+    const pdfModalClose = document.getElementById('pdfModalClose');
+
+    function openPdf(url){
+      if (!url) return;
+      pdfViewer.src = url;
+      pdfModal.classList.add('open');
+      pdfModal.setAttribute('aria-hidden','false');
+    }
+    function closePdf(){
+      pdfModal.classList.remove('open');
+      pdfModal.setAttribute('aria-hidden','true');
+      pdfViewer.src = '';
+    }
+
+    pdfModalClose?.addEventListener('click', closePdf);
+    pdfModal?.addEventListener('click', (e)=>{ if (e.target === pdfModal) closePdf(); });
+    document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closePdf(); });
+
+    function loadResumeJSON(){
+      if (!resumeMenuEl) return;
+      fetch('resume.json', { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          const docs = Array.isArray(data.documents) ? data.documents : [];
+          if (!docs.length) {
+            resumeMenuEl.innerHTML = '<div class="muted" style="padding:8px">No documents found.</div>';
+            return;
+          }
+          resumeMenuEl.innerHTML = docs.map(d => `<a role="menuitem" href="#" data-url="${d.url}">${d.label}</a>`).join('');
+          resumeMenuEl.querySelectorAll('a[data-url]').forEach(a => {
+            a.addEventListener('click', (ev) => {
+              ev.preventDefault();
+              const url = a.getAttribute('data-url');
+              if (resumeControl?.open) resumeControl.open = false;
+              openPdf(url);
+            });
+          });
+        })
+        .catch(()=> {
+          resumeMenuEl.innerHTML = '<div class="muted" style="padding:8px">Couldn’t load <code>resume.json</code>.</div>';
+        });
+    }
+    loadResumeJSON();
+
+    // ---------------------------
+    // Articles dropdown (expand/collapse + one-line clamp)
+    // ---------------------------
+    const articlesMenuEl = document.querySelector('.articles-menu');
+    let expandedRow = null;
+
+    function collapseExpanded(){
+      if (expandedRow) expandedRow.classList.remove('expanded');
+      expandedRow = null;
+    }
+    function safeText(s){ return String(s || '').replace(/</g,'&lt;'); }
+
+    function loadArticlesJSON(){
+      if (!articlesMenuEl) return;
+
+      fetch('articles.json', { cache: 'no-store' })
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(data => {
+          const items = Array.isArray(data.items) ? data.items : [];
+          collapseExpanded();
+
+          if (!items.length) {
+            articlesMenuEl.innerHTML = '<div class="muted" style="padding:8px">No articles yet.</div>';
+            return;
+          }
+
+          articlesMenuEl.innerHTML = items.map((item, idx) => {
+            const title = safeText(item.title || 'Untitled');
+            const url = safeText(item.url || '');
+            const summary = safeText(item.summary || item.description || '');
+
+            return `
+              <div class="articles-item" role="menuitem" tabindex="0" data-url="${url}" data-idx="${idx}">
+                <div class="articles-text">
+                  <div class="articles-title">${title}</div>
+                  ${summary ? `<div class="articles-summary">${summary}</div>` : ''}
+                </div>
+                <button class="articles-expand" type="button" aria-label="Expand details" aria-expanded="false">⌄</button>
+              </div>
+            `;
+          }).join('');
+
+          articlesMenuEl.querySelectorAll('.articles-item').forEach(row => {
+            const expandBtn = row.querySelector('.articles-expand');
+            const url = row.getAttribute('data-url');
+
+            expandBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+
+              const isExpanding = !row.classList.contains('expanded');
+              if (expandedRow && expandedRow !== row) expandedRow.classList.remove('expanded');
+
+              row.classList.toggle('expanded', isExpanding);
+              expandedRow = isExpanding ? row : null;
+
+              expandBtn.setAttribute('aria-expanded', isExpanding ? 'true' : 'false');
+              expandBtn.textContent = isExpanding ? '⌃' : '⌄';
+            });
+
+            row.addEventListener('click', () => {
+              if (expandedRow && expandedRow !== row) collapseExpanded();
+
+              if (row.classList.contains('expanded')) {
+                row.classList.remove('expanded');
+                expandedRow = null;
+                expandBtn.setAttribute('aria-expanded', 'false');
+                expandBtn.textContent = '⌄';
+              }
+
+              if (url) window.open(url, '_blank', 'noopener');
+              if (articlesControl?.open) articlesControl.open = false;
+            });
+
+            row.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter') row.click();
+              if (e.key === 'Escape') {
+                collapseExpanded();
+                if (articlesControl?.open) articlesControl.open = false;
+              }
+            });
+          });
+        })
+        .catch(() => {
+          articlesMenuEl.innerHTML = '<div class="muted" style="padding:8px">Couldn’t load <code>articles.json</code>.</div>';
+        });
+    }
+    loadArticlesJSON();
+
+    // Close articles dropdown if click outside
+    document.addEventListener('click', (e) => {
+      if (!articlesControl?.open) return;
+      if (!articlesControl.contains(e.target)) {
+        collapseExpanded();
+        articlesControl.open = false;
+      }
+    });
+
+    // ---------------------------
+    // Carousel (JSON-driven) with low-res detection
+    // ---------------------------
+    const track = document.getElementById('carousel-track');
+    const dotsEl = document.getElementById('carousel-dots');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const viewport = document.getElementById('carousel-viewport');
+    const titleEl = document.getElementById('gallery-title');
+
+    let slides = [];
+    let index = 0;
+    let timer = null;
+    const INTERVAL_MS = 5000;
+
+    function clampIndex(i){
+      if (!slides.length) return 0;
+      return (i + slides.length) % slides.length;
+    }
+
+    function setIndex(i, user=false){
+      index = clampIndex(i);
+      track.style.transform = `translateX(${-index * 100}%)`;
+      [...dotsEl.children].forEach((d, n) => d.setAttribute('aria-current', n === index ? 'true' : 'false'));
+      if (user) restartTimer();
+    }
+
+    function restartTimer(){
       stopTimer();
-      return;
+      timer = setInterval(() => setIndex(index + 1), INTERVAL_MS);
     }
-    renderCarousel();
-  })
-  .catch(() => {
-    track.innerHTML = '<div class="muted" style="padding:16px">Couldn’t load <code>gallery.json</code>.</div>';
-    stopTimer();
-  });
 
+    function stopTimer(){
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
 
+    function renderCarousel(){
+      track.innerHTML = '';
+      dotsEl.innerHTML = '';
+
+      slides.forEach((s, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+
+        const img = document.createElement('img');
+        img.src = s.image;
+        img.alt = s.caption || 'Gallery image';
+        img.loading = 'lazy';
+
+        img.onload = () => {
+          // portrait vs landscape crop bias
+          const portrait = img.naturalHeight > img.naturalWidth;
+          slide.classList.toggle('is-portrait', portrait);
+          slide.classList.toggle('is-landscape', !portrait);
+
+          // low-res detection against viewport pixels
+          const rect = viewport.getBoundingClientRect();
+          const dpr = window.devicePixelRatio || 1;
+          const needW = Math.round(rect.width * dpr);
+          const needH = Math.round(rect.height * dpr);
+
+          const srcW = img.naturalWidth;
+          const srcH = img.naturalHeight;
+
+          const tooSmall = (srcW < needW * 0.85) || (srcH < needH * 0.85);
+          slide.classList.toggle('is-lowres', tooSmall);
+
+          if (tooSmall && !slide.querySelector('.lowres-badge')) {
+            const b = document.createElement('div');
+            b.className = 'lowres-badge';
+            b.textContent = 'Low-res';
+            slide.appendChild(b);
+          } else if (!tooSmall) {
+            slide.querySelector('.lowres-badge')?.remove();
+          }
+        };
+
+        img.onerror = () => {
+          slide.classList.add('is-landscape');
+        };
+
+        const caption = document.createElement('div');
+        caption.className = 'caption';
+
+        const capText = document.createElement('div');
+        capText.className = 'cap-text';
+        capText.textContent = s.caption || '';
+        caption.appendChild(capText);
+
+        if (s.link) {
+          const hint = document.createElement('div');
+          hint.className = 'cap-hint';
+          hint.textContent = 'Tap to open';
+          caption.appendChild(hint);
+
+          const a = document.createElement('a');
+          a.href = s.link;
+          a.target = '_blank';
+          a.rel = 'noopener';
+
+          a.appendChild(img);
+          a.appendChild(caption);
+          slide.appendChild(a);
+        } else {
+          slide.appendChild(img);
+          slide.appendChild(caption);
+        }
+
+        track.appendChild(slide);
+
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'dot';
+        dot.setAttribute('aria-label', `Go to slide ${i+1}`);
+        dot.setAttribute('aria-current', i === 0 ? 'true' : 'false');
+        dot.onclick = () => setIndex(i, true);
+        dotsEl.appendChild(dot);
+      });
+
+      setIndex(0);
+      restartTimer();
+    }
+
+    prevBtn?.addEventListener('click', () => setIndex(index - 1, true));
+    nextBtn?.addEventListener('click', () => setIndex(index + 1, true));
+
+    viewport?.addEventListener('mouseenter', stopTimer);
+    viewport?.addEventListener('mouseleave', restartTimer);
+
+    let startX = null;
+    viewport?.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; stopTimer(); }, {passive:true});
+    viewport?.addEventListener('touchend', (e) => {
+      if (startX == null) return restartTimer();
+      const endX = e.changedTouches[0].clientX;
+      const dx = endX - startX;
+      if (Math.abs(dx) > 40) setIndex(index + (dx < 0 ? 1 : -1), true);
+      startX = null;
+      restartTimer();
+    }, {passive:true});
+
+    fetch('gallery.json', {cache:'no-store'})
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        slides = Array.isArray(data.slides) ? data.slides : [];
+        if (data.title) titleEl.textContent = data.title;
+
+        if (!slides.length) {
+          track.innerHTML = '<div class="muted" style="padding:16px">No gallery slides found.</div>';
+          stopTimer();
+          return;
+        }
+        renderCarousel();
+      })
+      .catch(() => {
+        track.innerHTML = '<div class="muted" style="padding:16px">Couldn’t load <code>gallery.json</code>.</div>';
+        stopTimer();
+      });
+
+    // Optional: re-evaluate low-res on resize (rotation / window resize)
+    window.addEventListener('resize', () => {
+      document.querySelectorAll('#carousel-track .slide img').forEach(img => {
+        if (img.complete && img.naturalWidth) {
+          // trigger our onload logic again
+          try { img.onload(); } catch {}
+        }
+      });
+    });
   </script>
 </body>
 </html>
