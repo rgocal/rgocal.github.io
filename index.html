@@ -85,6 +85,7 @@
       background:var(--chip);border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:14px;cursor:pointer;
       transition:transform .1s ease, border-color .2s ease, box-shadow .2s ease
     }
+
     .chip[aria-pressed="true"]{border-color:var(--ring);box-shadow:0 0 0 6px var(--ring)}
     .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
     @media (max-width:960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}}
@@ -93,6 +94,7 @@
       background:var(--card);border-radius:20px;padding:16px;border:1px solid var(--border);
       display:flex;flex-direction:column;gap:10px;transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease
     }
+
     .card:hover{transform:translateY(-2px); border-color:var(--ring); box-shadow:0 12px 30px rgba(10,30,70,.35)}
     .card h3{margin:0;font-size:18px}
     .card p{margin:0;color:var(--card-text)}
@@ -155,11 +157,37 @@
   will-change: transform;
 }
 
-.slide{
-  min-width:100%;
+/* Default: cover crop */
+.slide img{
+  width:100%;
   height:100%;
-  position:relative;
-  user-select:none;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+/* Low-res handling: don't stretch; keep sharp */
+.slide.is-lowres img{
+  object-fit:contain;
+  background:
+    radial-gradient(120% 120% at 0% 0%, rgba(47,122,247,.16) 0%, rgba(47,122,247,0) 60%),
+    linear-gradient(180deg,#0b1428,#0c1730);
+  padding:18px;                 /* gives breathing room */
+  border-radius:18px;
+}
+
+/* Optional little badge */
+.lowres-badge{
+  position:absolute;
+  top:14px; right:14px;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(12, 25, 51, .55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: rgba(255,255,255,.85);
 }
 
 .slide a{display:block;height:100%}
@@ -259,33 +287,89 @@
 }
 
 /* Articles dropdown spacing when descriptions exist */
-.articles-menu a{
-  display:block;
+/* Articles menu: max height ~ 5 items then scroll */
+.articles-menu{
+  max-height: 340px;           /* tweak if your row height changes */
+  overflow:auto;
+  padding:6px;
+}
+.articles-item{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
   padding:10px 10px;
   border-radius:10px;
+  border:1px solid transparent;
+}
+.articles-item:hover{
+  background:var(--bg-soft);
+  border-color:var(--ring);
+}
+.articles-text{flex:1; min-width:0;} /* min-width:0 enables ellipsis */
+.articles-title{
+  font-weight:650;
+  line-height:1.25;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.articles-summary{
+  margin-top:3px;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.25;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
+/* Expanded state: allow wrapping */
+.articles-item.expanded .articles-title,
+.articles-item.expanded .articles-summary{
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+}
 
-    /* Clamp long descriptions so cards are even height-ish */
-    .card p{
-      display:-webkit-box;
-      -webkit-line-clamp:6;
-      line-clamp:6;
-      -webkit-box-orient:vertical;
-      overflow:hidden;
-    }
+/* Expand button */
+.articles-expand{
+  flex:0 0 auto;
+  width:34px;height:34px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text);
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .12s ease;
+}
+.articles-expand:hover{
+  border-color:var(--ring);
+  box-shadow:0 0 0 6px var(--ring);
+}
+.articles-expand:active{transform:scale(.98)}
 
-    /* Tame screenshots: 16:9, cropped nicely */
-    .card img{
-      width:100%;
-      aspect-ratio:16/9;
-      object-fit:cover;
-      border-radius:12px;
-      border:1px solid var(--border);
-      margin-top:6px;
-    }
+/* Clamp long descriptions so cards are even height-ish */
+.card p{
+  display:-webkit-box;
+  -webkit-line-clamp:6;
+  line-clamp:6;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
 
-    /* Blog cards */
+/* Tame screenshots: 16:9, cropped nicely */
+.card img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid var(--border);
+  margin-top:6px;
+}
+
+/* Blog cards */
 #blog .card img{
   width:100%;
   aspect-ratio:16/9;
@@ -322,17 +406,23 @@
     <div class="container nav">
       <a class="brand" href="#top">GocalSD</a>
       <nav class="actions">
-                <button class="btn toggle" id="themeBtn" aria-label="Toggle dark mode">Theme</button>
+                
+        <button class="btn toggle" id="themeBtn" aria-label="Toggle dark mode">Theme</button>
+        
         <a class="btn" href="#projects">Projects</a>
+
         <a class="btn" href="#blog">Blog</a>
+
         <details class="resume" id="resumeControl">
           <summary class="btn" aria-haspopup="true" aria-expanded="false">Resume</summary>
           <div class="menu resume-menu" role="menu" aria-label="Resume documents"></div>
         </details>
+
         <details class="resume" id="articlesControl">
           <summary class="btn" aria-haspopup="true" aria-expanded="false">Articles</summary>
-            <div class="menu articles-menu" role="menu" aria-label="Articles and mentions"></div>
+          <div class="menu articles-menu" role="menu" aria-label="Articles and mentions"></div>
         </details>
+
       </nav>
     </div>
   </header>
@@ -366,7 +456,7 @@
     </section>
 
         <!-- GALLERY -->
-    <section id="gallery" aria-label="Highlights">
+<section id="gallery" aria-label="Highlights">
   <div class="carousel-top">
     <h2 class="section-title" id="gallery-title">Highlights</h2>
     <p class="muted" id="gallery-subtitle">A gallery of my most notable work.</p>
@@ -456,19 +546,6 @@
     // Utils
     const truthy = v => v && v !== 'null' && String(v).trim() !== '';
     const slug   = s => s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-
-    // Badges to apply by label (you can move these into JSON later)
-    const badgeMap = {
-      "Launcher Ops":                ["ONE UI"],
-      "Carpentar":                   ["ONE UI"],
-      "Launchers Quick Tile 2":      ["Android 13+"],
-      "Launchers Quick Tile":        ["Android 12-"],
-      "Truesight (Preview)":         ["Android 10+"],
-      "Google Play Publisher API":   ["Library"],
-      "Expandable Preference Group": ["Library"],
-      "Fluent Popup Menu":           ["Library"],
-      "SwitchBar":                   ["Library"]
-    };
 
     function normalize(item, sectionName){
       const name = item.label || 'Untitled';
@@ -699,7 +776,6 @@ ytContainer.innerHTML = '<p class="muted">Couldn’t load videos.</p>';
     
 // --- RESUME / PDFs ---
 const resumeMenuEl = document.querySelector('.resume-menu');
-const resumeControl = document.getElementById('resumeControl');
 const pdfModal = document.getElementById('pdfModal');
 const pdfViewer = document.getElementById('pdfViewer');
 const pdfModalClose = document.getElementById('pdfModalClose');
@@ -750,9 +826,30 @@ function loadResumeJSON(){
 
 loadResumeJSON();
 
+// close any other <details> when one opens (resume <-> articles)
+const resumeControl = document.getElementById('resumeControl'); // you already have this id
+function closeOtherMenus(opened){
+  [resumeControl, articlesControl].forEach(d => {
+    if (d && d !== opened) d.open = false;
+  });
+}
+
 // --- ARTICLES / MENTIONS ---
+// --- ARTICLES / MENTIONS (expand/collapse + single-line clamp) ---
 const articlesMenuEl = document.querySelector('.articles-menu');
 const articlesControl = document.getElementById('articlesControl');
+
+articlesControl?.addEventListener('toggle', () => { if (articlesControl.open) closeOtherMenus(articlesControl); });
+resumeControl?.addEventListener('toggle', () => { if (resumeControl.open) closeOtherMenus(resumeControl); });
+
+let expandedRow = null;
+
+function collapseExpanded(){
+  if (expandedRow) expandedRow.classList.remove('expanded');
+  expandedRow = null;
+}
+
+function safeText(s){ return String(s || '').replace(/</g,'&lt;'); }
 
 function loadArticlesJSON(){
   if (!articlesMenuEl) return;
@@ -761,30 +858,74 @@ function loadArticlesJSON(){
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(data => {
       const items = Array.isArray(data.items) ? data.items : [];
+      collapseExpanded();
 
       if (!items.length) {
         articlesMenuEl.innerHTML = '<div class="muted" style="padding:8px">No articles yet.</div>';
         return;
       }
 
-      // Render items with optional description
-      articlesMenuEl.innerHTML = items.map(item => {
-        const title = (item.title || 'Untitled').replace(/</g,'&lt;');
-        const url = item.url || '';
-        const desc = item.description ? String(item.description).replace(/</g,'&lt;') : '';
+      articlesMenuEl.innerHTML = items.map((item, idx) => {
+        const title = safeText(item.title || 'Untitled');
+        const url = safeText(item.url || '');
+        const summary = safeText(item.summary || item.description || '');
 
         return `
-          <a role="menuitem" href="${url}" target="_blank" rel="noopener">
-            <div style="font-weight:650">${title}</div>
-            ${desc ? `<div class="muted" style="font-size:12px;line-height:1.3;margin-top:2px">${desc}</div>` : ''}
-          </a>
+          <div class="articles-item" role="menuitem" tabindex="0" data-url="${url}" data-idx="${idx}">
+            <div class="articles-text">
+              <div class="articles-title">${title}</div>
+              ${summary ? `<div class="articles-summary">${summary}</div>` : ''}
+            </div>
+            <button class="articles-expand" type="button" aria-label="Expand details" aria-expanded="false">⌄</button>
+          </div>
         `;
       }).join('');
 
-      // Close dropdown when clicking a link
-      articlesMenuEl.querySelectorAll('a[href]').forEach(a => {
-        a.addEventListener('click', () => {
-          if (articlesControl && articlesControl.open) articlesControl.open = false;
+      // Wire events
+      articlesMenuEl.querySelectorAll('.articles-item').forEach(row => {
+        const expandBtn = row.querySelector('.articles-expand');
+        const url = row.getAttribute('data-url');
+
+        // Expand button toggles ONLY expand (no navigation)
+        expandBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+
+          const isExpanding = !row.classList.contains('expanded');
+
+          // collapse previous expanded row
+          if (expandedRow && expandedRow !== row) expandedRow.classList.remove('expanded');
+
+          row.classList.toggle('expanded', isExpanding);
+          expandedRow = isExpanding ? row : null;
+
+          expandBtn.setAttribute('aria-expanded', isExpanding ? 'true' : 'false');
+          expandBtn.textContent = isExpanding ? '⌃' : '⌄';
+        });
+
+        // Clicking the row opens link AND collapses any expanded row first
+        row.addEventListener('click', () => {
+          // If another row is expanded, collapse it
+          if (expandedRow && expandedRow !== row) collapseExpanded();
+
+          // If this row is expanded, collapse it before opening (per your request)
+          if (row.classList.contains('expanded')) {
+            row.classList.remove('expanded');
+            expandedRow = null;
+            expandBtn.setAttribute('aria-expanded', 'false');
+            expandBtn.textContent = '⌄';
+          }
+
+          if (url) window.open(url, '_blank', 'noopener');
+          if (articlesControl?.open) articlesControl.open = false;
+        });
+
+        // Keyboard support (Enter to open)
+        row.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') row.click();
+          if (e.key === 'Escape') {
+            collapseExpanded();
+            if (articlesControl?.open) articlesControl.open = false;
+          }
         });
       });
     })
@@ -794,6 +935,16 @@ function loadArticlesJSON(){
 }
 
 loadArticlesJSON();
+
+// Close articles if you click outside
+document.addEventListener('click', (e) => {
+  if (!articlesControl?.open) return;
+  const within = articlesControl.contains(e.target);
+  if (!within) {
+    collapseExpanded();
+    articlesControl.open = false;
+  }
+});
 
 // --- Carousel (JSON-driven) ---
 const track = document.getElementById('carousel-track');
@@ -846,10 +997,38 @@ function renderCarousel(){
     img.loading = 'lazy';
 
     img.onload = () => {
-      const portrait = img.naturalHeight > img.naturalWidth;
-      slide.classList.toggle('is-portrait', portrait);
-      slide.classList.toggle('is-landscape', !portrait);
-    };
+  // 1) portrait vs landscape crop bias
+  const portrait = img.naturalHeight > img.naturalWidth;
+  slide.classList.toggle('is-portrait', portrait);
+  slide.classList.toggle('is-landscape', !portrait);
+
+  // 2) detect low-res vs viewport display size
+  const rect = viewport.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+
+  // actual pixels the image needs to look crisp
+  const needW = Math.round(rect.width * dpr);
+  const needH = Math.round(rect.height * dpr);
+
+  const srcW = img.naturalWidth;
+  const srcH = img.naturalHeight;
+
+  // If source is significantly smaller than display, avoid stretching
+  const tooSmall = (srcW < needW * 0.85) || (srcH < needH * 0.85);
+
+  slide.classList.toggle('is-lowres', tooSmall);
+
+  // Optional badge so you can tell why a slide changed behavior
+  if (tooSmall && !slide.querySelector('.lowres-badge')) {
+    const b = document.createElement('div');
+    b.className = 'lowres-badge';
+    b.textContent = 'Low-res';
+    slide.appendChild(b);
+  } else if (!tooSmall) {
+    slide.querySelector('.lowres-badge')?.remove();
+  }
+};
+
     img.onerror = () => {
       slide.classList.add('is-landscape'); // safe default
     };
