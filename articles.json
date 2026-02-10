@@ -3,27 +3,27 @@
     {
       "title": "GCA Launcher is an Android Go-friendly launcher inspired by Chrome OS and Pixel Launcher",
       "url": "https://www.xda-developers.com/gca-launcher-android-go-pixel-chrome-os/",
-      "description": "GCA Launcher, or Go Custom Android Launcher, is a launcher built with Android Go users in mind, giving them Chrome OS and Pixel Launcher inspired features."
+      "summary": "GCA Launcher, or Go Custom Android Launcher, is a launcher built with Android Go users in mind, giving them Chrome OS and Pixel Launcher inspired features."
     },
     {
       "title": "GCA, an Android launcher app inspired by Chrome OS design, gets a massive rework in version 2.0",
       "url": "https://www.xda-developers.com/gca-android-launcher-chrome-os-design-version-2/",
-      "description": "GCA (Go Custom Android) Launcher gets major redesign in version 2.0 with new features and support for Android 10 navigation gestures."
+      "summary": "GCA (Go Custom Android) Launcher gets major redesign in version 2.0 with new features and support for Android 10 navigation gestures."
     },
     {
       "title": "No'Me is a launcher manager for those of you with multiple launcher apps",
       "url": "https://www.xda-developers.com/nome-launcher-manager-switch-multiple-launcher-apps/",
-      "description": "No'Me is a new launcher manager app that lets you easily switch between third-party launchers on your device with a single tap."
+      "summary": "No'Me is a new launcher manager app that lets you easily switch between third-party launchers on your device with a single tap."
     },
     {
       "title": "Google Pixel Fold Edge Panel Multitasking, Launchers Quick Tile and Popup Calc apps",
       "url": "https://www.youtube.com/watch?v=hjql4VxCbRE",
-      "description": "A Youtube video that mentions my Launchers Quick Tile app"
+      "summary": "A Youtube video that mentions my Launchers Quick Tile app"
     },
     {
       "title": "A Much Easier Way to switch Launchers on any android app",
       "url": "https://www.tiktok.com/@howtomen/video/7216820840921369899",
-      "description": "A Tiktok Short"
+      "summary": "A Tiktok Short"
     }
   ]
 }
