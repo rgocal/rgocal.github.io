@@ -1,1 +1,1 @@
-Created with Visual Studio and AI generative assistance
+Created with Visual Studio and generative assistance. Experimental project to demo off Artifial Intelligence team building. 
