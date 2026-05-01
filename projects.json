@@ -53,9 +53,9 @@
     },
     {
       "label": "Expandable Preference Group",
-      "description": "Coming Soon",
+      "description": "Wrap a group of preferences with ExpandablePreferenceGroup in your preference xml to provide a clean display of grouped preferences.",
       "screenshot": "null",
-      "url": "null"
+      "url": "https://github.com/rgocal/ExpandablePreference"
     },
     {
       "label": "SpareChange",
