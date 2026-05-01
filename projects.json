@@ -47,21 +47,21 @@
     },
     {
       "label": "Fluent Popup Menu",
-      "description": "A custom widget for android that acts as a context menu for objects and views. The menu will appear above the object, with or without an arrow, and you can use the prebuilt menu or add in a custom view. Code is currently being optimized for release for the public.",
+      "description": "Coming Soon",
       "screenshot": "null",
       "url": "null"
     },
     {
       "label": "Expandable Preference Group",
-      "description": "A custom preference group for android that expands on click to show preferences held inside the group and can condense them for a cleaner UI.",
+      "description": "Coming Soon",
       "screenshot": "null",
-      "url": "https://github.com/rgocal/ExpandablePreferenceGroup"
+      "url": "null"
     },
     {
-      "label": "SwitchBar",
-      "description": "A custom widget inspired by ONE UI for AOSP. Hasn't been updated in awhile...",
-      "screenshot": "https://github.com/rgocal/Switchbar/raw/master/preview/switchbar_on.png?raw=true",
-      "url": "https://github.com/rgocal/Switchbar"
+      "label": "SpareChange",
+      "description": "SpareChange removes the complexity of Google Play Billing and replaces it with a clean, predictable, and developer-friendly API.",
+      "screenshot": "null",
+      "url": "https://github.com/rgocal/SpareChange"
     }
   ],
   "Upcoming or Unpublished": [
