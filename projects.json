@@ -1,15 +1,16 @@
 {
-  "Published Apps": [
+  "Published Applications": [
     {
       "label": "Launcher Ops 2",
-      "downloads": [{"label":"Launcher Ops 2","url":"https://play.google.com/store/apps/details?id=com.flea.gsd.flea"}, {"label":"Launcher Ops 1","url":"https://www.dropbox.com/scl/fi/hlr1tv21d8n8k33aw04fi/launcher_ops_og.apk?rlkey=16u2lktha25pqob8zxvyyelzb&st=4njqndyk&dl=0"}],
-      "description": "Manage and Benchmark your favorite launchers in Android. Detect anomalies, permission usages and clones that could potentially ruin your android homescreen experience.",
+      "projectId": "launcher-ops",
+      "description": "Manage and Benchmark your favorite launchers in Android. Detect anomalies, permission usages and clones that could potentially ruin your android homescreen experience. This app is built with ONE UI.",
       "screenshot": ["https://play-lh.googleusercontent.com/NLHlUgZbl1mnQXiH3OvjbLc1si29NC9EdGDWBG-itgIh2zaKk9Pw-asMxBADHueh-l8IyTqCvSGjGsA-k81RUw=w2560-h1440-rw"],
       "url": "https://play.google.com/store/apps/details?id=com.flea.gsd.flea",
       "badges": ["Launcher Manager", "Material Expressive", "License Required", "Data Analysis", "Benchmarking", "Result Sharing"]
     },
     {
       "label": "Launchers Quick Tile",
+      "projectId": "launchers-quick-tile",
       "description": "Swap launcher homescreens from your statusbar quicktile section. Supports up to and includes Android 12.",
       "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.quicktile.launchers",
@@ -17,6 +18,7 @@
     },
     {
       "label": "Launchers Quick Tile 2",
+      "projectId": "launchers-quick-tile",
       "description": "Swap launcher homescreens from your statusbar quicktile section. Android 13 and above required.",
       "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.launcherquicktileadept",
@@ -24,14 +26,16 @@
     },
     {
       "label": "Truesight",
-      "description": "Inspired by Steam Charts, Truesight is a steam companion app built for Android that provides gamers with trending information from steam such as live steam service status, online count, game peak player counts, data matrixs, trending game information,news and top sellers. You can also create virtual rigs for compatibility comparison data and chart your own player counts matrixs. My first app using a background workflow and database.",
+      "projectId": "truesight",
+      "description": "Inspired by Steam Charts, Truesight is a steam companion app built for Android that provides gamers with trending information from steam such as live steam service status, online count, game peak player counts, data matrixs, trending game information,news and top sellers. You can also create virtual rigs for compatibility comparison data and chart your own player counts matrixs. This app also supports backup and restore functionality. ",
       "screenshot": "https://play-lh.googleusercontent.com/V6tNcsZTxVb_NNbtvqjRSgSV1Eh8-hxG0bawuZ9CYQkcM-TBSZRpvA8DBBYRxzuanCZldZnQUUGIzGbKlgAtcQ=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.truesight",
       "badges": ["Steam Community API", "Steam", "Database", "Monet"]
     }, 
      {
       "label": "Carpentar",
-      "description": "An Icon Pack Manager that allows you to benchmark the compatibility of launcher apps, extract icons and resources as well as craft your own icons!",
+      "projectId": "carpentar",
+      "description": "An Icon Pack Manager that allows you to benchmark the compatibility of launcher apps, extract icons and resources as well as craft your own icons! This app is built with ONE UI.",
       "screenshot": "https://play-lh.googleusercontent.com/Ht9GsxkFnLUDg4WoJ-pSb7aotWOg_QsJvA7Ax_rprQswt1vheLFpZKk78oQI2rR91A=w2560-h1440-rw",
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.carpenter",
       "badges": ["One UI", "Icon Packs"]
@@ -47,42 +51,24 @@
     },
     {
       "label": "Fluent Popup Menu",
-      "description": "Coming Soon",
+      "description": "Currently working on a rewrite.",
       "screenshot": "null",
       "url": "null"
     },
     {
       "label": "Expandable Preference Group",
-      "description": "Wrap a group of preferences with ExpandablePreferenceGroup in your preference xml to provide a clean display of grouped preferences.",
+      "description": "A custom preference group for android that expands on click to show preferences held inside the group and can condense them for a cleaner UI.",
       "screenshot": "null",
       "url": "https://github.com/rgocal/ExpandablePreference"
     },
     {
       "label": "SpareChange",
-      "description": "SpareChange removes the complexity of Google Play Billing and replaces it with a clean, predictable, and developer-friendly API.",
+      "description": "Another Google Play In-App Billing library for android created by GocalSD. I was tired of waiting for updates from another library, so I made one myself!",
       "screenshot": "null",
       "url": "https://github.com/rgocal/SpareChange"
     }
   ],
-  "Upcoming or Unpublished": [
-    {
-      "label": "Bionx Dashboard",
-      "description": "My first app that controled tweaks and settings to my custom rom, Bionx.",
-      "screenshot": "null",
-      "url": "null"
-    },
-    {
-      "label": "HTC Flip",
-      "description": "My first HTC Sense exclusive app that managed launcher apps for the HTC Series devices. Later, it was taken down for attempting of impersonating HTC...According to Google Police.",
-      "screenshot": "null",
-      "url": "null"
-    },
-    {
-      "label": "Fellow",
-      "description": "An attempt to create an html friendly facebook lite app. It was taken down when facebook lite launched.",
-      "screenshot": "null",
-      "url": "null"
-    },
+  "Experimental or Deprecated": [
     {
       "label": "Sapphire Launcher",
       "description": "My first custom launcher based on AOSP by Slim Roms. It was launched in 2015 and later unpublished to be upgraded with a pixal launcher clone.",
@@ -91,31 +77,19 @@
     },
     {
       "label": "Sapphyx Launcher",
-      "description": "Launched in 2017, Sapphyx Launcher was my first launcher that was based on Google Pixel Launcher port to the public and offered an array of cool new features and customization.",
-      "screenshot": "null",
-      "url": "null"
-    },
-    {
-      "label": "Drywall - Wallpaper Mananger",
-      "description": "My attempt at a replicating the google wallpapers app from my perspective. Decided that Google did it better.",
-      "screenshot": "null",
-      "url": "null"
-    },
-    {
-      "label": "Mystery Shopping List App",
-      "description": "Taking on a project for the girlfriend. Coming mid 2026",
+      "description": "Launched in 2017, Sapphyx Launcher was my first launched that was based on Google Pixel Launcher port to the public and offered an array of cool new features and customization. This project had taught me that it was becoming really difficult to based projects on another source and we should start look at build from the ground up.",
       "screenshot": "null",
       "url": "null"
     },
     {
       "label": "GCA Launcher",
-      "description": "Gocal's Custom Android Launcher. Launched in late 2018, retired in 2021 for deprecation reasons. Scheduled to make a full return towards the end of 2026-2027.",
+      "description": "Gocal's Custom Android Launcher. Launched in late 2018, retired in 2021 for deprecation reasons. Currently in the pipeline to make a full return for android 17.",
       "screenshot": "null",
       "url": "null"
     },
      {
       "label": "Drosera Launcher",
-      "description": "My own take on a gaming android launcher designed for handhelds and android tv boxes. Coming mid-late 2026",
+      "description": "My own take on a custom android launcher designed for handhelds and personal desktop environments. Currently in development.",
       "screenshot": "null",
       "url": "null"
     }
