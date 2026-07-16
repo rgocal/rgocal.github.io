@@ -1,0 +1,41 @@
+{
+  "enabled": true,
+  "items": [
+    {
+      "label": "GocalSD Website",
+      "description": "Add a new objective section so users can see what im currently working on, integrate google play api to gather info automatically for published android apps and integrate theme fixes.",
+      "startingYear": 2026,
+      "expectedReleaseYear": 2026
+    },
+    {
+      "label": "GocalSD Mobile",
+      "description": "Create a new mobile application for GocalSD that brings news to users faster.",
+      "startingYear": 2026,
+      "expectedReleaseYear": 2026
+    },
+    {
+      "label": "Truesight",
+      "description": "Launch Truesight's 5.0 update as its next major milestone update.",
+      "startingYear": 2026,
+      "expectedReleaseYear": 2026
+    },
+    {
+      "label": "Project Drosera",
+      "description": "Showcase a brand new android launcher experience for gamers for mobile and cloud gaming.",
+      "startingYear": 2026,
+      "expectedReleaseYear": 2027
+    },
+    {
+      "label": "GCA Launcher relaunch",
+      "description": "More news to come as it becomes available.",
+      "startingYear": 2026,
+      "expectedReleaseYear": 2027
+    },
+    {
+      "label": "Goca's Pantry App",
+      "description": "A new kind of budgeting app coming late 2026?",
+      "startingYear": 2026,
+      "expectedReleaseYear": 2026
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "Published Applications": [
+    {
+      "label": "Launcher Ops 2",
+      "projectId": "launcher-ops",
+      "badges": ["Launcher Manager", "Material Expressive", "License Required", "Data Analysis", "Benchmarking", "Result Sharing"],
+      "packageName": "com.flea.gsd.flea"
+    },
+    {
+      "label": "Launchers Quick Tile",
+      "projectId": "launchers-quick-tile",
+      "badges": ["Quick Tile", "Free", "Obsolete"],
+      "packageName": "com.gocalsd.quicktile.launchers"
+    },
+    {
+      "label": "Launchers Quick Tile 2",
+      "projectId": "launchers-quick-tile",
+      "badges": ["Quick Tile", "Paid"],
+      "packageName": "com.gocalsd.launcherquicktileadept"
+    },
+    {
+      "label": "Truesight",
+      "projectId": "truesight",
+      "badges": ["Steam Community API", "Steam", "Database", "Monet"],
+      "packageName": "com.gocalsd.truesight"
+    },
+    {
+      "label": "Carpentar",
+      "projectId": "carpentar",
+      "badges": ["One UI", "Icon Packs"],
+      "packageName": "com.gocalsd.carpenter"
+    }
+  ],
+  "Libraries": [
+    {
+      "label": "Google Play Publisher API",
+      "description": "Java library for android that builds off of a rest api by Rajkumar. Pulls publisher info for a selected app off of Google Play.",
+      "screenshot": "https://play-lh.googleusercontent.com/vXq11dYVQhYu1bu_HGW2VI-7WKIv0aI2A6aHCUOzA6VMkVihOm7J0AThcbCTH127TjKf=w2560-h1440-rw",
+      "url": "https://github.com/rgocal/Unofficial-Android-Playstore-API"
+    },
+    {
+      "label": "Fluent Popup Menu",
+      "description": "Currently working on a rewrite.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "Expandable Preference Group",
+      "description": "A custom preference group for android that expands on click to show preferences held inside the group and can condense them for a cleaner UI.",
+      "screenshot": "null",
+      "url": "https://github.com/rgocal/ExpandablePreference"
+    },
+    {
+      "label": "SpareChange",
+      "description": "Another Google Play In-App Billing library for android created by GocalSD. I was tired of waiting for updates from another library, so I made one myself!",
+      "screenshot": "null",
+      "url": "https://github.com/rgocal/SpareChange"
+    }
+  ],
+  "Experimental or Deprecated": [
+    {
+      "label": "Sapphire Launcher",
+      "description": "My first custom launcher based on AOSP by Slim Roms. It was launched in 2015 and later unpublished to be upgraded with a pixal launcher clone.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "Sapphyx Launcher",
+      "description": "Launched in 2017, Sapphyx Launcher was my first launched that was based on Google Pixel Launcher port to the public and offered an array of cool new features and customization. This project had taught me that it was becoming really difficult to based projects on another source and we should start look at build from the ground up.",
+      "screenshot": "null",
+      "url": "null"
+    },
+    {
+      "label": "GCA Launcher",
+      "description": "Gocal's Custom Android Launcher. Launched in late 2018, retired in 2021 for deprecation reasons. Currently in the pipeline to make a full return for android 17.",
+      "screenshot": "null",
+      "url": "null"
+    },
+     {
+      "label": "Drosera Launcher",
+      "description": "My own take on a custom android launcher designed for handhelds and personal desktop environments. Currently in development.",
+      "screenshot": "null",
+      "url": "null"
+    }
+  ]
+}
