@@ -893,20 +893,27 @@ function badgeRow(badges){
 
     const playStoreCache = new Map();
 
+    function cleanPlayStoreText(value){
+      return String(value ?? '')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
     function extractPlayStoreMetadata(html){
-      const clean = (text) => text ? text.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : '';
-      const meta = (property) => {
+      const metaValue = (property) => {
         const match = html.match(new RegExp(`<meta[^>]+(?:property|name)=["']${property}["'][^>]+content=["']([^"']*)["']`, 'i'));
-        return match ? clean(match[1]) : '';
+        return match ? cleanPlayStoreText(match[1]) : '';
       };
 
-      const description = meta('og:description') || meta('description') || '';
-      const image = meta('og:image') || '';
-      const title = meta('og:title') || '';
+      const description = metaValue('og:description') || metaValue('description') || '';
+      const image = metaValue('og:image') || '';
+      const title = metaValue('og:title') || '';
       const screenshots = [];
-      const imageMatch = html.match(/https?:\/\/[^"'\s]+(?:=w\d+-h\d+-rw|=w\d+-h\d+|\/w\d+-h\d+-rw)/gi) || [];
-      imageMatch.forEach(url => {
-        const normalized = url.replace(/&amp;/g, '&');
+      const imageMatches = html.match(/https?:\/\/[^\s"'<>]+(?:=w\d+-h\d+-rw|=w\d+-h\d+|\/w\d+-h\d+-rw)/gi) || [];
+
+      imageMatches.forEach(raw => {
+        const normalized = raw.replace(/&amp;/g, '&');
         if (!screenshots.includes(normalized)) screenshots.push(normalized);
       });
 
@@ -925,15 +932,24 @@ function badgeRow(badges){
 
       const endpoints = [
         `https://play.rajkumaar.co.in/json?id=${encodeURIComponent(packageName)}`,
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://play.google.com/store/apps/details?id=${packageName}&hl=en&gl=US`)}`
+        `https://r.jina.ai/http://play.google.com/store/apps/details?id=${encodeURIComponent(packageName)}&hl=en&gl=US`
       ];
 
       for (const endpoint of endpoints) {
         try {
-          const response = await fetch(endpoint, { cache:'no-store', headers: { Accept: 'application/json, text/plain, */*' } });
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 8000);
+          const response = await fetch(endpoint, {
+            cache: 'no-store',
+            headers: { Accept: 'application/json, text/plain, */*' },
+            signal: controller.signal
+          });
+          clearTimeout(timeoutId);
+
           if (!response.ok) continue;
 
           const contentType = response.headers.get('content-type') || '';
+
           if (contentType.includes('application/json')) {
             const data = await response.json();
             const details = {
@@ -965,10 +981,40 @@ function badgeRow(badges){
     async function hydratePublishedApps(section){
       if (!section) return;
 
+      let generatedMetadata = {};
+      try {
+        const response = await fetch('play-metadata.json', { cache: 'no-store' });
+        if (response.ok) {
+          const data = await response.json();
+          if (data && typeof data === 'object') generatedMetadata = data;
+        }
+      } catch (error) {
+        generatedMetadata = {};
+      }
+
       await Promise.all(section.items.map(async item => {
         if (!item.packageName) return;
-        const details = await fetchPlayStoreDetails(item.packageName);
-        if (!details) return;
+
+        const generatedDetails = generatedMetadata[item.packageName] || null;
+        const details = generatedDetails ? {
+          description: generatedDetails.description || '',
+          screenshots: Array.isArray(generatedDetails.screenshots) ? generatedDetails.screenshots.filter(Boolean) : [],
+          image: generatedDetails.image || '',
+          url: generatedDetails.url || `https://play.google.com/store/apps/details?id=${encodeURIComponent(item.packageName)}`,
+          price: generatedDetails.price || ''
+        } : await fetchPlayStoreDetails(item.packageName);
+
+        if (!details) {
+          Object.assign(item, {
+            description: item.description || '',
+            screenshots: item.screenshots?.length ? item.screenshots : [],
+            image: item.image || '',
+            url: item.url || `https://play.google.com/store/apps/details?id=${encodeURIComponent(item.packageName)}`,
+            price: item.price || ''
+          });
+          return;
+        }
+
         Object.assign(item, {
           description: item.description || details.description || '',
           screenshots: item.screenshots?.length ? item.screenshots : (details.screenshots || []),
