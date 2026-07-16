@@ -1016,11 +1016,11 @@ function badgeRow(badges){
         }
 
         Object.assign(item, {
-          description: item.description || details.description || '',
-          screenshots: item.screenshots?.length ? item.screenshots : (details.screenshots || []),
-          image: item.image || details.image || '',
-          url: item.url || details.url || '',
-          price: item.price || details.price || ''
+          description: details.description || item.description || '',
+          screenshots: details.screenshots?.length ? details.screenshots : (item.screenshots?.length ? item.screenshots : []),
+          image: details.image || item.image || '',
+          url: details.url || item.url || `https://play.google.com/store/apps/details?id=${encodeURIComponent(item.packageName)}`,
+          price: details.price || item.price || ''
         });
       }));
     }
