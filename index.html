@@ -306,6 +306,18 @@
     /* Blog cards */
     #blog .meta{ color:var(--muted); font-size:12px; margin-top:4px; }
 
+    /* Constrain images inside blog and youtube cards to prevent layout stretching */
+    #blog .card img,
+    #youtube .card img{
+      width:100%;
+      aspect-ratio:16/9;
+      height:auto;
+      object-fit:cover;
+      object-position:center;
+      border-radius:12px;
+      display:block;
+    }
+
     /* Gallery / Carousel */
     .carousel{
       border-radius:calc(var(--radius) + 10px);
