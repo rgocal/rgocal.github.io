@@ -3,30 +3,47 @@
     {
       "label": "Launcher Ops 2",
       "projectId": "launcher-ops",
+      "description": "Manage and Benchmark your favorite launchers in Android. Detect anomalies, permission usages and clones that could potentially ruin your android homescreen experience.",
+      "screenshot": [
+        "https://play-lh.googleusercontent.com/NLHlUgZbl1mnQXiH3OvjbLc1si29NC9EdGDWBG-itgIh2zaKk9Pw-asMxBADHueh-l8IyTqCvSGjGsA-k81RUw=w2560-h1440-rw"
+      ],
+      "url": "https://play.google.com/store/apps/details?id=com.flea.gsd.flea",
       "badges": ["Launcher Manager", "Material Expressive", "License Required", "Data Analysis", "Benchmarking", "Result Sharing"],
       "packageName": "com.flea.gsd.flea"
     },
     {
       "label": "Launchers Quick Tile",
       "projectId": "launchers-quick-tile",
+      "description": "Swap launcher homescreens from your statusbar quicktile section. Supports up to Android 12.",
+      "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.quicktile.launchers",
       "badges": ["Quick Tile", "Free", "Obsolete"],
       "packageName": "com.gocalsd.quicktile.launchers"
     },
     {
       "label": "Launchers Quick Tile 2",
       "projectId": "launchers-quick-tile",
+      "description": "Swap launcher apps from a quick tile or an advanced homescreen widget. Android 13+ required.",
+      "screenshot": "https://play-lh.googleusercontent.com/CwUgqaCyWXBiH_FImKzQyVH4KlfWf8gGW0NBH9r7GNtywalqoB3lQHZ_Jexfu_bgfA0=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.launcherquicktileadept",
       "badges": ["Quick Tile", "Paid"],
       "packageName": "com.gocalsd.launcherquicktileadept"
     },
     {
       "label": "Truesight",
       "projectId": "truesight",
+      "description": "Truesight is a steam companion app built for Android that provides gamers with trending information from steam such as live steam service status, online count, game peak player counts, data matrixs, trending game information,news.",
+      "screenshot": "https://play-lh.googleusercontent.com/V6tNcsZTxVb_NNbtvqjRSgSV1Eh8-hxG0bawuZ9CYQkcM-TBSZRpvA8DBBYRxzuanCZldZnQUUGIzGbKlgAtcQ=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.truesight",
       "badges": ["Steam Community API", "Steam", "Database", "Monet"],
       "packageName": "com.gocalsd.truesight"
     },
     {
       "label": "Carpentar",
       "projectId": "carpentar",
+      "description": "An Icon Pack and Icon Resource Manager.",
+      "screenshot": "https://play-lh.googleusercontent.com/Ht9GsxkFnLUDg4WoJ-pSb7aotWOg_QsJvA7Ax_rprQswt1vheLFpZKk78oQI2rR91A=w2560-h1440-rw",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.carpenter",
       "badges": ["One UI", "Icon Packs"],
       "packageName": "com.gocalsd.carpenter"
     }
