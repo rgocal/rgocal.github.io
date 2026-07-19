@@ -3,19 +3,19 @@
   "items": [
     {
       "label": "GocalSD Website",
-      "description": "Add a new objective section so users can see what im currently working on, integrate google play api to gather info automatically for published android apps and integrate theme fixes.",
+      "description": "A brand new look and feel. This portfolio was created using Microsoft Visual Studio and Generative AI assistance.",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     },
     {
       "label": "GocalSD Mobile",
-      "description": "Create a new mobile application for GocalSD that brings news to users faster.",
+      "description": "Coming soon!",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     },
     {
       "label": "Truesight",
-      "description": "Launch Truesight's 5.0 update as its next major milestone update.",
+      "description": "The 5.0 Update is now available on Google Play",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     },
