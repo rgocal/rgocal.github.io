@@ -1,39 +1,33 @@
 {
   "enabled": true,
   "items": [
-    {
-      "label": "GocalSD Website",
-      "description": "A brand new look and feel. This portfolio was created using Microsoft Visual Studio and Generative AI assistance.",
-      "startingYear": 2026,
-      "expectedReleaseYear": 2026
-    },
-    {
+  {
       "label": "GocalSD Mobile",
-      "description": "Coming soon!",
+      "description": "Now Available, Download now to keep tabs on blogs, vidocs and upcoming projects!",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     },
-    {
-      "label": "Truesight",
-      "description": "The 5.0 Update is now available on Google Play",
-      "startingYear": 2026,
-      "expectedReleaseYear": 2026
-    },
-    {
+   {
       "label": "Project Drosera",
-      "description": "Showcase a brand new android launcher experience for gamers for mobile and cloud gaming.",
+      "description": "A modern take on an android launcher tailed to xbox, cloud, remote play and steam gamers. Designed for Android TV, Tablets and Handhelds powered by android!",
       "startingYear": 2023,
       "expectedReleaseYear": 2027
     },
     {
-      "label": "GCA Launcher relaunch",
-      "description": "More news to come as it becomes available.",
+      "label": "GCA Launcher reboot",
+      "description": "More news to come...",
+      "startingYear": 2018,
+      "expectedReleaseYear": 2027
+    },
+    {
+      "label": "GMA Launcher",
+      "description": "More news to come...",
       "startingYear": 2018,
       "expectedReleaseYear": 2027
     },
     {
       "label": "Gocal's Pantry App",
-      "description": "A new kind of budgeting app coming late 2026?",
+      "description": "A new kind of budgeting app and pantry app!",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     }
