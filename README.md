@@ -1,1 +1,1 @@
-Created with Visual Studio and generative assistance. Experimental project to demo off Artifial Intelligence team building. 
+Vibe coded with Visual Studio, There is also an android mobile companion app available in the releases!
