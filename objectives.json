@@ -3,31 +3,31 @@
   "items": [
   {
       "label": "GocalSD Mobile",
-      "description": "Now Available, Download now to keep tabs on blogs, vidocs and upcoming projects!",
+      "description": "Now Available, You can download GSD Mobile for android from the portfolio repository releases",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     },
    {
       "label": "Project Drosera",
-      "description": "A modern take on an android launcher tailed to xbox, cloud, remote play and steam gamers. Designed for Android TV, Tablets and Handhelds powered by android!",
+      "description": "(On Hold to see what Xbox Labs is doing) A modern take on an android launcher tailored to xbox, cloud, remote play and steam gamers. Designed for Android TV, Tablets and Handhelds powered by android!",
       "startingYear": 2023,
       "expectedReleaseYear": 2027
     },
     {
-      "label": "GCA Launcher reboot",
-      "description": "More news to come...",
+      "label": "GCA Launcher v3",
+      "description": "A modernized android experience, powered by jetpack compose, drops for android devices in 2027. An open beta preview is expected drop in November or December of this year. ",
       "startingYear": 2018,
       "expectedReleaseYear": 2027
     },
     {
-      "label": "GMA Launcher",
+      "label": "Android Dash Launcher",
       "description": "More news to come...",
       "startingYear": 2018,
       "expectedReleaseYear": 2027
     },
     {
       "label": "Gocal's Pantry App",
-      "description": "A new kind of budgeting app and pantry app!",
+      "description": "Help budget your shopping trips! Now available on Google Play!",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     }
