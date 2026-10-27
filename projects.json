@@ -39,13 +39,13 @@
       "packageName": "com.gocalsd.truesight"
     },
     {
-      "label": "Carpentar",
-      "projectId": "carpentar",
-      "description": "An Icon Pack and Icon Resource Manager.",
-      "screenshot": "https://play-lh.googleusercontent.com/Ht9GsxkFnLUDg4WoJ-pSb7aotWOg_QsJvA7Ax_rprQswt1vheLFpZKk78oQI2rR91A=w2560-h1440-rw",
-      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.carpenter",
-      "badges": ["One UI", "Icon Packs"],
-      "packageName": "com.gocalsd.carpenter"
+      "label": "Pantry Pilot",
+      "projectId": "pantry",
+      "description": "A smart shop pin glist app that helps you budget your shopping trip with pantry managment.",
+      "screenshot": "",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.food.n.goods",
+      "badges": ["Shopping"],
+      "packageName": "com.gocalsd.food.n.goods"
     }
   ],
   "Public Libraries": [
