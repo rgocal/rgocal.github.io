@@ -125,5 +125,22 @@
     ],
     "title": "Pantry Pilot - Apps on Google Play",
     "url": "https://play.google.com/store/apps/details?id=com.gocalsd.food.n.goods&hl=en&gl=US"
+  },
+  "com.gocalsd.symphlyx": {
+    "description": "A Modern and Inspirational single screen launcher",
+    "image": "https://play-lh.googleusercontent.com/Lam8fJibxYfnQJnvTfoGCf9rxz03CzqfFNJnF8hPGwBrt1rFOJBiNVflBrRKRbPchBC9qvCl4W_PM6Vb-hsvR5A=s0-br30",
+    "screenshots": [
+      "https://play-lh.googleusercontent.com/Lam8fJibxYfnQJnvTfoGCf9rxz03CzqfFNJnF8hPGwBrt1rFOJBiNVflBrRKRbPchBC9qvCl4W_PM6Vb-hsvR5A=s0-br30=w600-h300",
+      "https://play-lh.googleusercontent.com/Lam8fJibxYfnQJnvTfoGCf9rxz03CzqfFNJnF8hPGwBrt1rFOJBiNVflBrRKRbPchBC9qvCl4W_PM6Vb-hsvR5A=w240-h480",
+      "https://play-lh.googleusercontent.com/Lam8fJibxYfnQJnvTfoGCf9rxz03CzqfFNJnF8hPGwBrt1rFOJBiNVflBrRKRbPchBC9qvCl4W_PM6Vb-hsvR5A=w480-h960",
+      "https://play-lh.googleusercontent.com/OBVqgRK7eerY0GPfK8AOzitu5oE9ecC6kG4kURTCb1K41gpqVsN0WjmJwJh-wX8vILzpcc1kYHt56aLN2g=w48-h16",
+      "https://play-lh.googleusercontent.com/OBVqgRK7eerY0GPfK8AOzitu5oE9ecC6kG4kURTCb1K41gpqVsN0WjmJwJh-wX8vILzpcc1kYHt56aLN2g=w96-h32",
+      "https://play-lh.googleusercontent.com/6jQ-RUwzGs6bTo6Wkk_zF_yhwvC5rrQw8mLCxO1M7FWoFWOReB3lrAJP8WE1S9VB9Gfgap6mI5p1vfpXWp69kw=w526-h296",
+      "https://play-lh.googleusercontent.com/6jQ-RUwzGs6bTo6Wkk_zF_yhwvC5rrQw8mLCxO1M7FWoFWOReB3lrAJP8WE1S9VB9Gfgap6mI5p1vfpXWp69kw=w1052-h592",
+      "https://play-lh.googleusercontent.com/IEAJzTi0UczNDfinTuGHG2eJZI4Hc5lBt3_48-KuIp9WcpGyRHvet7hrzN7xWMTDvB9P2NS7vVCSaaDcdHgpSpo=w526-h296",
+      "https://play-lh.googleusercontent.com/IEAJzTi0UczNDfinTuGHG2eJZI4Hc5lBt3_48-KuIp9WcpGyRHvet7hrzN7xWMTDvB9P2NS7vVCSaaDcdHgpSpo=w1052-h592"
+    ],
+    "title": "GCA Launcher v3 (Open Beta) - Apps on Google Play",
+    "url": "https://play.google.com/store/apps/details?id=com.gocalsd.symphlyx&hl=en&gl=US"
   }
 }
