@@ -46,6 +46,15 @@
       "url": "https://play.google.com/store/apps/details?id=com.gocalsd.food.n.goods",
       "badges": ["Shopping"],
       "packageName": "com.gocalsd.food.n.goods"
+    },
+    {
+      "label": "GCA Launcher (Open Beta)",
+      "projectId": "gca-launcher",
+      "description": "Gocals custom android luancher.",
+      "screenshot": "",
+      "url": "https://play.google.com/store/apps/details?id=com.gocalsd.symphlyx",
+      "badges": ["Launcher"],
+      "packageName": "com.gocalsd.symphlyx"
     }
   ],
   "Public Libraries": [
@@ -84,12 +93,6 @@
     {
       "label": "Sapphyx Launcher",
       "description": "Launched in 2017, Sapphyx Launcher was my first launched that was based on Google Pixel Launcher port to the public and offered an array of cool new features and customization. This project had taught me that it was becoming really difficult to based projects on another source and we should start look at build from the ground up.",
-      "screenshot": "null",
-      "url": "null"
-    },
-    {
-      "label": "GCA Launcher",
-      "description": "Gocal's Custom Android Launcher. Launched in late 2018, retired in 2021 for deprecation reasons. Currently in the pipeline to make a full return someday.",
       "screenshot": "null",
       "url": "null"
     },
