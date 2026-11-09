@@ -3,7 +3,7 @@
   "items": [
   {
       "label": "GocalSD Mobile",
-      "description": "Now Available, You can download GSD Mobile for android from the portfolio repository releases",
+      "description": "You can find a Google Play verified release in the release section of the portfolio on Github. Il have an official download button on the site soon!",
       "startingYear": 2026,
       "expectedReleaseYear": 2026
     },
@@ -15,21 +15,9 @@
     },
     {
       "label": "GCA Launcher v3",
-      "description": "A modernized android experience, powered by jetpack compose, drops for android devices in 2027. An open beta is now available on Google Play. ",
+      "description": "Open beta is now available on Google Play.",
       "startingYear": 2018,
       "expectedReleaseYear": 2027
-    },
-    {
-      "label": "Android Dash Launcher",
-      "description": "More news to come...",
-      "startingYear": 2018,
-      "expectedReleaseYear": 2027
-    },
-    {
-      "label": "Gocal's Pantry App",
-      "description": "Help budget your shopping trips! Now available on Google Play!",
-      "startingYear": 2026,
-      "expectedReleaseYear": 2026
     }
   ]
 }
